@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Incident Response · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="ai-incident-response-poster.gif" download>GIF</a> · <a href="ai-incident-response-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>AI <span class="b">INCIDENT RESPONSE</span></h1>
+  <div class="sub">When the model misbehaves <span class="dim">— detect, contain, investigate, fix, and prevent harmful AI behavior before it spreads</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What it is <span class="t2">— a plan, not a panic</span></div></div>
+      <p class="lead">AI incident response is the process for <b>detecting, containing, investigating, fixing, and preventing</b> harmful AI system behavior.</p>
+      <p style="margin-top:7px">Same muscle as classic SecOps incident response — but the failure modes are AI-shaped: bad outputs, leaked data, misused tools, injected instructions, degraded retrieval, runaway cost. <span class="em">You plan the response before the model ships, not during the outage.</span></p>
+    </div>
+
+    <!-- 02 THE RESPONSE LOOP (main visual) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The response loop <span class="t2">— an alert routes through containment to recovery, then prevention</span></div></div>
+      <svg viewBox="0 0 1000 232" width="100%" style="display:block">
+        <defs>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#E9BF35"/>
+          </marker>
+        </defs>
+
+        <!-- alert source -->
+        <g font-family="Century Gothic, sans-serif">
+          <rect x="18" y="86" width="96" height="52" rx="10" fill="#1a0606" stroke="#FF5A4D" stroke-width="1.6"/>
+          <text x="66" y="108" text-anchor="middle" fill="#FF5A4D" font-size="22" class="mess">🚨</text>
+          <text x="66" y="128" text-anchor="middle" fill="#FF5A4D" font-size="11" font-weight="800">ALERT</text>
+        </g>
+
+        <!-- the 7-stage track -->
+        <g font-family="Century Gothic, sans-serif" font-size="11.5" font-weight="800">
+          <!-- top row L→R: Detect, Contain, Analyze, Fix -->
+          <rect x="138" y="40" width="118" height="46" rx="9" fill="#0c0c0c" stroke="#FF5A4D"/><text x="197" y="60" text-anchor="middle" fill="#FF5A4D">1 · DETECT</text><text x="197" y="76" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">alerts · evals</text>
+          <rect x="296" y="40" width="118" height="46" rx="9" fill="#0c0c0c" stroke="#FE9A3A"/><text x="355" y="60" text-anchor="middle" fill="#FE9A3A">2 · CONTAIN</text><text x="355" y="76" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">stop the bleed</text>
+          <rect x="454" y="40" width="118" height="46" rx="9" fill="#0c0c0c" stroke="#E9BF35"/><text x="513" y="60" text-anchor="middle" fill="#E9BF35">3 · ANALYZE</text><text x="513" y="76" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">trace the cause</text>
+          <rect x="612" y="40" width="118" height="46" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/><text x="671" y="60" text-anchor="middle" fill="#5AA9EC">4 · FIX</text><text x="671" y="76" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">patch · roll back</text>
+
+          <!-- bottom row R→L: Evaluate, Communicate, Prevent -->
+          <rect x="612" y="146" width="118" height="46" rx="9" fill="#0c0c0c" stroke="#3AD0B0"/><text x="671" y="166" text-anchor="middle" fill="#3AD0B0">5 · EVALUATE</text><text x="671" y="182" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">prove it's fixed</text>
+          <rect x="454" y="146" width="118" height="46" rx="9" fill="#0c0c0c" stroke="#9B5DE5"/><text x="513" y="166" text-anchor="middle" fill="#9B5DE5">6 · COMMUNICATE</text><text x="513" y="182" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">notify owners</text>
+          <rect x="296" y="146" width="118" height="46" rx="9" fill="#0c0c0c" stroke="#81BB42"/><text x="355" y="166" text-anchor="middle" fill="#81BB42">7 · PREVENT</text><text x="355" y="182" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">guardrail it</text>
+        </g>
+
+        <!-- routing path: alert → detect → … → prevent, then loop back -->
+        <g fill="none" stroke="#E9BF35" stroke-width="1.6">
+          <path d="M114 112 L126 112 L126 63 L136 63" marker-end="url(#ah)"/>
+          <path d="M256 63 L294 63" marker-end="url(#ah)"/>
+          <path d="M414 63 L452 63" marker-end="url(#ah)"/>
+          <path d="M572 63 L610 63" marker-end="url(#ah)"/>
+          <path d="M730 63 L760 63 L760 169 L732 169" marker-end="url(#ah)"/>
+          <path d="M612 169 L574 169" marker-end="url(#ah)"/>
+          <path d="M454 169 L416 169" marker-end="url(#ah)"/>
+          <!-- prevent loops back up to detect (continuous improvement) -->
+          <path d="M296 158 L80 158 L80 138" stroke-dasharray="5 4" opacity=".65" marker-end="url(#ah)"/>
+        </g>
+
+        <!-- the moving alert pulse travelling the whole route -->
+        <path id="route" d="M114 112 L126 112 L126 63 L256 63 L414 63 L572 63 L760 63 L760 169 L612 169 L454 169 L355 169" fill="none" stroke="none"/>
+        <circle r="5" fill="#FF5A4D">
+          <animateMotion dur="2.4s" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion>
+          <animate attributeName="fill" values="#FF5A4D;#FE9A3A;#E9BF35;#5AA9EC;#3AD0B0;#9B5DE5;#81BB42" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+
+        <text x="500" y="222" text-anchor="middle" fill="#8c8c8c" font-size="10.5" font-family="Century Gothic, sans-serif">Prevent feeds back into Detect — every incident hardens the next deploy</text>
+      </svg>
+    </div>
+
+    <!-- 03 STATUS CARDS -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Track the status <span class="t2">— one incident, four states it moves through</span></div></div>
+      <div class="steps" style="gap:8px">
+        <span class="step" style="border-color:#FF5A4D;color:#FF5A4D">⬤ DETECTED</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#FE9A3A;color:#FE9A3A">⬤ CONTAINED</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#5AA9EC;color:#5AA9EC">⬤ FIXED</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#81BB42;color:#81BB42">⬤ VERIFIED</span>
+      </div>
+      <p style="margin-top:8px">Don't close on <b>fixed</b>. <span class="em">Verified</span> means an eval reproduces the old failure and now passes — proof, not a vibe.</p>
+    </div>
+
+    <!-- 04 INCIDENT EXAMPLES -->
+    <div class="card span2 c-orange">
+      <div class="chead"><div class="num">04</div><div class="ctitle">What an AI incident looks like <span class="t2">— six you should expect</span></div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#FF5A4D">🧠 Hallucinated answer</h4><p>Model states a confident, wrong answer on a <b>critical</b> path — medical, legal, financial.</p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">💧 Data leakage</h4><p>Secrets, PII, or another tenant's data surface in an output or a log.</p></div>
+        <div class="mini"><h4 style="color:#9B5DE5">💉 Prompt injection</h4><p>A retrieved doc or tool result <b>hijacks</b> the agent's instructions.</p></div>
+      </div>
+      <div class="trio" style="margin-top:7px">
+        <div class="mini"><h4 style="color:#E9BF35">🛠️ Unauthorized tool action</h4><p>Agent calls a tool it shouldn't — sends, deletes, pays, deploys.</p></div>
+        <div class="mini"><h4 style="color:#5AA9EC">📚 Bad retrieval / citation</h4><p>Wrong or stale source retrieved; the citation doesn't support the claim.</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">💸 Cost spike or loop</h4><p>A runaway loop or fan-out burns tokens and budget with no progress.</p></div>
+      </div>
+    </div>
+
+    <!-- 05 CONTAINMENT ACTIONS -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Containment actions</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔌</span><div><b>Disable the tool</b> <span>— kill the dangerous capability, not the whole app.</span></div></div>
+        <div class="gx"><span class="ic">↩️</span><div><b>Roll back</b> <span>— revert the prompt, model version, or config to last-good.</span></div></div>
+        <div class="gx"><span class="ic">🚫</span><div><b>Block the source</b> <span>— quarantine the poisoned doc or feed.</span></div></div>
+        <div class="gx"><span class="ic">✋</span><div><b>Require approval</b> <span>— force a human gate on risky actions.</span></div></div>
+        <div class="gx"><span class="ic">🐢</span><div><b>Rate-limit / pause</b> <span>— throttle or freeze the workflow.</span></div></div>
+        <div class="gx"><span class="ic">📣</span><div><b>Notify owners</b> <span>— page the people who can decide.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 06 COMMON FAILURE -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The common failure</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🕳️</span><div><b>No traces, no evals</b> <span>— without them, teams <b>can't tell what failed</b> and <b>can't prove it's fixed</b>. The incident just goes quiet.</span></div></div>
+        <div class="gx"><span class="ic">📜</span><div><b>No runbook</b> <span>— "who can disable this tool at 2am?" gets answered live, badly.</span></div></div>
+        <div class="gx"><span class="ic">🔁</span><div><b>No verify step</b> <span>— closed as "fixed," reopens next week. Same bug, no test.</span></div></div>
+      </div>
+      <p style="margin-top:8px"><span class="em">Traces + evals are the difference between a fix and a guess.</span></p>
+    </div>
+
+    <!-- 07 SEVERITY / WHO ACTS -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Triage by blast radius <span class="t2">— match the response to the severity</span></div></div>
+      <table>
+        <tr><th>Severity</th><th>Example</th><th>First move</th><th>Who</th></tr>
+        <tr><td class="k">SEV-1</td><td>Data leak · unauthorized payment/delete</td><td class="no">Disable tool + revoke access now</td><td>On-call + security</td></tr>
+        <tr><td class="k">SEV-2</td><td>Prompt injection succeeds in prod</td><td class="no">Quarantine source · gate the agent</td><td>On-call + owner</td></tr>
+        <tr><td class="k">SEV-3</td><td>Hallucinated critical answer</td><td>Roll back prompt/model · add eval</td><td>Product + ML</td></tr>
+        <tr><td class="k">SEV-4</td><td>Cost spike / retrieval drift</td><td class="win">Rate-limit · monitor · schedule fix</td><td>Owner</td></tr>
+      </table>
+    </div>
+
+    <!-- 08 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">08</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Plan <span class="em">AI rollback</span>, <span class="em">tool shutdown</span>, and <span class="em">source quarantine</span> <b>before</b> production launch — so the response is a runbook, not an improvisation.</div>
+      <div class="flow2">
+        <span class="step">Write the runbook</span><span class="arrow">→</span>
+        <span class="step">Wire kill-switches</span><span class="arrow">→</span>
+        <span class="step">Keep traces + evals</span><span class="arrow">→</span>
+        <span class="step">Drill it</span>
+      </div>
+    </div>
+
+    <!-- 09 AI SDLC PLACEMENT -->
+    <div class="card span2 c-green">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Where it sits in the AI SDLC <span class="t2">— the loop after launch</span></div></div>
+      <div class="steps" style="gap:6px">
+        <span class="step" style="border-color:#5AA9EC;color:#5AA9EC">Monitor</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#FF5A4D;color:#FF5A4D">Incident Response</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3AD0B0;color:#3AD0B0">Improve</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#E9BF35;color:#E9BF35">Governance</span>
+      </div>
+      <p style="margin-top:8px">Monitoring catches it · response contains and fixes it · improvement hardens the system · <span class="em">governance turns each incident into a policy</span> so it can't recur unnoticed.</p>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A2A — Agent2Agent Protocol · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="a2a-poster.gif" download>GIF</a> · <a href="a2a-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>AGENT2AGENT <span class="b">PROTOCOL</span></h1>
+  <div class="sub">How AI agents discover, talk to, and delegate to each other <span class="dim">— the open standard for agent interoperability</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 PROBLEM -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">01</div><div class="ctitle">The problem A2A solves <span class="t2">— agents on different stacks can't collaborate</span></div></div>
+      <svg viewBox="0 0 1000 188" width="100%" style="display:block">
+        <!-- BEFORE -->
+        <text x="20" y="16" fill="#FF5A4D" font-size="13" font-weight="700" font-family="Century Gothic, sans-serif">BEFORE — every agent siloed, no common language</text>
+        <g font-size="11" font-weight="700" font-family="Century Gothic, sans-serif">
+          <!-- left agents -->
+          <g>
+            <rect x="20" y="34" width="92" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="66" y="50" text-anchor="middle" fill="#fff">LangGraph</text>
+            <rect x="20" y="66" width="92" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="66" y="82" text-anchor="middle" fill="#fff">CrewAI</text>
+            <rect x="20" y="98" width="92" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="66" y="114" text-anchor="middle" fill="#fff">ADK agent</text>
+            <rect x="20" y="130" width="92" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="66" y="146" text-anchor="middle" fill="#fff">Vendor SaaS</text>
+          </g>
+          <!-- right agents -->
+          <g>
+            <rect x="346" y="34" width="92" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="392" y="50" text-anchor="middle" fill="#fff">HR agent</text>
+            <rect x="346" y="66" width="92" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="392" y="82" text-anchor="middle" fill="#fff">CRM agent</text>
+            <rect x="346" y="98" width="92" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="392" y="114" text-anchor="middle" fill="#fff">Ops agent</text>
+            <rect x="346" y="130" width="92" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="392" y="146" text-anchor="middle" fill="#fff">Data agent</text>
+          </g>
+          <!-- mess of lines (agent-to-agent tangle) -->
+          <g class="mess" stroke="#FF5A4D" stroke-width="1.1" fill="none">
+            <line x1="112" y1="46" x2="346" y2="46"/><line x1="112" y1="46" x2="346" y2="78"/><line x1="112" y1="46" x2="346" y2="110"/><line x1="112" y1="46" x2="346" y2="142"/>
+            <line x1="112" y1="78" x2="346" y2="46"/><line x1="112" y1="78" x2="346" y2="110"/><line x1="112" y1="78" x2="346" y2="142"/>
+            <line x1="112" y1="110" x2="346" y2="46"/><line x1="112" y1="110" x2="346" y2="78"/><line x1="112" y1="110" x2="346" y2="142"/>
+            <line x1="112" y1="142" x2="346" y2="46"/><line x1="112" y1="142" x2="346" y2="78"/><line x1="112" y1="142" x2="346" y2="110"/>
+          </g>
+          <!-- BEFORE: bespoke glue packets zipping across the tangle -->
+          <g fill="none" stroke="none">
+            <path id="a2ab1" d="M112,46 L346,142"/><path id="a2ab2" d="M112,142 L346,46"/><path id="a2ab3" d="M112,110 L346,46"/>
+          </g>
+          <circle r="2.8" fill="#FF5A4D"><animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#a2ab1"/></animateMotion></circle>
+          <circle r="2.8" fill="#FF5A4D"><animateMotion dur="1.2s" begin="-0.4s" repeatCount="indefinite"><mpath href="#a2ab2"/></animateMotion></circle>
+          <circle r="2.8" fill="#FF5A4D"><animateMotion dur="1.2s" begin="-0.8s" repeatCount="indefinite"><mpath href="#a2ab3"/></animateMotion></circle>
+          <text x="229" y="178" text-anchor="middle" fill="#FF5A4D" font-size="12">bespoke glue per agent pair 🔥</text>
+        </g>
+        <!-- divider arrow -->
+        <text x="500" y="100" text-anchor="middle" fill="#E9BF35" font-size="30" font-weight="800">→</text>
+        <!-- AFTER -->
+        <text x="560" y="16" fill="#81BB42" font-size="13" font-weight="700" font-family="Century Gothic, sans-serif">WITH A2A — every agent speaks one protocol</text>
+        <g font-size="11" font-weight="700" font-family="Century Gothic, sans-serif">
+          <g>
+            <rect x="560" y="34" width="80" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="600" y="50" text-anchor="middle" fill="#fff">LangGraph</text>
+            <rect x="560" y="66" width="80" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="600" y="82" text-anchor="middle" fill="#fff">CrewAI</text>
+            <rect x="560" y="98" width="80" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="600" y="114" text-anchor="middle" fill="#fff">ADK</text>
+            <rect x="560" y="130" width="80" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="600" y="146" text-anchor="middle" fill="#fff">SaaS</text>
+          </g>
+          <!-- hub -->
+          <rect x="726" y="74" width="70" height="40" rx="9" fill="#1a1305" stroke="#E9BF35" stroke-width="1.6"/>
+          <text x="761" y="99" text-anchor="middle" fill="#E9BF35" font-size="14" font-weight="800">A2A</text>
+          <g>
+            <rect x="912" y="34" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="949" y="50" text-anchor="middle" fill="#fff">HR</text>
+            <rect x="912" y="66" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="949" y="82" text-anchor="middle" fill="#fff">CRM</text>
+            <rect x="912" y="98" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="949" y="114" text-anchor="middle" fill="#fff">Ops</text>
+            <rect x="912" y="130" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="949" y="146" text-anchor="middle" fill="#fff">Data</text>
+          </g>
+          <g stroke="#E9BF35" stroke-width="1.4" fill="none" opacity=".85">
+            <line class="spoke" x1="640" y1="46" x2="726" y2="92"/><line class="spoke" x1="640" y1="78" x2="726" y2="94"/>
+            <line class="spoke" x1="640" y1="110" x2="726" y2="96"/><line class="spoke" x1="640" y1="142" x2="726" y2="98"/>
+            <line class="spoke" x1="796" y1="92" x2="912" y2="46"/><line class="spoke" x1="796" y1="94" x2="912" y2="78"/>
+            <line class="spoke" x1="796" y1="96" x2="912" y2="110"/><line class="spoke" x1="796" y1="98" x2="912" y2="142"/>
+          </g>
+          <!-- AFTER: one clean handshake agent → A2A → agent -->
+          <g fill="none" stroke="none">
+            <path id="a2af1" d="M640,46 L726,92 L796,94 L912,46"/>
+            <path id="a2af2" d="M640,110 L726,96 L796,96 L912,110"/>
+            <path id="a2af3" d="M640,142 L726,98 L796,98 L912,142"/>
+          </g>
+          <circle r="3.2" fill="#E9BF35"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#a2af1"/></animateMotion></circle>
+          <circle r="3.2" fill="#E9BF35"><animateMotion dur="2.4s" begin="-0.8s" repeatCount="indefinite"><mpath href="#a2af2"/></animateMotion></circle>
+          <circle r="3.2" fill="#E9BF35"><animateMotion dur="2.4s" begin="-1.6s" repeatCount="indefinite"><mpath href="#a2af3"/></animateMotion></circle>
+          <text x="773" y="178" text-anchor="middle" fill="#81BB42" font-size="12">one handshake · any agent, any vendor ✓</text>
+        </g>
+      </svg>
+      <p style="margin-top:9px" class="lead">Agents are built on different frameworks and vendors — without a shared language they stay islands. A2A is the common tongue between them.</p>
+    </div>
+
+    <!-- 02 WHAT IT IS / TIMELINE -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">What A2A is <span class="t2">— an open, vendor-neutral protocol for agents to talk to agents</span></div></div>
+      <svg viewBox="0 0 1000 92" width="100%" style="display:block">
+        <line x1="20" y1="34" x2="980" y2="34" stroke="#2b2b2b" stroke-width="2"/>
+        <!-- adoption sweep: a comet travelling the timeline left → right -->
+        <path id="a2atl" d="M20,34 L980,34" fill="none" stroke="none"/>
+        <circle r="6" fill="#E9BF35" opacity=".28"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#a2atl"/></animateMotion></circle>
+        <circle r="3.4" fill="#fff"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#a2atl"/></animateMotion></circle>
+        <g font-family="Century Gothic, sans-serif">
+          <g><circle class="tlDot" cx="120" cy="34" r="6" fill="#E9BF35" style="animation-delay:0s"/>
+            <text x="120" y="20" text-anchor="middle" fill="#E9BF35" font-size="12" font-weight="800">Apr 2025</text>
+            <text x="120" y="58" text-anchor="middle" fill="#bdbdbd" font-size="10.5">Google announces A2A</text><text x="120" y="72" text-anchor="middle" fill="#bdbdbd" font-size="10.5">50+ launch partners</text></g>
+          <g><circle class="tlDot" cx="500" cy="34" r="6" fill="#3AD0B0" style="animation-delay:.6s"/>
+            <text x="500" y="20" text-anchor="middle" fill="#3AD0B0" font-size="12" font-weight="800">2025</text>
+            <text x="500" y="58" text-anchor="middle" fill="#bdbdbd" font-size="10.5">Donated to the Linux Foundation</text><text x="500" y="72" text-anchor="middle" fill="#bdbdbd" font-size="10.5">vendor-neutral governance</text></g>
+          <g><circle class="tlDot" cx="880" cy="34" r="6" fill="#81BB42" style="animation-delay:1.2s"/>
+            <text x="880" y="20" text-anchor="middle" fill="#81BB42" font-size="12" font-weight="800">2026</text>
+            <text x="880" y="58" text-anchor="middle" fill="#bdbdbd" font-size="10.5">growing cross-vendor adoption</text></g>
+        </g>
+      </svg>
+      <div class="chips" style="margin-top:8px">
+        <span class="chip">Atlassian</span><span class="chip">Salesforce</span><span class="chip">SAP</span>
+        <span class="chip">ServiceNow</span><span class="chip">MongoDB</span><span class="chip">+ 45 more</span>
+      </div>
+      <p style="margin-top:8px" class="lead">Announced by Google (Apr 2025), then donated to the <b>Linux Foundation</b> so no single vendor owns it. <span class="em">An open standard for agent interoperability.</span></p>
+    </div>
+
+    <!-- 03 A2A vs MCP -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">03</div><div class="ctitle">A2A vs MCP <span class="t2">— complementary</span></div></div>
+      <table>
+        <tr><th>Question</th><th>MCP</th><th>A2A</th></tr>
+        <tr><td class="k">Connects an agent to…</td><td>tools &amp; data</td><td class="win">other agents</td></tr>
+        <tr><td class="k">The unit</td><td>a tool call</td><td class="win">a delegated task</td></tr>
+        <tr><td class="k">"USB-C for…"</td><td>tools</td><td class="win">teamwork</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">Not rivals — the two protocols of agentic systems.</span> MCP gives one agent its hands; A2A lets agents work as a team.</p>
+    </div>
+
+    <!-- 04 THE TWO ROLES -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">04</div><div class="ctitle">The two roles</div></div>
+      <div class="trio" style="grid-template-columns:1fr 1fr">
+        <div class="mini"><h4 style="color:#3AD0B0">🧭 Client agent</h4><p>Initiates — <b>delegates</b> a task and waits on the result.</p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">⚙️ Remote agent</h4><p>Receives the task, <b>executes</b> it, returns the output.</p></div>
+      </div>
+      <p style="margin-top:9px"><b>Agents are opaque.</b> A remote agent exposes its <span class="em">capabilities</span>, never its internal tools, memory, or state — a built-in <b>security boundary</b>.</p>
+    </div>
+
+    <!-- 05 THE AGENT CARD -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">05</div><div class="ctitle">The Agent Card <span class="t2">— how agents discover each other</span></div></div>
+      <div style="display:grid; grid-template-columns:1.05fr 1fr; gap:11px; align-items:start">
+        <div>
+          <p style="margin-bottom:6px">A small JSON metadata document published at a well-known URL — the agent's public "business card". This is how one agent <b>finds and sizes up</b> another before delegating.</p>
+          <div class="gotchas">
+            <div class="gx"><span class="ic">🆔</span><div><b>Identity</b> — <span>name, description, provider, version.</span></div></div>
+            <div class="gx"><span class="ic">🎯</span><div><b>Skills / capabilities</b> — <span>what it can actually do.</span></div></div>
+            <div class="gx"><span class="ic">🔗</span><div><b>Endpoint URL</b> + <span>supported modalities (text, files, data).</span></div></div>
+            <div class="gx"><span class="ic">🔑</span><div><b>Auth requirements</b> — <span>OAuth 2.0 / API keys it expects.</span></div></div>
+          </div>
+        </div>
+        <div class="wire">
+<span class="cm">// GET /.well-known/agent.json</span><br>
+{ <span class="key">"name"</span>: <span class="str">"Weather Agent"</span>,<br>
+&nbsp;&nbsp;<span class="key">"url"</span>: <span class="str">"https://wx.example/a2a"</span>,<br>
+&nbsp;&nbsp;<span class="key">"version"</span>: <span class="str">"1.0.0"</span>,<br>
+&nbsp;&nbsp;<span class="key">"skills"</span>: [ { <span class="key">"id"</span>: <span class="str">"forecast"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"description"</span>: <span class="str">"daily forecast by city"</span> } ],<br>
+&nbsp;&nbsp;<span class="key">"defaultInputModes"</span>: [<span class="str">"text"</span>],<br>
+&nbsp;&nbsp;<span class="key">"authentication"</span>: { <span class="key">"schemes"</span>: [<span class="str">"oauth2"</span>] } }
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 TASK LIFECYCLE -->
+    <div class="card span2 c-orange">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The task lifecycle <span class="t2">— long-running &amp; async by design</span></div></div>
+      <div class="steps">
+        <span class="step" style="border-color:#1f3a2c;color:#3AD0B0">submitted</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">working</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#2a3550;color:#5AA9EC">input-required</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1f3a1a;color:#81BB42">completed ✓</span>
+      </div>
+      <div class="steps" style="margin-top:7px">
+        <span class="dim" style="color:#8c8c8c;font-size:11px">terminal states also include</span>
+        <span class="step" style="border-color:#3a1410;color:#FF5A4D">failed</span>
+        <span class="step">canceled</span>
+        <span class="dim" style="color:#8c8c8c;font-size:11px">— a task can pause at <b style="color:#5AA9EC">input-required</b> to ask the client for more, then resume.</span>
+      </div>
+      <p style="margin-top:8px">A <b>Task</b> is the unit of work. Because real work takes time, A2A treats every task as a stateful, resumable object — not a single blocking call.</p>
+    </div>
+
+    <!-- 07 MESSAGES / PARTS / ARTIFACTS -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Messages, Parts &amp; Artifacts</div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#5AA9EC">Message</h4><p>One turn between agents — carries one or more <b>Parts</b>.</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">Part</h4><p>A piece of content.<span class="ex">TextPart · FilePart · DataPart</span></p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">Artifact</h4><p>The remote agent's <b>output</b> — the result it returns.</p></div>
+      </div>
+      <p style="margin-top:9px"><b>DataPart</b> carries structured JSON, so agents trade machine-readable results — not just prose. <span class="em">Messages go in, Artifacts come out.</span></p>
+    </div>
+
+    <!-- 08 CAPABILITY DISCOVERY -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Capability &amp; modality negotiation</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🗂️</span><div><b>Read the card first</b> — <span>skills + supported modes tell the client what's possible before it asks.</span></div></div>
+        <div class="gx"><span class="ic">🔀</span><div><b>Negotiate modalities</b> — <span>text, forms, files, audio/video — agree what each side can send and receive.</span></div></div>
+        <div class="gx"><span class="ic">📦</span><div><b>Agree content types</b> — <span>so the response arrives in a shape the client can actually use.</span></div></div>
+      </div>
+      <p style="margin-top:8px"><span class="em">Discovery isn't just "are you there" — it's "what can you do, and how should I talk to you".</span></p>
+    </div>
+
+    <!-- 09 ON THE WIRE -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">09</div><div class="ctitle">On the wire <span class="t2">— JSON-RPC 2.0 over HTTP(S), with streaming</span></div></div>
+      <div style="display:grid; grid-template-columns:1.15fr .85fr; gap:11px; align-items:start">
+        <div class="wire">
+<span class="cm">// client agent delegates a task to a remote agent</span><br>
+{ <span class="key">"jsonrpc"</span>: <span class="str">"2.0"</span>, <span class="key">"id"</span>: <span class="num2">7</span>, <span class="key">"method"</span>: <span class="str">"message/send"</span>,<br>
+&nbsp;&nbsp;<span class="key">"params"</span>: { <span class="key">"message"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"role"</span>: <span class="str">"user"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"parts"</span>: [ { <span class="key">"kind"</span>: <span class="str">"text"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"text"</span>: <span class="str">"3-day forecast for Kyoto"</span> } ] } } }
+        </div>
+        <div>
+          <div class="gotchas">
+            <div class="gx"><span class="ic">📡</span><div><b>SSE</b> — <span>Server-Sent Events stream live progress as the task runs.</span></div></div>
+            <div class="gx"><span class="ic">🪝</span><div><b>Push notifications</b> — <span>webhooks call the client back when a long task finishes.</span></div></div>
+            <div class="gx"><span class="ic">🌐</span><div><b>Plain HTTP(S)</b> — <span>standard web transport, easy to host &amp; secure.</span></div></div>
+          </div>
+          <p style="margin-top:8px"><span class="em">Familiar web plumbing — nothing exotic to deploy.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 ENTERPRISE-GRADE / GOTCHAS -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">10</div><div class="ctitle">Enterprise-grade by design <span class="t2">— what nobody tells you</span></div></div>
+      <div class="gotchas" style="grid-template-columns:1fr 1fr; column-gap:18px">
+        <div class="gx"><span class="ic">🔒</span><div><b>Opaque by design</b> — <span>unlike MCP's exposed tools, a remote agent reveals only capabilities. Don't expect to see its internals.</span></div></div>
+        <div class="gx"><span class="ic">⏳</span><div><b>Task state is yours to manage</b> — <span>async, long-running tasks mean tracking IDs, retries, and timeouts.</span></div></div>
+        <div class="gx"><span class="ic">🪪</span><div><b>Trust the discovered card</b> — <span>an Agent Card is a claim; verify identity &amp; auth before you delegate sensitive work.</span></div></div>
+        <div class="gx"><span class="ic">📐</span><div><b>Protocol versioning</b> — <span>agents on different A2A versions must negotiate; capabilities drift over time.</span></div></div>
+        <div class="gx"><span class="ic">🛡️</span><div><b>Standard web auth</b> — <span>OAuth 2.0 / API keys — reuse the security you already run.</span></div></div>
+        <div class="gx"><span class="ic">🔭</span><div><b>Observability</b> — <span>trace tasks across agent boundaries; a failure can hide one hop away.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 11 COMPLETE PICTURE -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">11</div><div class="ctitle">The complete picture <span class="t2">— an orchestrator delegating to specialists</span></div></div>
+      <svg viewBox="0 0 1000 150" width="100%" style="display:block">
+        <!-- client / orchestrator -->
+        <rect x="20" y="40" width="250" height="72" rx="11" fill="#0c0c0c" stroke="#3AD0B0"/>
+        <text x="145" y="33" text-anchor="middle" fill="#3AD0B0" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">CLIENT — Travel Agent (orchestrator)</text>
+        <g font-family="Century Gothic, sans-serif" font-size="10.5" font-weight="700">
+          <text x="145" y="68" text-anchor="middle" fill="#fff" font-size="11">"Plan my Kyoto trip"</text>
+          <text x="145" y="90" text-anchor="middle" fill="#8c8c8c" font-size="10">delegates a task to each specialist</text>
+          <text x="145" y="104" text-anchor="middle" fill="#8c8c8c" font-size="10">via its Agent Card</text>
+        </g>
+        <!-- cables w/ travelling pulses (reuse MCP section-08 pattern) -->
+        <g stroke="#E9BF35" stroke-width="1.6" fill="none">
+          <path id="a1" d="M270 64 L520 56"/><path id="a2" d="M270 76 L520 92"/><path id="a3" d="M270 88 L520 128"/>
+        </g>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#a1"/></animateMotion></circle>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" begin="-0.8s" repeatCount="indefinite"><mpath href="#a2"/></animateMotion></circle>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" begin="-1.6s" repeatCount="indefinite"><mpath href="#a3"/></animateMotion></circle>
+        <!-- remote specialist agents -->
+        <g font-family="Century Gothic, sans-serif" font-size="11" font-weight="700">
+          <rect x="520" y="40" width="160" height="32" rx="8" fill="#0c0c0c" stroke="#5AA9EC"/><text x="600" y="60" text-anchor="middle" fill="#fff">Flights agent</text>
+          <rect x="520" y="76" width="160" height="32" rx="8" fill="#0c0c0c" stroke="#FE9A3A"/><text x="600" y="96" text-anchor="middle" fill="#fff">Weather agent</text>
+          <rect x="520" y="112" width="160" height="32" rx="8" fill="#0c0c0c" stroke="#9B5DE5"/><text x="600" y="132" text-anchor="middle" fill="#fff">Booking agent</text>
+          <!-- agent cards on each -->
+          <text x="770" y="51" fill="#8c8c8c" font-size="10">→ /.well-known/agent.json</text>
+          <text x="770" y="96" fill="#8c8c8c" font-size="10">→ /.well-known/agent.json</text>
+          <text x="770" y="132" fill="#8c8c8c" font-size="10">→ /.well-known/agent.json</text>
+          <line x1="680" y1="56" x2="762" y2="48" stroke="#2b2b2b"/><line x1="680" y1="92" x2="762" y2="92" stroke="#2b2b2b"/><line x1="680" y1="128" x2="762" y2="128" stroke="#2b2b2b"/>
+        </g>
+      </svg>
+      <p style="margin-top:8px">Each specialist is a separate agent — possibly a different vendor — reachable through its Agent Card. <span class="em">The orchestrator never needs to know how they work inside.</span></p>
+    </div>
+
+    <!-- 12 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">12</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">A2A is the <span class="em">handshake between agents</span>; MCP is the handshake to tools. Together they turn lone agents into teams — build agents that collaborate.</div>
+      <div class="flow2">
+        <span class="step">Build an agent</span><span class="arrow">→</span>
+        <span class="step">Expose an Agent Card</span><span class="arrow">→</span>
+        <span class="step">Be discovered</span><span class="arrow">→</span>
+        <span class="step">Delegate &amp; collaborate</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

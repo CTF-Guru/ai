@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Identity · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="agent-identity-poster.gif" download>GIF</a> · <a href="agent-identity-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>AGENT <span class="b">IDENTITY</span></h1>
+  <div class="sub">Who is taking the action? <span class="dim">— which software actor is acting, for which user, with which permissions</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What agent identity is <span class="t2">— the answer to "on whose authority did this run?"</span></div></div>
+      <p class="lead"><b>Agent identity</b> defines <span class="em">which software actor is acting, for which user, with which permissions.</span> When an agent acts on your behalf, identity and authorization can't be implicit — every action needs a traceable owner.</p>
+      <div class="trio" style="margin-top:8px">
+        <div class="mini"><h4 style="color:#5AA9EC">Actor</h4><p>Which agent — not just "the AI" — executed the call?</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">On behalf of</h4><p>Which human or service authorized the work?</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">With what scope</h4><p>What is this agent permitted to do, and where does it stop?</p></div>
+      </div>
+    </div>
+
+    <!-- 02 THE IDENTITY CHAIN (main animated SVG) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The identity chain <span class="t2">— a token is re-checked at every gate</span></div></div>
+      <svg viewBox="0 0 1000 196" width="100%" style="display:block">
+        <defs>
+          <marker id="idArrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#E9BF35"/>
+          </marker>
+        </defs>
+        <g font-family="Century Gothic, sans-serif" font-size="11" font-weight="700">
+          <!-- nodes -->
+          <rect x="14" y="58" width="86" height="40" rx="8" fill="#101010" stroke="#5AA9EC"/><text x="57" y="76" text-anchor="middle" fill="#fff">User</text><text x="57" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">who asked</text>
+          <rect x="120" y="58" width="92" height="40" rx="8" fill="#101010" stroke="#3AD0B0"/><text x="166" y="76" text-anchor="middle" fill="#fff">Session</text><text x="166" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">this request</text>
+          <rect x="232" y="58" width="92" height="40" rx="8" fill="#101010" stroke="#9B5DE5"/><text x="278" y="76" text-anchor="middle" fill="#fff">Agent</text><text x="278" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">acting actor</text>
+
+          <!-- policy gate -->
+          <rect x="406" y="50" width="78" height="56" rx="9" fill="#1a1305" stroke="#E9BF35" stroke-width="1.6"/>
+          <text x="445" y="74" text-anchor="middle" fill="#E9BF35" font-size="16">🛡️</text>
+          <text x="445" y="92" text-anchor="middle" fill="#E9BF35" font-size="9" font-weight="800">POLICY GATE</text>
+
+          <rect x="566" y="58" width="86" height="40" rx="8" fill="#101010" stroke="#FE9A3A"/><text x="609" y="76" text-anchor="middle" fill="#fff">Tool</text><text x="609" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">scoped action</text>
+          <rect x="700" y="58" width="100" height="40" rx="8" fill="#101010" stroke="#81BB42"/><text x="750" y="76" text-anchor="middle" fill="#fff">Audit Log</text><text x="750" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">who/what/when</text>
+
+          <!-- connectors along the chain -->
+          <g stroke="#E9BF35" stroke-width="1.5" fill="none" marker-end="url(#idArrow)">
+            <line x1="100" y1="78" x2="118" y2="78"/>
+            <line x1="212" y1="78" x2="230" y2="78"/>
+            <line x1="324" y1="78" x2="404" y2="78"/>
+            <line x1="652" y1="78" x2="698" y2="78"/>
+          </g>
+
+          <!-- token travelling User → Gate, then APPROVED on to Tool, logged -->
+          <path id="idApproved" d="M70 122 L445 122 L609 122 L750 122" fill="none" stroke="#1f2b1c" stroke-width="1" stroke-dasharray="3 4"/>
+          <text x="70" y="140" text-anchor="middle" fill="#bdbdbd" font-size="9">scoped token</text>
+          <circle r="6" fill="#5AA9EC">
+            <animateMotion dur="2.4s" repeatCount="indefinite" keyPoints="0;0.551;0.551;1" keyTimes="0;0.4;0.55;1" calcMode="linear"><mpath href="#idApproved"/></animateMotion>
+            <animate attributeName="fill" values="#5AA9EC;#5AA9EC;#E9BF35;#81BB42;#81BB42" keyTimes="0;0.4;0.55;0.78;1" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+          <text x="609" y="140" text-anchor="middle" fill="#81BB42" font-size="9.5">✓ approved · scope ok</text>
+          <text x="750" y="140" text-anchor="middle" fill="#81BB42" font-size="9.5">✓ recorded</text>
+
+          <!-- denied path: over-scoped / unknown token bounces at the gate -->
+          <path id="idDenied" d="M70 170 L445 170" fill="none" stroke="#2b1c1b" stroke-width="1" stroke-dasharray="3 4"/>
+          <text x="70" y="166" text-anchor="middle" fill="#bdbdbd" font-size="9">unknown / over-scope</text>
+          <circle r="6" fill="#FF5A4D">
+            <animateMotion dur="2.4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear"><mpath href="#idDenied"/></animateMotion>
+          </circle>
+          <text x="470" y="166" text-anchor="start" fill="#FF5A4D" font-size="10">
+            ✗ denied<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.55;0.9;1" dur="2.4s" repeatCount="indefinite"/>
+          </text>
+        </g>
+      </svg>
+      <p style="margin-top:8px"><span class="em">Identity rides with the request.</span> A known, in-scope token clears the gate, runs, and is logged; an unknown or over-scoped one is denied before it touches a tool.</p>
+    </div>
+
+    <!-- 03 FIVE CONCEPTS -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Five concepts to keep straight <span class="t2">— from "who asked" to "prove it later"</span></div></div>
+      <div class="trio" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="mini"><h4 style="color:#5AA9EC">User identity</h4><p>The human or service requesting the work.</p></div>
+        <div class="mini"><h4 style="color:#9B5DE5">Agent identity</h4><p>The autonomous or semi-autonomous actor that executes.</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">Delegated authority</h4><p>What the agent <b>may</b> do for the user — and nothing beyond.</p></div>
+      </div>
+      <div class="trio" style="grid-template-columns:1fr 1fr; margin-top:7px">
+        <div class="mini"><h4 style="color:#FE9A3A">Tool authorization</h4><p>What actions each tool permits, per identity and scope.</p></div>
+        <div class="mini"><h4 style="color:#81BB42">Audit trail</h4><p>Evidence of <b>who / what / when / why</b> — reconstructable after the fact.</p></div>
+      </div>
+    </div>
+
+    <!-- 04 BAD vs GOOD -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Bad pattern vs good pattern</div></div>
+      <div class="trio" style="grid-template-columns:1fr 1fr">
+        <div class="mini" style="border-color:#4a1f1c">
+          <h4 style="color:#FF5A4D">✗ Shared admin key</h4>
+          <p>One credential for every agent — broad, permanent, anonymous. Any action is "the AI," accountable to no one.</p>
+        </div>
+        <div class="mini" style="border-color:#2c4a2a">
+          <h4 style="color:#81BB42">✓ Scoped identity</h4>
+          <p>Per user / session / agent: <b>scoped</b>, <b>revocable</b>, <b>logged</b>. Pull access the instant it's misused.</p>
+        </div>
+      </div>
+      <p style="margin-top:9px">A shared service account with excessive permissions is the <span class="em">single most common identity failure.</span></p>
+    </div>
+
+    <!-- 05 SCOPED / REVOCABLE / LOGGED -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">05</div><div class="ctitle">What "an identity" must carry</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🎯</span><div><b>Scoped</b> — <span>least privilege per user, session and agent — not a blanket grant.</span></div></div>
+        <div class="gx"><span class="ic">⏳</span><div><b>Time-bound</b> — <span>short-lived tokens tied to one session, not standing keys.</span></div></div>
+        <div class="gx"><span class="ic">🔁</span><div><b>Revocable</b> — <span>access can be pulled the instant an agent misbehaves.</span></div></div>
+        <div class="gx"><span class="ic">📋</span><div><b>Logged</b> — <span>every action attributable to a real, named actor.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 06 IDENTITY x AUDIT TABLE -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">06</div><div class="ctitle">What an audit entry must answer <span class="t2">— identity makes every action reconstructable</span></div></div>
+      <table>
+        <tr><th>Question</th><th>Field</th><th>Shared admin key</th><th>Scoped identity</th></tr>
+        <tr><td class="k">Who asked?</td><td>user / principal</td><td class="no">unknown</td><td class="win">named user</td></tr>
+        <tr><td class="k">Which actor ran it?</td><td>agent id</td><td class="no">"the AI"</td><td class="win">specific agent</td></tr>
+        <tr><td class="k">Under what grant?</td><td>delegated scope</td><td class="no">everything</td><td class="win">least privilege</td></tr>
+        <tr><td class="k">Can we stop it?</td><td>revocation</td><td class="no">rotate-all</td><td class="win">revoke one</td></tr>
+        <tr><td class="k">Prove it later?</td><td>audit trail</td><td class="no">ambiguous</td><td class="win">who/what/when/why</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">No identity, no accountability.</span> If the log can't name the actor and the grant, the action can't be governed.</p>
+    </div>
+
+    <!-- 07 COMMON FAILURE -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">07</div><div class="ctitle">The common failure <span class="t2">— an access-control blind spot</span></div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🕳️</span><div><b>An agent with unclear identity = an access-control blind spot.</b> <span>If you can't say which actor took an action, on whose authority, you can't scope it, can't revoke it, and can't prove what happened.</span></div></div>
+        <div class="gx"><span class="ic">🪪</span><div><b>Shared service account</b> — <span>every agent acting as the same over-permissioned identity erases who actually did what.</span></div></div>
+        <div class="gx"><span class="ic">🗝️</span><div><b>Standing master credential</b> — <span>a long-lived broad key is a permanent liability: one leak exposes everything it can reach.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 08 DESIGN LIKE PRODUCTION IDENTITY -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Treat agents like prod principals</div></div>
+      <div class="steps">
+        <span class="step">Identified</span><span class="arrow">→</span>
+        <span class="step">Scoped</span><span class="arrow">→</span>
+        <span class="step">Revocable</span><span class="arrow">→</span>
+        <span class="step">Logged</span>
+      </div>
+      <p style="margin-top:9px">Each agent is a first-class actor in your access model: it has a name, a narrow grant, an off switch, and a trail — exactly like a <span class="em">production service account done right.</span></p>
+    </div>
+
+    <!-- 09 DELEGATION CHAIN -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">09</div><div class="ctitle">How authority is delegated</div></div>
+      <div class="steps">
+        <span class="step" style="border-color:#2a3c52;color:#5AA9EC">User grants</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2150;color:#9B5DE5">Agent receives</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#4a3410;color:#FE9A3A">Tool checks</span>
+      </div>
+      <p style="margin-top:9px">The agent acts <b>on behalf of</b> the user — never above them. Its authority is a <span class="em">subset</span> of the user's, narrowed to the task, and the tool re-verifies it at the point of use.</p>
+    </div>
+
+    <!-- 10 BUILDER TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">10</div><div class="ctitle">Builder takeaway</div></div>
+      <div class="big">Give agents <span class="em">identities, not magic keys.</span> Scoped, revocable, logged permissions per user, session and agent — so every action has a real, named owner.</div>
+      <div class="flow2">
+        <span class="step">Identify the actor</span><span class="arrow">→</span>
+        <span class="step">Scope the grant</span><span class="arrow">→</span>
+        <span class="step">Gate the action</span><span class="arrow">→</span>
+        <span class="step">Log who did it</span><span class="arrow">→</span>
+        <span class="step">Revoke on misuse</span>
+      </div>
+    </div>
+
+    <!-- 11 AI SDLC PLACEMENT -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">11</div><div class="ctitle">Where this lives in the AI SDLC</div></div>
+      <div class="steps" style="margin-top:1px">
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Security Design</span><span class="arrow">→</span>
+        <span class="step">Build</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Release Gate</span><span class="arrow">→</span>
+        <span class="step">Monitor</span>
+      </div>
+      <p style="margin-top:9px"><span class="dim" style="color:#8c8c8c">Decide the identity model and delegation rules in <b style="color:#bdbdbd">security design</b>; wire per-agent scoped credentials in <b style="color:#bdbdbd">build</b>; verify revocation and audit coverage at the <b style="color:#bdbdbd">release gate</b>; watch the attributed audit trail in <b style="color:#bdbdbd">monitoring</b>.</span></p>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

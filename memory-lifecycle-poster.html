@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Memory Lifecycle · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="memory-lifecycle-poster.gif" download>GIF</a> · <a href="memory-lifecycle-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>MEMORY <span class="b">LIFECYCLE</span></h1>
+  <div class="sub">Remember with rules <span class="dim">— capture · decide · store · retrieve · update · expire · audit</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What it is <span class="t2">— memory is not storage, it's a lifecycle</span></div></div>
+      <p class="lead" style="margin-bottom:8px">Agent memory is <b>managed context</b> that can be captured, decided on, stored, retrieved, updated, expired, and audited — every memory moves through stages, and every stage is a chance to keep it useful or let it rot.</p>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#5AA9EC">Not a database</h4><p>Writing everything down isn't memory — it's a <b>liability</b> that grows forever.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">Governed context</h4><p>Each memory has an owner, a purpose, and a <b>reason to exist</b> right now.</p></div>
+        <div class="mini"><h4 style="color:#81BB42">A lifecycle</h4><p>Born → used → updated → retired. Memory you don't retire <b>turns stale</b>.</p></div>
+      </div>
+      <p style="margin-top:9px"><span class="em">Design memory as a lifecycle with gates, not a bucket that only fills.</span></p>
+    </div>
+
+    <!-- 02 THE LIFECYCLE WHEEL (animated) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The lifecycle wheel <span class="t2">— a candidate memory travels the loop</span></div></div>
+      <svg viewBox="0 0 1000 360" width="100%" style="display:block">
+        <defs>
+          <marker id="arw" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#E9BF35"/>
+          </marker>
+          <!-- the closed circular orbit the memory rides around -->
+          <path id="orbit" d="M 500 60 A 220 120 0 0 1 720 180 A 220 120 0 0 1 500 300 A 220 120 0 0 1 280 180 A 220 120 0 0 1 500 60 Z" fill="none"/>
+        </defs>
+
+        <!-- faint orbit ring -->
+        <ellipse cx="500" cy="180" rx="220" ry="120" fill="none" stroke="#2b2b2b" stroke-width="1.4"/>
+        <!-- directional dashes around the orbit (gentle flicker, reusing .mess @2.4s) -->
+        <ellipse class="mess" cx="500" cy="180" rx="220" ry="120" fill="none" stroke="#E9BF35" stroke-width="1.4" stroke-dasharray="6 16"/>
+
+        <g font-family="Century Gothic, sans-serif" font-weight="700" text-anchor="middle">
+          <!-- 7 stage nodes around the ring -->
+          <!-- 1 CAPTURE (top) -->
+          <g><circle cx="500" cy="60" r="20" fill="#0c0c0c" stroke="#5AA9EC" stroke-width="1.6"/><text x="500" y="65" fill="#5AA9EC" font-size="13" font-weight="800">1</text>
+            <text x="500" y="34" fill="#fff" font-size="12.5">CAPTURE</text><text x="500" y="47" fill="#8c8c8c" font-size="9">what happened?</text></g>
+          <!-- 2 DECIDE (top-right) -->
+          <g><circle cx="690" cy="118" r="20" fill="#0c0c0c" stroke="#3AD0B0" stroke-width="1.6"/><text x="690" y="123" fill="#3AD0B0" font-size="13" font-weight="800">2</text>
+            <text x="760" y="110" fill="#fff" font-size="12.5">DECIDE</text><text x="760" y="123" fill="#8c8c8c" font-size="9">remember it?</text></g>
+          <!-- 3 STORE (right) -->
+          <g><circle cx="720" cy="180" r="20" fill="#0c0c0c" stroke="#E9BF35" stroke-width="1.6"/><text x="720" y="185" fill="#E9BF35" font-size="13" font-weight="800">3</text>
+            <text x="792" y="176" fill="#fff" font-size="12.5">STORE</text><text x="792" y="189" fill="#8c8c8c" font-size="9">where / format?</text></g>
+          <!-- 4 RETRIEVE (bottom-right) -->
+          <g><circle cx="690" cy="242" r="20" fill="#0c0c0c" stroke="#81BB42" stroke-width="1.6"/><text x="690" y="247" fill="#81BB42" font-size="13" font-weight="800">4</text>
+            <text x="762" y="254" fill="#fff" font-size="12.5">RETRIEVE</text><text x="762" y="267" fill="#8c8c8c" font-size="9">relevant now?</text></g>
+          <!-- 5 UPDATE (bottom-left) -->
+          <g><circle cx="310" cy="242" r="20" fill="#0c0c0c" stroke="#FE9A3A" stroke-width="1.6"/><text x="310" y="247" fill="#FE9A3A" font-size="13" font-weight="800">5</text>
+            <text x="238" y="254" fill="#fff" font-size="12.5">UPDATE</text><text x="238" y="267" fill="#8c8c8c" font-size="9">what changed?</text></g>
+          <!-- 6 EXPIRE (left) -->
+          <g><circle cx="280" cy="180" r="20" fill="#0c0c0c" stroke="#DF2E28" stroke-width="1.6"/><text x="280" y="185" fill="#fff" font-size="13" font-weight="800">6</text>
+            <text x="208" y="176" fill="#fff" font-size="12.5">EXPIRE</text><text x="208" y="189" fill="#8c8c8c" font-size="9">forget when?</text></g>
+          <!-- 7 AUDIT (top-left) -->
+          <g><circle cx="310" cy="118" r="20" fill="#0c0c0c" stroke="#9B5DE5" stroke-width="1.6"/><text x="310" y="123" fill="#9B5DE5" font-size="13" font-weight="800">7</text>
+            <text x="240" y="110" fill="#fff" font-size="12.5">AUDIT</text><text x="240" y="123" fill="#8c8c8c" font-size="9">who touched it?</text></g>
+
+          <!-- hub label -->
+          <text x="500" y="172" fill="#E9BF35" font-size="13" font-weight="800">GOVERNED</text>
+          <text x="500" y="190" fill="#E9BF35" font-size="13" font-weight="800">CONTEXT</text>
+          <text x="500" y="208" fill="#8c8c8c" font-size="9.5">not infinite storage</text>
+        </g>
+
+        <!-- the candidate memory riding the loop, looping in 2.4s -->
+        <g>
+          <rect x="-9" y="-7" width="18" height="14" rx="3" fill="#fff" stroke="#E9BF35" stroke-width="1.4"/>
+          <animateMotion dur="2.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" rotate="0">
+            <mpath href="#orbit"/>
+          </animateMotion>
+        </g>
+      </svg>
+
+      <!-- the three outcome paths, called out as a legend below the wheel -->
+      <div class="steps" style="margin-top:4px; justify-content:center">
+        <span class="step" style="border-color:#244018;color:#a8d77f">✓ stored — passed the gates</span>
+        <span class="step" style="border-color:#3a2d08;color:#FE9A3A">⟳ updated — changed, re-written</span>
+        <span class="step" style="border-color:#4a1714;color:#FF8A80">✕ rejected / expired — never kept, or aged out</span>
+      </div>
+      <p style="margin-top:7px"><span class="dim" style="color:#8c8c8c">Capture and decide are the <b style="color:#bdbdbd">intake gate</b>; expire and audit are the <b style="color:#bdbdbd">exit + accountability</b>. Most teams build the first half and skip the second.</span></p>
+    </div>
+
+    <!-- 03 QUALITY GATES -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">03</div><div class="ctitle">The quality gates <span class="t2">— five questions before a memory is kept</span></div></div>
+      <div class="trio" style="grid-template-columns:repeat(5,1fr)">
+        <div class="mini"><h4 style="color:#5AA9EC">Useful?</h4><p>Will this actually help a future turn — or is it noise?</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">Accurate?</h4><p>Is it true and confirmed — not a guess or a stale claim?</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">Allowed?</h4><p>Are we permitted to keep it — scope, policy, consent?</p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">Sensitive?</h4><p>Is it PII / secret / regulated — redact or protect?</p></div>
+        <div class="mini"><h4 style="color:#DF2E28">Expires?</h4><p>When does it stop being true — set a decay rule.</p></div>
+      </div>
+      <p style="margin-top:9px"><span class="em">A "yes-and-no-problems" on all five</span> is what earns a memory a place in the store. Fail one → reject, redact, or time-box it.</p>
+    </div>
+
+    <!-- 04 MEMORY EXAMPLES -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">04</div><div class="ctitle">What gets remembered <span class="t2">— five everyday kinds</span></div></div>
+      <table>
+        <tr><th>Memory</th><th>Example</th><th>Lifecycle note</th></tr>
+        <tr><td class="k">Preference</td><td>"Uses metric units"</td><td>update on change</td></tr>
+        <tr><td class="k">Project context</td><td>"Repo = planit-lab"</td><td>expires w/ project</td></tr>
+        <tr><td class="k">Past decision</td><td>"Chose Postgres"</td><td>audit-worthy</td></tr>
+        <tr><td class="k">Tool result</td><td>"Build passed @ 14:02"</td><td>short TTL</td></tr>
+        <tr><td class="k">Team rule</td><td>"PRs need 2 reviews"</td><td>shared, governed</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="dim" style="color:#8c8c8c">Different kinds want different <b style="color:#bdbdbd">retention</b> — a tool result ages in minutes; a team rule persists until repealed.</span></p>
+    </div>
+
+    <!-- 05 STAGE-BY-STAGE -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Stage by stage <span class="t2">— the job at each step</span></div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">👁️</span><div><b>Capture</b> — <span>notice what happened in the turn — the raw candidate.</span></div></div>
+        <div class="gx"><span class="ic">⚖️</span><div><b>Decide</b> — <span>run the gates; most candidates should be dropped here.</span></div></div>
+        <div class="gx"><span class="ic">🗄️</span><div><b>Store</b> — <span>pick the layer + format; attach owner, scope, TTL.</span></div></div>
+        <div class="gx"><span class="ic">🎯</span><div><b>Retrieve</b> — <span>surface it only when it's relevant to the task.</span></div></div>
+        <div class="gx"><span class="ic">✏️</span><div><b>Update</b> — <span>when facts change, re-write — don't stack contradictions.</span></div></div>
+        <div class="gx"><span class="ic">⌛</span><div><b>Expire</b> — <span>decay or delete on the rule you set at store time.</span></div></div>
+        <div class="gx"><span class="ic">🔍</span><div><b>Audit</b> — <span>log who read / changed it, and why — accountability.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 06 COMMON FAILURE -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The common failure <span class="t2">— memory without a lifecycle</span></div></div>
+      <div class="gotchas" style="grid-template-columns:1fr 1fr; gap:7px 22px">
+        <div class="gx"><span class="ic">⌛</span><div><b>Stale</b> — <span>nothing expires, so yesterday's truth quietly becomes today's wrong answer.</span></div></div>
+        <div class="gx"><span class="ic">🔒</span><div><b>Invasive</b> — <span>everything is captured by default — PII and secrets pile up unseen.</span></div></div>
+        <div class="gx"><span class="ic">🤷</span><div><b>Untrusted</b> — <span>no audit trail — nobody can say what was kept, why, or by whom.</span></div></div>
+        <div class="gx"><span class="ic">🪙</span><div><b>Bloated</b> — <span>unbounded growth floods retrieval — more tokens, more cost, worse focus.</span></div></div>
+      </div>
+      <p style="margin-top:8px"><span class="em">Memory without a lifecycle becomes stale, invasive, and hard to trust.</span> The gates and the expire/audit half are what prevent all four at once.</p>
+    </div>
+
+    <!-- 07 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">07</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Design memory as <span class="em">governed context</span>, not infinite storage. Every memory earns its place through gates — and earns its exit through expiry and audit.</div>
+      <div class="flow2">
+        <span class="step">Capture</span><span class="arrow">→</span>
+        <span class="step">Decide</span><span class="arrow">→</span>
+        <span class="step">Store</span><span class="arrow">→</span>
+        <span class="step">Retrieve</span><span class="arrow">→</span>
+        <span class="step">Update</span><span class="arrow">→</span>
+        <span class="step">Expire</span><span class="arrow">→</span>
+        <span class="step">Audit</span>
+      </div>
+    </div>
+
+    <!-- 08 AI SDLC PLACEMENT -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Where it lives in the AI SDLC <span class="t2">— design it early, watch it always</span></div></div>
+      <div class="steps" style="margin-top:2px">
+        <span class="step" style="border-color:#1e3a52;color:#9fd0ff">Architecture</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a1e52;color:#c9a9ff">Privacy</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Build</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#244018;color:#a8d77f">Monitor</span>
+      </div>
+      <p style="margin-top:9px"><span class="dim" style="color:#8c8c8c"><b style="color:#9fd0ff">Architecture</b> decides the layers &amp; gates · <b style="color:#c9a9ff">Privacy</b> sets consent, retention &amp; redaction · <b style="color:#E9BF35">Build</b> wires capture/retrieve/expire · <b style="color:#a8d77f">Monitor</b> audits drift, growth &amp; staleness in production.</span></p>
+      <p style="margin-top:7px"><span class="dim" style="color:#6f6f6f; font-size:10.4px">Note: the seven "lifecycle stages" and five "gates" here are a <b style="color:#9a9a9a">teaching model</b> for reasoning about memory — not a fixed industry standard. Real systems collapse, split, or rename these steps; treat them as a checklist, not a spec.</span></p>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

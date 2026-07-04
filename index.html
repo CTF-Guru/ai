@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIISV — Visual Explainer Library</title>
+<style>
+  :root{ --bg:#0b0b0b; --panel:#141414; --line:#2b2b2b; --ink:#fff; --muted:#bdbdbd; --dim:#8c8c8c;
+         --red:#DF2E28; --gold:#E9BF35; --green:#81BB42; --blue:#5AA9EC; --teal:#3AD0B0; --orange:#FE9A3A;
+         --font:'Century Gothic','Futura','Avenir Next',sans-serif; }
+  *{ box-sizing:border-box; margin:0; padding:0 }
+  body{ background:var(--bg); color:var(--ink); font-family:var(--font); padding:44px 28px 70px }
+  .wrap{ max-width:1180px; margin:0 auto }
+  header{ border-bottom:1px solid var(--line); padding-bottom:20px; margin-bottom:26px }
+  .kick{ font-size:.72rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); font-weight:700 }
+  h1{ font-size:clamp(1.9rem,4vw,2.7rem); margin:.25rem 0 }
+  .sub{ color:var(--muted); font-size:.98rem }
+  .sub code{ color:var(--gold); font-family:inherit }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:20px }
+  .card{ background:var(--panel); border:1px solid var(--line); border-top:3px solid var(--c,var(--gold));
+         border-radius:14px; overflow:hidden; text-decoration:none; color:inherit; display:flex; flex-direction:column }
+  .card:hover{ border-color:var(--c,var(--gold)) }
+  .card img{ width:100%; height:188px; object-fit:cover; object-position:top center; display:block;
+             border-bottom:1px solid var(--line); background:#000 }
+  .card .b{ padding:13px 15px 15px }
+  .ct{ font-weight:800; font-size:1.02rem }
+  .cd{ color:var(--muted); font-size:.85rem; margin-top:3px; line-height:1.4 }
+  .open{ color:var(--gold); font-size:.8rem; font-weight:700; margin-top:9px; display:inline-block }
+  footer{ margin-top:42px; color:var(--dim); font-size:.8rem; border-top:1px solid var(--line); padding-top:16px;
+          display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px }
+
+  .card{ overflow:hidden }
+  .card .b{ padding-bottom:6px }
+  .cardlink{ text-decoration:none; color:inherit; display:flex; flex-direction:column; flex:1 }
+  .cdl{ display:flex; justify-content:space-between; align-items:center; gap:10px;
+        padding:0 15px 13px; font-size:.82rem }
+  .cdl .o{ color:var(--gold); text-decoration:none; font-weight:700 }
+  .cdl span{ color:var(--dim); font-size:.78rem }
+  .cdl span a{ color:var(--muted); text-decoration:none; font-weight:700 }
+  .cdl span a:hover{ color:var(--gold) }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kick">Farooq Ali · ctf.guru</div>
+    <h1>Visual Explainer Library</h1>
+    <div class="sub">Full-page infographics on AI &amp; the AI SDLC — open any poster, then download its <code>.gif</code> or <code>.png</code> from the page.</div>
+  </header>
+
+  <div class="grid">
+    <div class="card" style="--c:var(--gold)"><a class="cardlink" href="mcp-poster.html"><img src="mcp-poster.png" alt="MCP — Model Context Protocol poster"><div class="b"><div class="ct">MCP — Model Context Protocol</div><div class="cd">How agents connect to tools & data.</div></div></a><div class="cdl"><a class="o" href="mcp-poster.html">Open ↗</a><span><a href="mcp-poster.gif" download>GIF</a> · <a href="mcp-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--red)"><a class="cardlink" href="a2a-poster.html"><img src="a2a-poster.png" alt="A2A — Agent2Agent Protocol poster"><div class="b"><div class="ct">A2A — Agent2Agent Protocol</div><div class="cd">How agents discover, talk to & delegate.</div></div></a><div class="cdl"><a class="o" href="a2a-poster.html">Open ↗</a><span><a href="a2a-poster.gif" download>GIF</a> · <a href="a2a-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--blue)"><a class="cardlink" href="rag-poster.html"><img src="rag-poster.png" alt="RAG — Retrieval-Augmented Generation poster"><div class="b"><div class="ct">RAG — Retrieval-Augmented Generation</div><div class="cd">Give the model YOUR facts.</div></div></a><div class="cdl"><a class="o" href="rag-poster.html">Open ↗</a><span><a href="rag-poster.gif" download>GIF</a> · <a href="rag-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--teal)"><a class="cardlink" href="agent-loop-poster.html"><img src="agent-loop-poster.png" alt="The Agent Loop poster"><div class="b"><div class="ct">The Agent Loop</div><div class="cd">How an agent works — think, act, observe.</div></div></a><div class="cdl"><a class="o" href="agent-loop-poster.html">Open ↗</a><span><a href="agent-loop-poster.gif" download>GIF</a> · <a href="agent-loop-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--orange)"><a class="cardlink" href="agent-memory-poster.html"><img src="agent-memory-poster.png" alt="The Layers of Agent Memory poster"><div class="b"><div class="ct">The Layers of Agent Memory</div><div class="cd">Working · episodic · semantic · procedural · meta.</div></div></a><div class="cdl"><a class="o" href="agent-memory-poster.html">Open ↗</a><span><a href="agent-memory-poster.gif" download>GIF</a> · <a href="agent-memory-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--green)"><a class="cardlink" href="mcp-architecture-poster.html"><img src="mcp-architecture-poster.png" alt="MCP Architecture poster"><div class="b"><div class="ct">MCP Architecture</div><div class="cd">Host · client · server · tools · resources · prompts.</div></div></a><div class="cdl"><a class="o" href="mcp-architecture-poster.html">Open ↗</a><span><a href="mcp-architecture-poster.gif" download>GIF</a> · <a href="mcp-architecture-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--purple)"><a class="cardlink" href="mcp-trust-boundaries-poster.html"><img src="mcp-trust-boundaries-poster.png" alt="MCP Trust Boundaries poster"><div class="b"><div class="ct">MCP Trust Boundaries</div><div class="cd">Permissions, gates, and the master-key trap.</div></div></a><div class="cdl"><a class="o" href="mcp-trust-boundaries-poster.html">Open ↗</a><span><a href="mcp-trust-boundaries-poster.gif" download>GIF</a> · <a href="mcp-trust-boundaries-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--gold)"><a class="cardlink" href="a2a-vs-mcp-poster.html"><img src="a2a-vs-mcp-poster.png" alt="A2A vs MCP poster"><div class="b"><div class="ct">A2A vs MCP</div><div class="cd">Agent-to-agent vs agent-to-tool.</div></div></a><div class="cdl"><a class="o" href="a2a-vs-mcp-poster.html">Open ↗</a><span><a href="a2a-vs-mcp-poster.gif" download>GIF</a> · <a href="a2a-vs-mcp-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--red)"><a class="cardlink" href="agent-handoffs-poster.html"><img src="agent-handoffs-poster.png" alt="Agent Handoffs poster"><div class="b"><div class="ct">Agent Handoffs</div><div class="cd">The task-contract pattern for multi-agent work.</div></div></a><div class="cdl"><a class="o" href="agent-handoffs-poster.html">Open ↗</a><span><a href="agent-handoffs-poster.gif" download>GIF</a> · <a href="agent-handoffs-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--blue)"><a class="cardlink" href="advanced-rag-poster.html"><img src="advanced-rag-poster.png" alt="Advanced RAG poster"><div class="b"><div class="ct">Advanced RAG</div><div class="cd">Rewrite · retrieve · rerank · cite · evaluate.</div></div></a><div class="cdl"><a class="o" href="advanced-rag-poster.html">Open ↗</a><span><a href="advanced-rag-poster.gif" download>GIF</a> · <a href="advanced-rag-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--teal)"><a class="cardlink" href="rag-evaluation-poster.html"><img src="rag-evaluation-poster.png" alt="RAG Evaluation poster"><div class="b"><div class="ct">RAG Evaluation</div><div class="cd">Retrieval quality vs answer quality.</div></div></a><div class="cdl"><a class="o" href="rag-evaluation-poster.html">Open ↗</a><span><a href="rag-evaluation-poster.gif" download>GIF</a> · <a href="rag-evaluation-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--orange)"><a class="cardlink" href="memory-lifecycle-poster.html"><img src="memory-lifecycle-poster.png" alt="Agent Memory Lifecycle poster"><div class="b"><div class="ct">Agent Memory Lifecycle</div><div class="cd">Capture → store → retrieve → expire → audit.</div></div></a><div class="cdl"><a class="o" href="memory-lifecycle-poster.html">Open ↗</a><span><a href="memory-lifecycle-poster.gif" download>GIF</a> · <a href="memory-lifecycle-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--green)"><a class="cardlink" href="memory-privacy-poster.html"><img src="memory-privacy-poster.png" alt="Memory Privacy poster"><div class="b"><div class="ct">Memory Privacy</div><div class="cd">Consent, retention, and what not to store.</div></div></a><div class="cdl"><a class="o" href="memory-privacy-poster.html">Open ↗</a><span><a href="memory-privacy-poster.gif" download>GIF</a> · <a href="memory-privacy-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--purple)"><a class="cardlink" href="multi-agent-orchestration-poster.html"><img src="multi-agent-orchestration-poster.png" alt="Multi-Agent Orchestration poster"><div class="b"><div class="ct">Multi-Agent Orchestration</div><div class="cd">Manager-worker · pipeline · debate · swarm.</div></div></a><div class="cdl"><a class="o" href="multi-agent-orchestration-poster.html">Open ↗</a><span><a href="multi-agent-orchestration-poster.gif" download>GIF</a> · <a href="multi-agent-orchestration-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--gold)"><a class="cardlink" href="rag-security-poster.html"><img src="rag-security-poster.png" alt="RAG Security poster"><div class="b"><div class="ct">RAG Security</div><div class="cd">Prompt injection & context poisoning.</div></div></a><div class="cdl"><a class="o" href="rag-security-poster.html">Open ↗</a><span><a href="rag-security-poster.gif" download>GIF</a> · <a href="rag-security-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--red)"><a class="cardlink" href="mcp-observability-poster.html"><img src="mcp-observability-poster.png" alt="MCP Observability poster"><div class="b"><div class="ct">MCP Observability</div><div class="cd">Trace every tool call.</div></div></a><div class="cdl"><a class="o" href="mcp-observability-poster.html">Open ↗</a><span><a href="mcp-observability-poster.gif" download>GIF</a> · <a href="mcp-observability-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--blue)"><a class="cardlink" href="agent-identity-poster.html"><img src="agent-identity-poster.png" alt="Agent Identity poster"><div class="b"><div class="ct">Agent Identity</div><div class="cd">Who is taking the action?</div></div></a><div class="cdl"><a class="o" href="agent-identity-poster.html">Open ↗</a><span><a href="agent-identity-poster.gif" download>GIF</a> · <a href="agent-identity-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--teal)"><a class="cardlink" href="chunking-metadata-poster.html"><img src="chunking-metadata-poster.png" alt="RAG Chunking poster"><div class="b"><div class="ct">RAG Chunking</div><div class="cd">The hidden quality lever.</div></div></a><div class="cdl"><a class="o" href="chunking-metadata-poster.html">Open ↗</a><span><a href="chunking-metadata-poster.gif" download>GIF</a> · <a href="chunking-metadata-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--orange)"><a class="cardlink" href="shared-vs-private-memory-poster.html"><img src="shared-vs-private-memory-poster.png" alt="Shared vs Private Memory poster"><div class="b"><div class="ct">Shared vs Private Memory</div><div class="cd">Private · team · global memory zones.</div></div></a><div class="cdl"><a class="o" href="shared-vs-private-memory-poster.html">Open ↗</a><span><a href="shared-vs-private-memory-poster.gif" download>GIF</a> · <a href="shared-vs-private-memory-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--green)"><a class="cardlink" href="human-in-the-loop-poster.html"><img src="human-in-the-loop-poster.png" alt="Human-in-the-Loop poster"><div class="b"><div class="ct">Human-in-the-Loop</div><div class="cd">Approval where it matters.</div></div></a><div class="cdl"><a class="o" href="human-in-the-loop-poster.html">Open ↗</a><span><a href="human-in-the-loop-poster.gif" download>GIF</a> · <a href="human-in-the-loop-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--purple)"><a class="cardlink" href="ai-evaluation-poster.html"><img src="ai-evaluation-poster.png" alt="AI Evaluation poster"><div class="b"><div class="ct">AI Evaluation</div><div class="cd">Evaluation is the new testing.</div></div></a><div class="cdl"><a class="o" href="ai-evaluation-poster.html">Open ↗</a><span><a href="ai-evaluation-poster.gif" download>GIF</a> · <a href="ai-evaluation-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--gold)"><a class="cardlink" href="agentic-observability-poster.html"><img src="agentic-observability-poster.png" alt="Agentic Observability poster"><div class="b"><div class="ct">Agentic Observability</div><div class="cd">Trace the whole AI workflow.</div></div></a><div class="cdl"><a class="o" href="agentic-observability-poster.html">Open ↗</a><span><a href="agentic-observability-poster.gif" download>GIF</a> · <a href="agentic-observability-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--red)"><a class="cardlink" href="release-gates-poster.html"><img src="release-gates-poster.png" alt="AI Release Gates poster"><div class="b"><div class="ct">AI Release Gates</div><div class="cd">From prototype to production.</div></div></a><div class="cdl"><a class="o" href="release-gates-poster.html">Open ↗</a><span><a href="release-gates-poster.gif" download>GIF</a> · <a href="release-gates-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--blue)"><a class="cardlink" href="cost-latency-reliability-poster.html"><img src="cost-latency-reliability-poster.png" alt="Cost · Latency · Reliability poster"><div class="b"><div class="ct">Cost · Latency · Reliability</div><div class="cd">The production triangle.</div></div></a><div class="cdl"><a class="o" href="cost-latency-reliability-poster.html">Open ↗</a><span><a href="cost-latency-reliability-poster.gif" download>GIF</a> · <a href="cost-latency-reliability-poster.png" download>PNG</a></span></div></div>
+    <div class="card" style="--c:var(--teal)"><a class="cardlink" href="ai-incident-response-poster.html"><img src="ai-incident-response-poster.png" alt="AI Incident Response poster"><div class="b"><div class="ct">AI Incident Response</div><div class="cd">When the model misbehaves.</div></div></a><div class="cdl"><a class="o" href="ai-incident-response-poster.html">Open ↗</a><span><a href="ai-incident-response-poster.gif" download>GIF</a> · <a href="ai-incident-response-poster.png" download>PNG</a></span></div></div>
+  </div>
+
+  <footer><span>© 2026 Farooq Ali — explainer series</span><span>ctf.guru</span></footer>
+</div>
+</body>
+</html>

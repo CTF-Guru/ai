@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Observability · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="mcp-observability-poster.gif" download>GIF</a> · <a href="mcp-observability-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>MCP <span class="b">OBSERVABILITY</span></h1>
+  <div class="sub">Trace every tool call <span class="dim">— what the AI asked for, which tool ran, what came back, and whether it was allowed</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What MCP observability is <span class="t2">— the flight recorder for tool-using AI</span></div></div>
+      <p class="lead">Observability records <b>what the AI requested</b>, <b>which tool was called</b>, <b>what happened</b>, and <b>whether the action was safe</b>. In production you can't just see the final answer — you need the trail behind every tool call an agent makes.</p>
+      <div class="trio" style="margin-top:8px">
+        <div class="mini"><h4 style="color:#5AA9EC">🔍 See the ask</h4><p>The model's plan and the tool it chose — before anything runs.</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">🛡️ See the guard</h4><p>Validation + approval checks — what passed, what was blocked.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">📊 See the result</h4><p>Output summary, latency, cost, errors — evidence after the fact.</p></div>
+      </div>
+    </div>
+
+    <!-- 02 THE TRACE TIMELINE (main inline-SVG visual) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The request trace <span class="t2">— one tool call, traced end to end</span></div></div>
+      <svg viewBox="0 0 1000 232" width="100%" style="display:block">
+        <!-- baseline rail -->
+        <line x1="40" y1="70" x2="960" y2="70" stroke="#2b2b2b" stroke-width="2"/>
+        <!-- filling progress rail (loops ≤2.4s) -->
+        <line x1="40" y1="70" x2="960" y2="70" stroke="#E9BF35" stroke-width="2.4"
+              stroke-dasharray="920" stroke-dashoffset="920" opacity="0.9">
+          <animate attributeName="stroke-dashoffset" from="920" to="0" dur="2.4s" repeatCount="indefinite"/>
+        </line>
+        <!-- travelling packet riding the rail -->
+        <circle r="4.5" fill="#fff">
+          <animateMotion dur="2.4s" repeatCount="indefinite" path="M40 70 L960 70"/>
+        </circle>
+
+        <g font-family="Century Gothic, sans-serif">
+          <!-- helper: each step = dot on rail, label above, status chip below -->
+
+          <!-- 1 user request -->
+          <circle class="tlDot" cx="60" cy="70" r="6" fill="#5AA9EC" style="animation-delay:0s"/>
+          <text x="60" y="42" text-anchor="middle" fill="#5AA9EC" font-size="11.5" font-weight="800">User</text>
+          <text x="60" y="55" text-anchor="middle" fill="#5AA9EC" font-size="11.5" font-weight="800">request</text>
+          <rect x="30" y="84" width="60" height="18" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="60" y="97" text-anchor="middle" fill="#9fcdf3" font-size="9.5" font-weight="700">received</text>
+
+          <!-- 2 model plan -->
+          <circle class="tlDot" cx="190" cy="70" r="6" fill="#9B5DE5" style="animation-delay:.3s"/>
+          <text x="190" y="42" text-anchor="middle" fill="#9B5DE5" font-size="11.5" font-weight="800">Model</text>
+          <text x="190" y="55" text-anchor="middle" fill="#9B5DE5" font-size="11.5" font-weight="800">plan</text>
+          <rect x="158" y="84" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#9B5DE5"/>
+          <text x="190" y="97" text-anchor="middle" fill="#c6a3ef" font-size="9.5" font-weight="700">reasoned</text>
+
+          <!-- 3 tool selection -->
+          <circle class="tlDot" cx="320" cy="70" r="6" fill="#3AD0B0" style="animation-delay:.6s"/>
+          <text x="320" y="42" text-anchor="middle" fill="#3AD0B0" font-size="11.5" font-weight="800">Tool</text>
+          <text x="320" y="55" text-anchor="middle" fill="#3AD0B0" font-size="11.5" font-weight="800">selection</text>
+          <rect x="290" y="84" width="60" height="18" rx="9" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="320" y="97" text-anchor="middle" fill="#8fe6d3" font-size="9.5" font-weight="700">chosen</text>
+
+          <!-- 4 input validation -->
+          <circle class="tlDot" cx="450" cy="70" r="6" fill="#FE9A3A" style="animation-delay:.9s"/>
+          <text x="450" y="42" text-anchor="middle" fill="#FE9A3A" font-size="11.5" font-weight="800">Input</text>
+          <text x="450" y="55" text-anchor="middle" fill="#FE9A3A" font-size="11.5" font-weight="800">validation</text>
+          <rect x="420" y="84" width="60" height="18" rx="9" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <text x="450" y="97" text-anchor="middle" fill="#ffc78a" font-size="9.5" font-weight="700">allowed</text>
+
+          <!-- 5 approval check -->
+          <circle class="tlDot" cx="580" cy="70" r="6" fill="#E9BF35" style="animation-delay:1.2s"/>
+          <text x="580" y="42" text-anchor="middle" fill="#E9BF35" font-size="11.5" font-weight="800">Approval</text>
+          <text x="580" y="55" text-anchor="middle" fill="#E9BF35" font-size="11.5" font-weight="800">check</text>
+          <rect x="549" y="84" width="62" height="18" rx="9" fill="#1a1305" stroke="#E9BF35"/>
+          <text x="580" y="97" text-anchor="middle" fill="#E9BF35" font-size="9.5" font-weight="800">approved</text>
+
+          <!-- 6 execution -->
+          <circle class="tlDot" cx="710" cy="70" r="6" fill="#81BB42" style="animation-delay:1.5s"/>
+          <text x="710" y="42" text-anchor="middle" fill="#81BB42" font-size="11.5" font-weight="800">Tool</text>
+          <text x="710" y="55" text-anchor="middle" fill="#81BB42" font-size="11.5" font-weight="800">execution</text>
+          <rect x="680" y="84" width="60" height="18" rx="9" fill="#0c0c0c" stroke="#81BB42"/>
+          <text x="710" y="97" text-anchor="middle" fill="#aadd7e" font-size="9.5" font-weight="700">ran</text>
+
+          <!-- 7 result -->
+          <circle class="tlDot" cx="840" cy="70" r="6" fill="#3AD0B0" style="animation-delay:1.8s"/>
+          <text x="840" y="42" text-anchor="middle" fill="#3AD0B0" font-size="11.5" font-weight="800">Tool</text>
+          <text x="840" y="55" text-anchor="middle" fill="#3AD0B0" font-size="11.5" font-weight="800">result</text>
+          <rect x="804" y="84" width="72" height="18" rx="9" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="840" y="97" text-anchor="middle" fill="#8fe6d3" font-size="9.5" font-weight="700">returned</text>
+
+          <!-- 8 final response -->
+          <circle class="tlDot" cx="945" cy="70" r="6" fill="#5AA9EC" style="animation-delay:2.1s"/>
+          <text x="945" y="42" text-anchor="middle" fill="#5AA9EC" font-size="11.5" font-weight="800">Final</text>
+          <text x="945" y="55" text-anchor="middle" fill="#5AA9EC" font-size="11.5" font-weight="800">response</text>
+          <rect x="912" y="84" width="66" height="18" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="945" y="97" text-anchor="middle" fill="#9fcdf3" font-size="9.5" font-weight="700">delivered</text>
+        </g>
+
+        <!-- status-chip legend (all 5 states the trace can record) -->
+        <g font-family="Century Gothic, sans-serif" font-size="10" font-weight="700">
+          <text x="40" y="142" fill="#8c8c8c" font-size="10" letter-spacing=".06em">EVERY STEP RECORDS A STATUS —</text>
+          <rect x="232" y="130" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#81BB42"/><text x="264" y="143" text-anchor="middle" fill="#81BB42">allowed</text>
+          <rect x="304" y="130" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#DF2E28"/><text x="336" y="143" text-anchor="middle" fill="#FF5A4D">blocked</text>
+          <rect x="376" y="130" width="72" height="18" rx="9" fill="#1a1305" stroke="#E9BF35"/><text x="412" y="143" text-anchor="middle" fill="#E9BF35">approved</text>
+          <rect x="456" y="130" width="60" height="18" rx="9" fill="#0c0c0c" stroke="#FE9A3A"/><text x="486" y="143" text-anchor="middle" fill="#FE9A3A">failed</text>
+          <rect x="524" y="130" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/><text x="556" y="143" text-anchor="middle" fill="#5AA9EC">retried</text>
+        </g>
+
+        <!-- mini inline log rows that mirror the trace -->
+        <g font-family="'SF Mono', Menlo, monospace" font-size="9.5">
+          <rect x="40" y="160" width="920" height="56" rx="8" fill="#070707" stroke="#2b2b2b"/>
+          <text x="52" y="178" fill="#8c8c8c">12:04:01  tool=query_weather  user=sess_7f3  validate=ok</text>
+          <text x="640" y="178" fill="#81BB42">▌ allowed</text>
+          <text x="52" y="194" fill="#8c8c8c">12:04:01  approval=auto(read-only)  latency=180ms  cost=420tok</text>
+          <text x="640" y="194" fill="#E9BF35">▌ approved</text>
+          <text x="52" y="210" fill="#8c8c8c">12:04:02  result=ok(3 days)  errors=0  flags=none</text>
+          <text x="640" y="210" fill="#3AD0B0">▌ returned</text>
+        </g>
+      </svg>
+      <p style="margin-top:8px"><span class="em">The trace is the product.</span> Plan → select → validate → approve → run → result — captured as it happens, replayable after.</p>
+    </div>
+
+    <!-- 03 WHAT TO CAPTURE -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">03</div><div class="ctitle">What to capture</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🆔</span><div><b>User / session ID</b> — <span>who, in which session, on whose behalf.</span></div></div>
+        <div class="gx"><span class="ic">🔧</span><div><b>Tool name + version</b> — <span>which capability ran, which schema version.</span></div></div>
+        <div class="gx"><span class="ic">↔️</span><div><b>Input / output summaries</b> — <span>arguments in, result out — summarised, not raw.</span></div></div>
+        <div class="gx"><span class="ic">✅</span><div><b>Approval state</b> — <span>auto-allowed, human-approved, or blocked.</span></div></div>
+        <div class="gx"><span class="ic">⏱️</span><div><b>Latency &amp; errors</b> — <span>how long, what failed, was it retried.</span></div></div>
+        <div class="gx"><span class="ic">🪙</span><div><b>Cost / token usage</b> — <span>tokens and spend, where available.</span></div></div>
+        <div class="gx"><span class="ic">🚩</span><div><b>Security flags</b> — <span>anything the policy layer wanted to surface.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 04 PRIVACY WARNING -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Privacy warning <span class="t2">— logs become a liability</span></div></div>
+      <p style="margin-bottom:7px">Capturing everything is its own risk. <b>Do not log raw:</b></p>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔑</span><div><b>Secrets &amp; credentials</b> — <span>API keys, tokens, passwords. Never in plaintext logs.</span></div></div>
+        <div class="gx"><span class="ic">🏛️</span><div><b>Regulated data</b> — <span>PII, health, financial, legal — policy decides retention.</span></div></div>
+        <div class="gx"><span class="ic">📦</span><div><b>Full sensitive payloads</b> — <span>summarise &amp; redact; don't dump the whole body.</span></div></div>
+      </div>
+      <p style="margin-top:8px"><span class="em">Trace the shape, not the secret.</span> Redaction is part of the logger, not an afterthought.</p>
+    </div>
+
+    <!-- 05 WHY IT MATTERS -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Why it matters</div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#5AA9EC">🐞 Debug</h4><p>Reconstruct exactly which call went wrong, and why.</p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">⚖️ Comply</h4><p>Show auditors who did what, when, and under which approval.</p></div>
+        <div class="mini"><h4 style="color:#DF2E28">🚨 Respond</h4><p>During an incident, the trace is your timeline of record.</p></div>
+      </div>
+      <p style="margin-top:9px">And a fourth: <span class="em">improve</span> — traces are the data you tune quality and tool-choice against.</p>
+    </div>
+
+    <!-- 06 COMMON FAILURE -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The common failure</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🕳️</span><div><b>Log nothing</b> — <span>the agent acts, something breaks, and there's no trail to follow. A blind spot you only notice in the incident.</span></div></div>
+        <div class="gx"><span class="ic">🔓</span><div><b>Log everything raw</b> — <span>full payloads and secrets land in plaintext — now the log itself is the breach.</span></div></div>
+      </div>
+      <p style="margin-top:9px"><span class="dim" style="color:#8c8c8c">The job is the middle path: capture enough to govern, redact enough to be safe.</span></p>
+    </div>
+
+    <!-- 07 STATUS CHIPS / WHAT A TRACE RECORDS -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Reading the status chips <span class="t2">— five outcomes every step can report</span></div></div>
+      <table>
+        <tr><th>Status</th><th>Means</th><th>Typical step</th><th>What you do with it</th></tr>
+        <tr><td class="k" style="color:#81BB42">allowed</td><td>Validation passed; safe to proceed</td><td>input validation</td><td>Proceed; keep the record</td></tr>
+        <tr><td class="k" style="color:#FF5A4D">blocked</td><td>Policy denied the action</td><td>approval / permission</td><td>Alert; surface to a human</td></tr>
+        <tr><td class="k" style="color:#E9BF35">approved</td><td>A human (or rule) authorised it</td><td>approval check</td><td>Attribute the approver</td></tr>
+        <tr><td class="k" style="color:#FE9A3A">failed</td><td>Tool erred or timed out</td><td>tool execution</td><td>Debug; check downstream</td></tr>
+        <tr><td class="k" style="color:#5AA9EC">retried</td><td>Re-attempted after a failure</td><td>execution / result</td><td>Watch for retry storms</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">Status is the spine of the trace</span> — it's how a 10,000-row log becomes a filter you can actually search.</p>
+    </div>
+
+    <!-- 08 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">08</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">You can't <span class="em">govern</span>, <span class="em">debug</span>, or <span class="em">improve</span> tool-using AI you can't trace. Observability isn't an add-on — it's how an agent earns the right to act.</div>
+      <div class="flow2">
+        <span class="step">Trace every call</span><span class="arrow">→</span>
+        <span class="step">Record the status</span><span class="arrow">→</span>
+        <span class="step">Redact the sensitive</span><span class="arrow">→</span>
+        <span class="step">Govern &amp; improve</span>
+      </div>
+    </div>
+
+    <!-- 09 AI SDLC PLACEMENT -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Where it lives in the AI SDLC <span class="t2">— Deploy → Monitor → Audit → Improve</span></div></div>
+      <div class="steps" style="justify-content:center; margin-top:6px">
+        <span class="step" style="border-color:#1c3a55;color:#5AA9EC">Deploy</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#0f3a33;color:#3AD0B0">Monitor</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Audit</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1f3a12;color:#81BB42">Improve</span>
+      </div>
+      <p style="margin-top:9px; text-align:center"><span class="dim" style="color:#8c8c8c">Ship the tool · watch every call · keep the evidence trail · feed traces back into quality. The loop closes here.</span></p>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

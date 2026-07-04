@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Release Gates · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="release-gates-poster.gif" download>GIF</a> · <a href="release-gates-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>AI <span class="b">RELEASE GATES</span></h1>
+  <div class="sub">Gates before launch, guardrails during operation <span class="dim">— the checkpoints that decide whether an AI feature is safe, useful, and ready for more users</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What release gates are <span class="t2">— the checkpoints between a demo and production</span></div></div>
+      <p class="lead">Release gates are <b>checkpoints that decide whether an AI feature is safe, useful, secure, and ready for more users</b>. A demo that works once isn't a production system — each gate is a decision to promote the feature to the next ring, or send it back to fix.</p>
+      <div class="trio" style="margin-top:8px">
+        <div class="mini"><h4 style="color:#5AA9EC">🚦 A gate is a decision</h4><p>Pass criteria → promote to more users. Fail → route back to fix, don't ship.</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">🛡️ Guardrails are different</h4><p>Gates run <b>before</b> launch; guardrails run <b>during</b> every request in operation.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">📈 Risk drops ring by ring</h4><p>Prototype → eval → review → red team → pilot → monitor → scale. Exposure widens only as evidence grows.</p></div>
+      </div>
+    </div>
+
+    <!-- 02 THE RELEASE PIPELINE (main inline-SVG visual) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The release pipeline <span class="t2">— a feature card moves through the gates; a failed gate routes back to fix</span></div></div>
+      <svg viewBox="0 0 1000 248" width="100%" style="display:block">
+        <!-- baseline rail -->
+        <line x1="40" y1="74" x2="960" y2="74" stroke="#2b2b2b" stroke-width="2"/>
+        <!-- filling progress rail (loops ≤2.4s) -->
+        <line x1="40" y1="74" x2="960" y2="74" stroke="#E9BF35" stroke-width="2.4"
+              stroke-dasharray="920" stroke-dashoffset="920" opacity="0.9">
+          <animate attributeName="stroke-dashoffset" from="920" to="0" dur="2.4s" repeatCount="indefinite"/>
+        </line>
+        <!-- travelling FEATURE CARD riding the pipeline -->
+        <g>
+          <rect x="-22" y="60" width="44" height="28" rx="6" fill="#1a1305" stroke="#E9BF35" stroke-width="1.6"/>
+          <text x="0" y="78" text-anchor="middle" fill="#E9BF35" font-size="9.5" font-weight="800" font-family="Century Gothic, sans-serif">feature</text>
+          <animateMotion dur="2.4s" repeatCount="indefinite" path="M62 74 L940 74"/>
+        </g>
+
+        <g font-family="Century Gothic, sans-serif">
+          <!-- helper: each gate = dot on rail, label above, status chip below -->
+
+          <!-- 1 prototype -->
+          <circle class="tlDot" cx="62" cy="74" r="6" fill="#9B5DE5" style="animation-delay:0s"/>
+          <text x="62" y="44" text-anchor="middle" fill="#9B5DE5" font-size="11.5" font-weight="800">Prototype</text>
+          <rect x="30" y="90" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#9B5DE5"/>
+          <text x="62" y="103" text-anchor="middle" fill="#c6a3ef" font-size="9.5" font-weight="700">built</text>
+
+          <!-- 2 offline eval -->
+          <circle class="tlDot" cx="208" cy="74" r="6" fill="#5AA9EC" style="animation-delay:.3s"/>
+          <text x="208" y="38" text-anchor="middle" fill="#5AA9EC" font-size="11.5" font-weight="800">Offline</text>
+          <text x="208" y="51" text-anchor="middle" fill="#5AA9EC" font-size="11.5" font-weight="800">Eval</text>
+          <rect x="176" y="90" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="208" y="103" text-anchor="middle" fill="#9fcdf3" font-size="9.5" font-weight="700">scored</text>
+
+          <!-- 3 security review -->
+          <circle class="tlDot" cx="354" cy="74" r="6" fill="#3AD0B0" style="animation-delay:.6s"/>
+          <text x="354" y="38" text-anchor="middle" fill="#3AD0B0" font-size="11.5" font-weight="800">Security</text>
+          <text x="354" y="51" text-anchor="middle" fill="#3AD0B0" font-size="11.5" font-weight="800">Review</text>
+          <rect x="322" y="90" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="354" y="103" text-anchor="middle" fill="#8fe6d3" font-size="9.5" font-weight="700">reviewed</text>
+
+          <!-- 4 red team (FAILS — routes back) -->
+          <circle class="tlDot" cx="500" cy="74" r="6.5" fill="#DF2E28" style="animation-delay:.9s"/>
+          <text x="500" y="38" text-anchor="middle" fill="#FF5A4D" font-size="11.5" font-weight="800">Red</text>
+          <text x="500" y="51" text-anchor="middle" fill="#FF5A4D" font-size="11.5" font-weight="800">Team</text>
+          <rect x="468" y="90" width="64" height="18" rx="9" fill="#1f0a0a" stroke="#DF2E28"/>
+          <text x="500" y="103" text-anchor="middle" fill="#FF5A4D" font-size="9.5" font-weight="800">failed</text>
+
+          <!-- 5 pilot -->
+          <circle class="tlDot" cx="646" cy="74" r="6" fill="#FE9A3A" style="animation-delay:1.2s"/>
+          <text x="646" y="44" text-anchor="middle" fill="#FE9A3A" font-size="11.5" font-weight="800">Pilot</text>
+          <rect x="614" y="90" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <text x="646" y="103" text-anchor="middle" fill="#ffc78a" font-size="9.5" font-weight="700">limited</text>
+
+          <!-- 6 production monitor -->
+          <circle class="tlDot" cx="800" cy="74" r="6" fill="#E9BF35" style="animation-delay:1.5s"/>
+          <text x="800" y="38" text-anchor="middle" fill="#E9BF35" font-size="11.5" font-weight="800">Production</text>
+          <text x="800" y="51" text-anchor="middle" fill="#E9BF35" font-size="11.5" font-weight="800">Monitor</text>
+          <rect x="766" y="90" width="68" height="18" rx="9" fill="#1a1305" stroke="#E9BF35"/>
+          <text x="800" y="103" text-anchor="middle" fill="#E9BF35" font-size="9.5" font-weight="800">watched</text>
+
+          <!-- 7 scale -->
+          <circle class="tlDot" cx="940" cy="74" r="6" fill="#81BB42" style="animation-delay:1.8s"/>
+          <text x="940" y="44" text-anchor="middle" fill="#81BB42" font-size="11.5" font-weight="800">Scale</text>
+          <rect x="908" y="90" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#81BB42"/>
+          <text x="940" y="103" text-anchor="middle" fill="#aadd7e" font-size="9.5" font-weight="700">rolled out</text>
+        </g>
+
+        <!-- FAILED-GATE ROUTE-BACK: red-team → prototype, with a travelling fix packet -->
+        <path id="routeback" d="M500 60 C500 22, 62 22, 62 60" fill="none" stroke="#DF2E28" stroke-width="1.8" stroke-dasharray="6 5" opacity=".85"/>
+        <text x="281" y="18" text-anchor="middle" fill="#FF5A4D" font-size="10" font-weight="800" font-family="Century Gothic, sans-serif">✗ fail → route back to fix</text>
+        <circle r="4" fill="#FF5A4D">
+          <animateMotion dur="2.4s" repeatCount="indefinite" keyPoints="0;0;1" keyTimes="0;0.45;1" calcMode="linear">
+            <mpath href="#routeback"/>
+          </animateMotion>
+        </circle>
+
+        <!-- legend: what each gate decides -->
+        <g font-family="Century Gothic, sans-serif" font-size="10" font-weight="700">
+          <text x="40" y="150" fill="#8c8c8c" font-size="10" letter-spacing=".06em">EACH GATE IS A PROMOTE / FIX DECISION —</text>
+          <rect x="296" y="138" width="64" height="18" rx="9" fill="#0c0c0c" stroke="#81BB42"/><text x="328" y="151" text-anchor="middle" fill="#81BB42">pass</text>
+          <rect x="368" y="138" width="64" height="18" rx="9" fill="#1f0a0a" stroke="#DF2E28"/><text x="400" y="151" text-anchor="middle" fill="#FF5A4D">fail</text>
+          <rect x="440" y="138" width="78" height="18" rx="9" fill="#1a1305" stroke="#E9BF35"/><text x="479" y="151" text-anchor="middle" fill="#E9BF35">route back</text>
+        </g>
+
+        <!-- gate-criteria reminder strip -->
+        <g font-family="'SF Mono', Menlo, monospace" font-size="9.5">
+          <rect x="40" y="168" width="920" height="64" rx="8" fill="#070707" stroke="#2b2b2b"/>
+          <text x="52" y="187" fill="#8c8c8c">gate=offline_eval    quality=0.91 ✓   grounding=0.88 ✓</text>
+          <text x="560" y="187" fill="#81BB42">▌ promote → security review</text>
+          <text x="52" y="204" fill="#8c8c8c">gate=red_team        prompt_injection=2 escapes ✗</text>
+          <text x="560" y="204" fill="#FF5A4D">▌ block → route back to fix</text>
+          <text x="52" y="221" fill="#8c8c8c">gate=pilot           error_rate=0.4%   rollback=ready ✓</text>
+          <text x="560" y="221" fill="#E9BF35">▌ promote → production monitor</text>
+        </g>
+      </svg>
+      <p style="margin-top:8px"><span class="em">Gates widen exposure only as evidence grows.</span> A feature that clears every gate earns more users; one that fails any gate goes back — it never ships on hope.</p>
+    </div>
+
+    <!-- 03 GATE CRITERIA -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Gate criteria <span class="t2">— what each checkpoint checks</span></div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🎯</span><div><b>Quality threshold</b> — <span>eval scores clear the bar on a held-out test set, not a happy-path demo.</span></div></div>
+        <div class="gx"><span class="ic">📎</span><div><b>Grounding / citation</b> — <span>answers trace to real sources; hallucination stays under the limit.</span></div></div>
+        <div class="gx"><span class="ic">💉</span><div><b>Prompt-injection resilience</b> — <span>red-team suite can't make it ignore instructions or leak.</span></div></div>
+        <div class="gx"><span class="ic">🗄️</span><div><b>Data-access review</b> — <span>what it can read and act on is scoped, least-privilege, signed off.</span></div></div>
+        <div class="gx"><span class="ic">✅</span><div><b>Human-approval design</b> — <span>high-risk actions pause for a person — by design, not by luck.</span></div></div>
+        <div class="gx"><span class="ic">🪙</span><div><b>Cost / latency budget</b> — <span>per-request spend and response time stay inside the agreed envelope.</span></div></div>
+        <div class="gx"><span class="ic">↩️</span><div><b>Rollback plan</b> — <span>a tested way to disable, revert, or pause — ready before launch, not during the incident.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 04 RUNTIME GUARDRAILS -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Runtime guardrails <span class="t2">— what runs during operation</span></div></div>
+      <p style="margin-bottom:7px">Gates clear the feature to ship. <b>Guardrails protect every live request after that:</b></p>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🧹</span><div><b>Input validation</b> — <span>sanitise and bound what reaches the model on each call.</span></div></div>
+        <div class="gx"><span class="ic">🔎</span><div><b>Output checks</b> — <span>filter unsafe, ungrounded, or policy-violating responses before they reach users.</span></div></div>
+        <div class="gx"><span class="ic">🔐</span><div><b>Tool permissions</b> — <span>scoped, revocable rights — the agent can only do what it's allowed.</span></div></div>
+        <div class="gx"><span class="ic">🙋</span><div><b>Human approval</b> — <span>risky actions still pause for a person in the live flow.</span></div></div>
+        <div class="gx"><span class="ic">🚨</span><div><b>Monitoring alerts</b> — <span>quality, cost, error, and abuse signals page someone when they drift.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 05 GATES vs GUARDRAILS (split clarity) -->
+    <div class="card span2 c-green">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Gates vs guardrails <span class="t2">— before launch vs during operation</span></div></div>
+      <table>
+        <tr><th>Dimension</th><th>Release gates</th><th>Runtime guardrails</th></tr>
+        <tr><td class="k">When</td><td class="win">Before launch / before each promotion</td><td>During operation, every request</td></tr>
+        <tr><td class="k">Question</td><td class="win">Is this safe to ship to more users?</td><td>Is this single response / action safe?</td></tr>
+        <tr><td class="k">Runs how often</td><td class="win">Once per release decision</td><td>Continuously, per call</td></tr>
+        <tr><td class="k">Example</td><td class="win">Red-team suite, eval threshold, rollback plan</td><td>Input validation, output filter, tool scope</td></tr>
+        <tr><td class="k">If it fails</td><td class="win">Route back — don't promote</td><td>Block the call, alert, fall back</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">Two layers, not a choice.</span> Gates decide what earns production; guardrails keep it safe once it's there.</p>
+    </div>
+
+    <!-- 06 COMMON FAILURE -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The common failure</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🩹</span><div><b>Leaning on runtime filters alone</b> — <span>teams skip the gates and hope an output filter catches everything at the edge.</span></div></div>
+        <div class="gx"><span class="ic">🕳️</span><div><b>Runtime filters can't compensate</b> — <span>for missing evals, bad data access, or unsafe tool design. A filter can't un-leak a database the agent should never have reached, or invent a quality bar that was never measured.</span></div></div>
+      </div>
+      <p style="margin-top:9px"><span class="dim" style="color:#8c8c8c">The unsafe tool, the over-broad credential, the un-evaluated quality — those are decided upstream, at the gates. A guardrail is the last line, not the only one.</span></p>
+    </div>
+
+    <!-- 07 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">07</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Use <span class="em">gates before launch</span> and <span class="em">guardrails during operation</span>. Gates decide what earns more users; guardrails keep each live request safe. Neither replaces the other.</div>
+      <div class="flow2">
+        <span class="step">Gate before launch</span><span class="arrow">→</span>
+        <span class="step">Guardrail during operation</span><span class="arrow">→</span>
+        <span class="step">Monitor &amp; alert</span><span class="arrow">→</span>
+        <span class="step">Fail → route back</span>
+      </div>
+    </div>
+
+    <!-- 08 AI SDLC PLACEMENT -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Where it lives in the AI SDLC <span class="t2">— Build → Test → Release → Monitor</span></div></div>
+      <div class="steps" style="justify-content:center; margin-top:6px">
+        <span class="step" style="border-color:#1c3a55;color:#5AA9EC">Build</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#0f3a33;color:#3AD0B0">Test</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Release</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1f3a12;color:#81BB42">Monitor</span>
+      </div>
+      <p style="margin-top:9px; text-align:center"><span class="dim" style="color:#8c8c8c">Build the feature · prove it with evals and red-team tests · gate the release · guard and watch it in production. Release is a decision, not an event.</span></p>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

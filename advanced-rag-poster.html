@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced RAG · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="advanced-rag-poster.gif" download>GIF</a> · <a href="advanced-rag-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>ADVANCED <span class="b">RAG</span></h1>
+  <div class="sub">Beyond retrieve &amp; generate <span class="dim">— rewrite · hybrid search · rerank · cite · evaluate, the whole pipeline on one page</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What "advanced" means <span class="t2">— basic RAG is two steps; production RAG is a pipeline</span></div></div>
+      <p class="lead">Basic RAG is <b>retrieve → generate</b>. It works in a demo and breaks in production: it grabs the top-k chunks and hopes they're right.</p>
+      <p style="margin-top:6px">Advanced RAG turns that one hop into a <span class="em">quality pipeline</span> — clean up the question, search more than one way, filter by permission &amp; freshness, <b>rerank</b> for the best evidence, assemble a tidy context packet, ground the answer, attach <b>citations</b>, then <b>evaluate</b> what came out. Each stage is a place to measure and improve.</p>
+      <div class="steps" style="margin-top:8px">
+        <span class="step">Basic: retrieve</span><span class="arrow">→</span>
+        <span class="step">generate</span>
+        <span class="arrow" style="margin:0 4px">vs</span>
+        <span class="step" style="border-color:#0e3a32;color:#3AD0B0">a measured pipeline at every hop</span>
+      </div>
+    </div>
+
+    <!-- 02 THE PIPELINE (main diagram) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The pipeline <span class="t2">— question in, grounded + cited answer out</span></div></div>
+      <svg viewBox="0 0 1000 210" width="100%" style="display:block">
+        <defs>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#E9BF35"/>
+          </marker>
+        </defs>
+
+        <!-- ===== top row: query rewrite -> hybrid retrieval -> metadata filter -> rerank ===== -->
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <!-- query -->
+          <rect x="14" y="18" width="120" height="46" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="74" y="38" text-anchor="middle" fill="#5AA9EC" font-size="11">User question</text>
+          <text x="74" y="53" text-anchor="middle" fill="#8c8c8c" font-size="9.5">"raw, messy"</text>
+
+          <!-- query rewrite -->
+          <rect x="162" y="18" width="126" height="46" rx="9" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="225" y="38" text-anchor="middle" fill="#fff" font-size="11">Query rewrite</text>
+          <text x="225" y="53" text-anchor="middle" fill="#8c8c8c" font-size="9.5">expand · clarify</text>
+
+          <!-- hybrid retrieval -->
+          <rect x="316" y="18" width="150" height="46" rx="9" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <text x="391" y="34" text-anchor="middle" fill="#fff" font-size="11">Hybrid retrieval</text>
+          <text x="391" y="49" text-anchor="middle" fill="#8c8c8c" font-size="9.5">semantic + keyword</text>
+          <text x="391" y="60" text-anchor="middle" fill="#8c8c8c" font-size="9">(dense + BM25)</text>
+
+          <!-- metadata filter -->
+          <rect x="494" y="18" width="138" height="46" rx="9" fill="#0c0c0c" stroke="#9B5DE5"/>
+          <text x="563" y="34" text-anchor="middle" fill="#fff" font-size="11">Metadata filter</text>
+          <text x="563" y="49" text-anchor="middle" fill="#8c8c8c" font-size="9.5">permission · date</text>
+          <text x="563" y="60" text-anchor="middle" fill="#8c8c8c" font-size="9">drop what's not allowed</text>
+
+          <!-- rerank -->
+          <rect x="660" y="18" width="126" height="46" rx="9" fill="#0c0c0c" stroke="#DF2E28"/>
+          <text x="723" y="38" text-anchor="middle" fill="#fff" font-size="11">Rerank</text>
+          <text x="723" y="53" text-anchor="middle" fill="#8c8c8c" font-size="9.5">best evidence first</text>
+
+          <!-- arrows top row -->
+          <g stroke="#E9BF35" stroke-width="1.6" fill="none" marker-end="url(#ah)">
+            <line x1="134" y1="41" x2="160" y2="41"/>
+            <line x1="288" y1="41" x2="314" y2="41"/>
+            <line x1="466" y1="41" x2="492" y2="41"/>
+            <line x1="632" y1="41" x2="658" y2="41"/>
+          </g>
+        </g>
+
+        <!-- ===== weak-vs-strong chunk lane (animated) under hybrid->rerank ===== -->
+        <g font-family="Century Gothic, sans-serif">
+          <text x="500" y="92" text-anchor="middle" fill="#8c8c8c" font-size="9.5">candidate chunks compete — weak ones fade out, strong ones move forward to rerank</text>
+          <!-- strong chunks: solid, steady; weak chunks: flicker & fade via existing .mess keyframe -->
+          <g>
+            <rect x="320" y="100" width="22" height="14" rx="3" fill="#10160f" stroke="#81BB42"/>
+            <rect x="348" y="100" width="22" height="14" rx="3" fill="#10160f" stroke="#81BB42"/>
+            <rect x="376" y="100" width="22" height="14" rx="3" fill="#10160f" stroke="#81BB42"/>
+          </g>
+          <g class="mess">
+            <rect x="430" y="100" width="22" height="14" rx="3" fill="#0c0c0c" stroke="#DF2E28"/>
+            <rect x="458" y="100" width="22" height="14" rx="3" fill="#0c0c0c" stroke="#DF2E28"/>
+          </g>
+          <!-- a strong chunk travels forward into the rerank column -->
+          <rect x="-11" y="-7" width="22" height="14" rx="3" fill="#10160f" stroke="#81BB42">
+            <animateMotion dur="2.4s" repeatCount="indefinite" path="M398 107 L723 107"/>
+          </rect>
+        </g>
+
+        <!-- connector rerank -> context assembly (down + left into bottom row) -->
+        <path id="toAssembly" d="M723 64 L723 86 L723 108" fill="none" stroke="#E9BF35" stroke-width="1.6" marker-end="url(#ah)"/>
+
+        <!-- ===== bottom row: context assembly -> grounded answer -> citations -> evaluation ===== -->
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <!-- context assembly -->
+          <rect x="660" y="118" width="126" height="46" rx="9" fill="#0c0c0c" stroke="#E9BF35"/>
+          <text x="723" y="138" text-anchor="middle" fill="#fff" font-size="11">Context</text>
+          <text x="723" y="152" text-anchor="middle" fill="#8c8c8c" font-size="9.5">assemble packet</text>
+
+          <!-- grounded answer -->
+          <rect x="494" y="118" width="138" height="46" rx="9" fill="#10160f" stroke="#81BB42" stroke-width="1.6"/>
+          <text x="563" y="138" text-anchor="middle" fill="#81BB42" font-size="11">Grounded answer</text>
+          <text x="563" y="152" text-anchor="middle" fill="#8c8c8c" font-size="9.5">generate from evidence</text>
+
+          <!-- citations -->
+          <rect x="316" y="118" width="150" height="46" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="391" y="138" text-anchor="middle" fill="#fff" font-size="11">Citations</text>
+          <text x="391" y="152" text-anchor="middle" fill="#8c8c8c" font-size="9.5">attach sources to claims</text>
+
+          <!-- evaluation -->
+          <rect x="162" y="118" width="126" height="46" rx="9" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="225" y="138" text-anchor="middle" fill="#fff" font-size="11">Evaluation</text>
+          <text x="225" y="152" text-anchor="middle" fill="#8c8c8c" font-size="9.5">measure quality</text>
+
+          <!-- arrows bottom row (right -> left) -->
+          <g stroke="#E9BF35" stroke-width="1.6" fill="none" marker-end="url(#ah)">
+            <line x1="658" y1="141" x2="634" y2="141"/>
+            <line x1="492" y1="141" x2="468" y2="141"/>
+            <line x1="314" y1="141" x2="290" y2="141"/>
+          </g>
+        </g>
+
+        <!-- citation markers attaching to the answer card (animated pulse) -->
+        <g>
+          <circle class="tlDot" cx="500" cy="124" r="3.5" fill="#5AA9EC" style="animation-delay:0s"/>
+          <circle class="tlDot" cx="510" cy="124" r="3.5" fill="#5AA9EC" style="animation-delay:.6s"/>
+          <circle class="tlDot" cx="520" cy="124" r="3.5" fill="#5AA9EC" style="animation-delay:1.2s"/>
+        </g>
+
+        <!-- travelling packet along the whole spine (top-left -> ... wraps) -->
+        <circle r="3.6" fill="#E9BF35">
+          <animateMotion dur="2.4s" repeatCount="indefinite"
+            path="M74 64 L74 80 L225 80 L225 64 M225 41 L391 41 M563 64 L563 80 L723 80 L723 108"/>
+        </circle>
+
+        <!-- feedback loop: evaluation -> back to pipeline -->
+        <path d="M162 141 L120 141 L120 200 L391 200 L391 164" fill="none" stroke="#3AD0B0" stroke-width="1.3" stroke-dasharray="5 5" marker-end="url(#ah)" opacity=".8"/>
+        <text x="250" y="195" fill="#3AD0B0" font-size="9.5" font-family="Century Gothic, sans-serif">eval findings feed back → fix retrieval, chunks, prompts</text>
+      </svg>
+      <p style="margin-top:7px" class="lead">Eight stages, each measurable. The win isn't one clever step — it's the <span class="em">chain of quality gates</span>.</p>
+    </div>
+
+    <!-- 03 QUERY REWRITE -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Query rewrite</div></div>
+      <p>The user's words are rarely the best <b>search</b> words. Rewrite to expand acronyms, add synonyms, split multi-part questions, or resolve "it / that" from chat history.</p>
+      <p style="margin-top:7px"><span class="em">Search the meaning, not the typo.</span></p>
+    </div>
+
+    <!-- 04 HYBRID RETRIEVAL -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Hybrid retrieval</div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#FE9A3A">Semantic</h4><p>Vector / dense. Finds <b>meaning</b>, even with different words.</p></div>
+        <div class="mini"><h4 style="color:#5AA9EC">Keyword</h4><p>BM25 / sparse. Nails <b>exact</b> terms, IDs, codes, names.</p></div>
+        <div class="mini"><h4 style="color:#81BB42">Fused</h4><p>Combine both, then merge ranks. <b>Recall</b> neither gets alone.</p></div>
+      </div>
+      <p style="margin-top:8px">Vector search misses literal IDs; keyword misses paraphrase. <span class="em">Run both.</span></p>
+    </div>
+
+    <!-- 05 METADATA FILTER -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Metadata filter <span class="t2">— before, not after</span></div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔐</span><div><b>Permission</b> — <span>access-group / tenant. Never retrieve what this user can't see.</span></div></div>
+        <div class="gx"><span class="ic">🗓️</span><div><b>Freshness</b> — <span>date · version. Drop deprecated docs before they reach the model.</span></div></div>
+        <div class="gx"><span class="ic">🏷️</span><div><b>Scope</b> — <span>source · type · sensitivity. Constrain to the right corpus.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 06 RERANK -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">06</div><div class="ctitle">Rerank <span class="t2">— the quality lever</span></div></div>
+      <p>First-pass retrieval is fast but coarse. A <b>cross-encoder reranker</b> scores each candidate against the question and reorders — so the <b>best evidence</b> sits at the top of the context, not buried at rank 30.</p>
+      <p style="margin-top:7px"><span class="em">Retrieve wide, then rank tight.</span></p>
+    </div>
+
+    <!-- 07 CONTEXT ASSEMBLY -->
+    <div class="card c-gold">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Context assembly</div></div>
+      <p>Build one clean <b>evidence packet</b>: de-duplicate, trim to the token budget, keep source IDs attached, order by relevance. Garbage-in still means garbage-out — a tidy packet is what makes the answer groundable <em>and</em> citable.</p>
+    </div>
+
+    <!-- 08 GROUNDED ANSWER + CITATIONS -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Grounded answer + citations</div></div>
+      <p>The model answers <b>from the packet</b>, not from memory — and every claim carries a marker back to its source chunk. Citations make the answer <b>auditable</b>: a reader can verify it, and "no evidence → say so" beats a confident guess.</p>
+      <div class="chips" style="margin-top:7px">
+        <span class="chip">grounded in evidence</span>
+        <span class="chip">cite the source</span>
+        <span class="chip">refuse when unsupported</span>
+      </div>
+    </div>
+
+    <!-- 09 EVALUATION -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Evaluation <span class="t2">— measure retrieval AND generation, separately</span></div></div>
+      <table>
+        <tr><th>Layer</th><th>Question it answers</th><th>Metrics</th></tr>
+        <tr><td class="k">Retrieval quality</td><td>Did we fetch the right evidence?</td><td>recall · precision · relevance · freshness</td></tr>
+        <tr><td class="k">Answer quality</td><td>Did the model answer correctly using it?</td><td>groundedness · correctness · citation accuracy · refusal quality</td></tr>
+      </table>
+      <p style="margin-top:7px">A fluent answer can hide failed retrieval. <span class="em">Score both before you trust the system</span> — golden questions, expected sources, rubrics, regression tests.</p>
+    </div>
+
+    <!-- 10 COMMON FAILURE -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">10</div><div class="ctitle">Common failure</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">⚠️</span><div><b>top-k ≠ correct evidence</b> — <span>shipping the raw top chunks straight to the model assumes "near in vector space" means "answers the question." It often doesn't.</span></div></div>
+        <div class="gx"><span class="ic">🎭</span><div><b>Fluent ≠ grounded</b> — <span>a confident paragraph from bad context still reads great. Without rerank, filtering, and eval you won't notice.</span></div></div>
+        <div class="gx"><span class="ic">🧱</span><div><b>Skipping the filter</b> — <span>no permission/freshness gate leaks private or stale docs into the answer.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 11 AI SDLC PLACEMENT -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">11</div><div class="ctitle">Where it lives in the AI SDLC</div></div>
+      <div class="steps">
+        <span class="step">Architecture</span><span class="arrow">→</span>
+        <span class="step">Build</span><span class="arrow">→</span>
+        <span class="step">Evaluation</span><span class="arrow">→</span>
+        <span class="step">Monitor</span>
+      </div>
+      <p style="margin-top:9px">Design the pipeline up front, build each stage, gate the release on <b>evals</b>, then watch retrieval relevance &amp; groundedness drift in production.</p>
+      <p style="margin-top:6px"><span class="dim" style="color:#8c8c8c">RAG isn't a one-time integration — it's an evaluated, monitored capability.</span></p>
+    </div>
+
+    <!-- 12 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">12</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">RAG is a <span class="em">quality pipeline</span>, not a vector-DB call. Rewrite the question, search two ways, filter, rerank, ground, cite, and evaluate — every stage is a place to measure and improve.</div>
+      <div class="flow2">
+        <span class="step">Retrieve wide</span><span class="arrow">→</span>
+        <span class="step">Rank tight</span><span class="arrow">→</span>
+        <span class="step">Ground &amp; cite</span><span class="arrow">→</span>
+        <span class="step">Evaluate</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Agent Loop · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="agent-loop-poster.gif" download>GIF</a> · <a href="agent-loop-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>HOW AI AGENTS <span class="b">WORK</span></h1>
+  <div class="sub">The agent loop <span class="dim">— think, act, observe, repeat until done</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 THE PROBLEM -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">01</div><div class="ctitle">The problem <span class="t2">— a bare LLM only talks</span></div></div>
+      <svg viewBox="0 0 480 96" width="100%" style="display:block">
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <rect x="14" y="34" width="96" height="30" rx="7" fill="#0c0c0c" stroke="#2b2b2b"/>
+          <text x="62" y="53" text-anchor="middle" fill="#bdbdbd" font-size="12">text in</text>
+          <rect x="190" y="28" width="100" height="42" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="240" y="53" text-anchor="middle" fill="#fff" font-size="12.5">LLM</text>
+          <rect x="370" y="34" width="96" height="30" rx="7" fill="#0c0c0c" stroke="#2b2b2b"/>
+          <text x="418" y="53" text-anchor="middle" fill="#bdbdbd" font-size="12">text out</text>
+          <g stroke="#FF5A4D" stroke-width="1.6" fill="none">
+            <line x1="110" y1="49" x2="184" y2="49"/><polygon points="184,49 176,45 176,53" fill="#FF5A4D" stroke="none"/>
+            <line x1="290" y1="49" x2="364" y2="49"/><polygon points="364,49 356,45 356,53" fill="#FF5A4D" stroke="none"/>
+          </g>
+          <!-- flow: text in → LLM → text out (it talks; note there's no action branch out) -->
+          <g fill="none" stroke="none">
+            <path id="alIn" d="M110,49 L184,49"/><path id="alOut" d="M290,49 L364,49"/>
+          </g>
+          <circle r="3" fill="#cfcfcf"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#alIn"/></animateMotion></circle>
+          <circle r="3" fill="#cfcfcf"><animateMotion dur="2.4s" begin="-1.2s" repeatCount="indefinite"><mpath href="#alOut"/></animateMotion></circle>
+          <text x="240" y="88" text-anchor="middle" fill="#FF5A4D" font-size="11">no hands — it can't act 🚫</text>
+        </g>
+      </svg>
+      <p style="margin-top:8px">A model on its own is <b>text in → text out</b>. It can't open a file, run a test, search the web, or chase a multi-step goal. It <span class="em">describes</span> the work; it can't <span class="em">do</span> it.</p>
+    </div>
+
+    <!-- 02 WHAT AN AGENT IS -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">02</div><div class="ctitle">What an agent is <span class="t2">— brain + tools + memory</span></div></div>
+      <svg viewBox="0 0 480 92" width="100%" style="display:block">
+        <g font-family="Century Gothic, sans-serif" font-weight="800" font-size="12.5">
+          <rect x="10" y="22" width="120" height="46" rx="10" fill="#0c0c0c" stroke="#DF2E28" stroke-width="1.6"/>
+          <text x="70" y="42" text-anchor="middle" fill="#fff">BRAIN</text>
+          <text x="70" y="58" text-anchor="middle" fill="#8c8c8c" font-size="10" font-weight="600">the LLM — decides</text>
+          <text x="148" y="51" text-anchor="middle" fill="#E9BF35" font-size="20" font-weight="800">+</text>
+          <rect x="166" y="22" width="120" height="46" rx="10" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <text x="226" y="42" text-anchor="middle" fill="#fff">TOOLS</text>
+          <text x="226" y="58" text-anchor="middle" fill="#8c8c8c" font-size="10" font-weight="600">hands — to act</text>
+          <text x="304" y="51" text-anchor="middle" fill="#E9BF35" font-size="20" font-weight="800">+</text>
+          <rect x="322" y="22" width="120" height="46" rx="10" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="382" y="42" text-anchor="middle" fill="#fff">MEMORY</text>
+          <text x="382" y="58" text-anchor="middle" fill="#8c8c8c" font-size="10" font-weight="600">what it knows</text>
+          <text x="240" y="84" text-anchor="middle" fill="#3AD0B0" font-size="11.5" font-weight="700">= AGENCY · the power to act</text>
+        </g>
+      </svg>
+      <p style="margin-top:8px">Wrap a model in a <b>loop</b> with <b>tools</b> and <b>memory</b> and it stops merely answering — it starts <span class="em">pursuing a goal</span>.</p>
+    </div>
+
+    <!-- 03 THE AGENT LOOP (centerpiece) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">03</div><div class="ctitle">The agent loop <span class="t2">— think → act → observe → repeat until done</span></div></div>
+      <svg viewBox="0 0 1000 232" width="100%" style="display:block">
+        <!-- circular loop path (invisible motion track) -->
+        <path id="loop" d="M 250 116 m 0 -86 a 86 86 0 1 1 0 172 a 86 86 0 1 1 0 -172" fill="none" stroke="#2b2b2b" stroke-width="2" stroke-dasharray="5 6"/>
+        <!-- directional arc arrows around the ring -->
+        <g fill="#E9BF35" stroke="none">
+          <polygon points="336,116 326,110 326,122"/>            <!-- right side, going down -->
+          <polygon points="250,202 244,192 256,192"/>            <!-- bottom, going left -->
+          <polygon points="164,116 174,122 174,110"/>            <!-- left side, going up -->
+        </g>
+        <!-- THINK (top) -->
+        <g font-family="Century Gothic, sans-serif">
+          <circle cx="250" cy="30" r="30" fill="#0c0c0c" stroke="#3AD0B0" stroke-width="1.8"/>
+          <text x="250" y="27" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="800">THINK</text>
+          <text x="250" y="40" text-anchor="middle" fill="#3AD0B0" font-size="13" font-weight="800">🧠</text>
+          <text x="250" y="-2" text-anchor="middle" fill="#8c8c8c" font-size="10.5">decide the next step</text>
+          <!-- ACT (bottom-right) -->
+          <circle cx="324" cy="159" r="30" fill="#0c0c0c" stroke="#FE9A3A" stroke-width="1.8"/>
+          <text x="324" y="156" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="800">ACT</text>
+          <text x="324" y="169" text-anchor="middle" fill="#FE9A3A" font-size="13" font-weight="800">🔧</text>
+          <text x="324" y="205" text-anchor="middle" fill="#8c8c8c" font-size="10.5">call a tool</text>
+          <!-- OBSERVE (bottom-left) -->
+          <circle cx="176" cy="159" r="30" fill="#0c0c0c" stroke="#5AA9EC" stroke-width="1.8"/>
+          <text x="176" y="156" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="800">OBSERVE</text>
+          <text x="176" y="169" text-anchor="middle" fill="#5AA9EC" font-size="13" font-weight="800">👁️</text>
+          <text x="176" y="205" text-anchor="middle" fill="#8c8c8c" font-size="10.5">read the result</text>
+          <!-- centre label -->
+          <text x="250" y="112" text-anchor="middle" fill="#bdbdbd" font-size="10.5">repeat until</text>
+          <text x="250" y="126" text-anchor="middle" fill="#E9BF35" font-size="11.5" font-weight="800">the job is done</text>
+        </g>
+        <!-- travelling dot on the loop -->
+        <circle r="5.5" fill="#E9BF35"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#loop"/></animateMotion></circle>
+        <circle r="3" fill="#fff"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#loop"/></animateMotion></circle>
+
+        <!-- DONE? exit, to the right -->
+        <g font-family="Century Gothic, sans-serif">
+          <line x1="280" y1="30" x2="470" y2="30" stroke="#2b2b2b" stroke-width="1.6"/>
+          <polygon points="470,30 461,25 461,35" fill="#81BB42"/>
+          <text x="372" y="22" text-anchor="middle" fill="#8c8c8c" font-size="10">goal met?</text>
+          <rect x="470" y="14" width="92" height="32" rx="16" fill="#0f1a06" stroke="#81BB42" stroke-width="1.6"/>
+          <text x="516" y="34" text-anchor="middle" fill="#81BB42" font-size="12" font-weight="800">DONE ✓</text>
+          <text x="516" y="60" text-anchor="middle" fill="#8c8c8c" font-size="10">else → keep looping</text>
+        </g>
+
+        <!-- right column: the three steps, spelled out -->
+        <g font-family="Century Gothic, sans-serif">
+          <text x="600" y="22" fill="#E9BF35" font-size="12.5" font-weight="800">ONE TURN OF THE LOOP</text>
+          <rect x="600" y="36" width="384" height="48" rx="9" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="616" y="56" fill="#3AD0B0" font-size="12" font-weight="800">THINK</text>
+          <text x="616" y="73" fill="#cfcfcf" font-size="11">"To answer, I should read the schedule file."</text>
+          <rect x="600" y="92" width="384" height="48" rx="9" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <text x="616" y="112" fill="#FE9A3A" font-size="12" font-weight="800">ACT</text>
+          <text x="616" y="129" fill="#cfcfcf" font-size="11">call read_file("itinerary.json")</text>
+          <rect x="600" y="148" width="384" height="48" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="616" y="168" fill="#5AA9EC" font-size="12" font-weight="800">OBSERVE</text>
+          <text x="616" y="185" fill="#cfcfcf" font-size="11">result: two events overlap at 3pm → re-plan.</text>
+          <text x="792" y="218" text-anchor="middle" fill="#8c8c8c" font-size="10.5">…then THINK again with what it just learned — until done.</text>
+        </g>
+      </svg>
+      <p style="margin-top:8px" class="lead">The whole behaviour is one small cycle run over and over: decide, do one thing, look at what happened, decide again. No giant master plan — just the next right step, on repeat.</p>
+    </div>
+
+    <!-- 04 TOOLS -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Tools <span class="t2">— what it can actually do</span></div></div>
+      <p style="margin-bottom:6px">Each tool is one action the agent can take. The brain picks <b>which</b> to call and with <b>what arguments</b>; the result comes back as the next observation.</p>
+      <div class="chips">
+        <span class="chip">📄 read / write files</span>
+        <span class="chip">⌨️ run commands</span>
+        <span class="chip">✅ run tests</span>
+        <span class="chip">🔎 search the web</span>
+        <span class="chip">🌐 call an API</span>
+        <span class="chip">🗄️ query a database</span>
+      </div>
+      <p style="margin-top:9px">A growing catalogue of these arrives in a standard way through <span class="em">MCP</span> — one plug, many tools <span class="dim" style="color:#8c8c8c">(see the MCP poster).</span></p>
+    </div>
+
+    <!-- 05 ReAct -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">05</div><div class="ctitle">The ReAct pattern <span class="t2">— reason + act, interleaved</span></div></div>
+      <p>The loop framing comes from <b>ReAct</b> (Yao et al., 2023): the model interleaves a <b>reasoning</b> trace with <b>actions</b>.</p>
+      <div class="steps" style="margin-top:8px">
+        <span class="step" style="border-color:#2e2540;color:#c9b3ef">💭 "I should check X"</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">🔧 call tool</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#13314a;color:#a7d3f7">👁️ observe</span>
+      </div>
+      <p style="margin-top:9px"><span class="em">Thoughts guide actions; observations refine the next thought.</span> Reasoning keeps the tool calls on-target instead of blind.</p>
+    </div>
+
+    <!-- 06 PLANNING (half) -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">06</div><div class="ctitle">Planning</div></div>
+      <p>For anything multi-step, the agent first breaks the goal into an <b>ordered set of steps</b>, then works them one by one.</p>
+      <div class="steps" style="margin-top:7px">
+        <span class="step">goal</span><span class="arrow">→</span>
+        <span class="step">steps</span><span class="arrow">→</span>
+        <span class="step">do · check</span><span class="arrow">↺</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">re-plan</span>
+      </div>
+      <p style="margin-top:9px">When reality differs from the plan — a test fails, a file is missing — it <span class="em">re-plans</span> rather than barrelling on.</p>
+    </div>
+
+    <!-- 07 MEMORY (half) -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Memory</div></div>
+      <div class="trio" style="grid-template-columns:1fr 1fr">
+        <div class="mini"><h4 style="color:#3AD0B0">Short-term</h4><p>The <b>context window</b> — the running transcript of thoughts, actions &amp; results this task.</p></div>
+        <div class="mini"><h4 style="color:#5AA9EC">Long-term</h4><p>Facts <b>retrieved</b> when needed — files, notes, a vector store (RAG).</p></div>
+      </div>
+      <p style="margin-top:9px">Memory is how it carries what it learned in step 3 into step 9. <span class="dim" style="color:#8c8c8c">(See the Agent Memory poster.)</span></p>
+    </div>
+
+    <!-- 08 ON THE WIRE -->
+    <div class="card span2 c-green">
+      <div class="chead"><div class="num">08</div><div class="ctitle">An agentic step, on the wire <span class="t2">— thought → action → observation → next thought</span></div></div>
+      <div class="wire">
+<span class="cm">// THOUGHT — the model reasons about the next step</span><br>
+<span class="key">Thought</span>: <span class="str">"The user asked for a conflict-free day. I should read the itinerary first."</span><br>
+<span class="cm">// ACTION — it emits a tool call (name + arguments)</span><br>
+<span class="key">Action</span>: { <span class="key">"tool"</span>: <span class="str">"read_file"</span>, <span class="key">"args"</span>: { <span class="key">"path"</span>: <span class="str">"itinerary.json"</span> } }<br>
+<span class="cm">// OBSERVATION — the harness runs the tool, feeds the result back</span><br>
+<span class="key">Observation</span>: <span class="str">"2 events overlap 15:00–16:00 (Museum, Lunch)"</span><br>
+<span class="cm">// …and the loop turns again, now better informed</span><br>
+<span class="key">Thought</span>: <span class="str">"Conflict found. Next: propose moving Lunch to 13:00."</span>
+      </div>
+      <p style="margin-top:8px">Thought, then one action, then the result — over and over. <span class="em">That repeating trace is the agent at work.</span></p>
+    </div>
+
+    <!-- 09 AUTONOMY LADDER -->
+    <div class="card span2 c-orange">
+      <div class="chead"><div class="num">09</div><div class="ctitle">How far it goes <span class="t2">— the autonomy ladder · you own intent + guardrails</span></div></div>
+      <svg viewBox="0 0 1000 118" width="100%" style="display:block">
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <!-- rising rungs -->
+          <g>
+            <rect x="14" y="74" width="180" height="34" rx="8" fill="#0c0c0c" stroke="#81BB42"/>
+            <text x="104" y="89" text-anchor="middle" fill="#fff" font-size="11">writes code</text>
+            <text x="104" y="102" text-anchor="middle" fill="#81BB42" font-size="9.5">NOW · you are here 📍</text>
+
+            <rect x="210" y="58" width="180" height="34" rx="8" fill="#0c0c0c" stroke="#81BB42"/>
+            <text x="300" y="73" text-anchor="middle" fill="#fff" font-size="11">commits &amp; opens PRs</text>
+            <text x="300" y="86" text-anchor="middle" fill="#81BB42" font-size="9.5">NOW</text>
+
+            <rect x="406" y="42" width="180" height="34" rx="8" fill="#0c0c0c" stroke="#81BB42"/>
+            <text x="496" y="57" text-anchor="middle" fill="#fff" font-size="11">reviews PRs</text>
+            <text x="496" y="70" text-anchor="middle" fill="#81BB42" font-size="9.5">NOW</text>
+
+            <rect x="602" y="26" width="180" height="34" rx="8" fill="#0c0c0c" stroke="#E9BF35"/>
+            <text x="692" y="41" text-anchor="middle" fill="#fff" font-size="11">runs CI/CD</text>
+            <text x="692" y="54" text-anchor="middle" fill="#E9BF35" font-size="9.5">EMERGING</text>
+
+            <rect x="798" y="10" width="188" height="34" rx="8" fill="#0c0c0c" stroke="#5AA9EC"/>
+            <text x="892" y="25" text-anchor="middle" fill="#fff" font-size="11">full-loop agent</text>
+            <text x="892" y="38" text-anchor="middle" fill="#5AA9EC" font-size="9.5">FUTURE</text>
+          </g>
+          <!-- rising connector -->
+          <path d="M194 91 L210 75 M390 75 L406 59 M586 59 L602 43 M782 43 L798 27" stroke="#FE9A3A" stroke-width="1.6" fill="none"/>
+          <text x="20" y="22" fill="#8c8c8c" font-size="10.5">human moves up: types → reviews → governs ·
+            <tspan fill="#bdbdbd">the human always owns intent + guardrails</tspan></text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 10a SINGLE vs MULTI (half) -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">10</div><div class="ctitle">Single vs multi-agent</div></div>
+      <div class="trio" style="grid-template-columns:1fr 1fr">
+        <div class="mini"><h4 style="color:#5AA9EC">One agent</h4><p>A single loop handles the whole job end-to-end.</p></div>
+        <div class="mini"><h4 style="color:#9B5DE5">Orchestrator</h4><p>A lead agent <b>delegates</b> to specialist sub-agents, then merges results.</p></div>
+      </div>
+      <p style="margin-top:9px">Sub-agents coordinate over an <span class="em">agent-to-agent (A2A)</span> protocol — the same plug-in idea, for agents talking to agents.</p>
+    </div>
+
+    <!-- 10b GUARDRAILS (half) -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">11</div><div class="ctitle">What nobody tells you</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🪟</span><div><b>Context limits</b> — <span>the window fills; old steps fall out of view.</span></div></div>
+        <div class="gx"><span class="ic">🧰</span><div><b>Tool sprawl</b> — <span>too many tools = more chances to mis-pick. Curate.</span></div></div>
+        <div class="gx"><span class="ic">🔁</span><div><b>Runaway loops</b> — <span>it can spin without progress. Cap steps &amp; cost.</span></div></div>
+        <div class="gx"><span class="ic">🛟</span><div><b>Guardrails</b> — <span>human checkpoints, sandboxing, approvals before risky acts.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 12 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">12</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">An agent doesn't make the model <span class="em">smarter</span> — it gives it <span class="em">agency</span>: the power to act, check its own work, and keep going until the job is done.</div>
+      <div class="flow2">
+        <span class="step">Think</span><span class="arrow">→</span>
+        <span class="step">Act</span><span class="arrow">→</span>
+        <span class="step">Observe</span><span class="arrow">→</span>
+        <span class="step">Done ✓</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

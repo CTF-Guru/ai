@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Handoffs · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="agent-handoffs-poster.gif" download>GIF</a> · <a href="agent-handoffs-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>AGENT <span class="b">HANDOFFS</span></h1>
+  <div class="sub">The task-contract pattern for multi-agent work <span class="dim">— stop passing vague asks; pass a signed work order</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 WHAT IT IS -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What a handoff contract is <span class="t2">— the structured task package one agent gives another</span></div></div>
+      <p class="lead">When Agent A asks Agent B to do work, the <b>handoff</b> is everything that crosses the boundary: the goal, the context, the limits, and the shape of the answer expected back. A <span class="em">contract</span> makes that package explicit instead of a hopeful sentence — so the receiver knows exactly what "done" means before it starts.</p>
+      <p style="margin-top:7px">It is a <b>discipline</b>, not a new protocol: it rides on whatever channel you already use to delegate — an <b>A2A task</b>, a sub-agent call, a tool/function invocation, or a queue message. <span class="em">The medium varies; the fields are the same.</span></p>
+    </div>
+
+    <!-- 02 MAIN DIAGRAM — task card travelling through 4 agents, fields filling in -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The handoff in motion <span class="t2">— a task card collects fields as it moves Planner → Research → Review → Action</span></div></div>
+      <svg viewBox="0 0 1000 232" width="100%" style="display:block">
+        <!-- lane line -->
+        <line x1="60" y1="58" x2="940" y2="58" stroke="#2b2b2b" stroke-width="2"/>
+        <!-- four agent stations -->
+        <g font-family="Century Gothic, sans-serif" font-weight="800" font-size="11.5">
+          <!-- Planner -->
+          <circle cx="120" cy="58" r="9" fill="#0c0c0c" stroke="#3AD0B0" stroke-width="2"/>
+          <circle class="tlDot" cx="120" cy="58" r="4" fill="#3AD0B0" style="animation-delay:0s"/>
+          <text x="120" y="34" text-anchor="middle" fill="#3AD0B0">PLANNER</text>
+          <text x="120" y="82" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">sets objective</text>
+          <!-- Research -->
+          <circle cx="380" cy="58" r="9" fill="#0c0c0c" stroke="#5AA9EC" stroke-width="2"/>
+          <circle class="tlDot" cx="380" cy="58" r="4" fill="#5AA9EC" style="animation-delay:.7s"/>
+          <text x="380" y="34" text-anchor="middle" fill="#5AA9EC">RESEARCH</text>
+          <text x="380" y="82" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">adds context + evidence</text>
+          <!-- Review -->
+          <circle cx="640" cy="58" r="9" fill="#0c0c0c" stroke="#9B5DE5" stroke-width="2"/>
+          <circle class="tlDot" cx="640" cy="58" r="4" fill="#9B5DE5" style="animation-delay:1.4s"/>
+          <text x="640" y="34" text-anchor="middle" fill="#9B5DE5">REVIEW</text>
+          <text x="640" y="82" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">checks against constraints</text>
+          <!-- Action -->
+          <circle cx="900" cy="58" r="9" fill="#0c0c0c" stroke="#FE9A3A" stroke-width="2"/>
+          <circle class="tlDot" cx="900" cy="58" r="4" fill="#FE9A3A" style="animation-delay:2.1s"/>
+          <text x="900" y="34" text-anchor="middle" fill="#FE9A3A">ACTION</text>
+          <text x="900" y="82" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-weight="600">executes (gated)</text>
+        </g>
+        <!-- arrows between stations -->
+        <g fill="#E9BF35" font-size="18" font-weight="800" font-family="Century Gothic, sans-serif">
+          <text x="250" y="63" text-anchor="middle">→</text>
+          <text x="510" y="63" text-anchor="middle">→</text>
+          <text x="770" y="63" text-anchor="middle">→</text>
+        </g>
+
+        <!-- the travelling task card -->
+        <path id="hop" d="M120 128 L380 128 L640 128 L900 128" fill="none" stroke="none"/>
+        <g>
+          <g transform="translate(-46,-36)">
+            <rect width="92" height="72" rx="9" fill="#141414" stroke="#E9BF35" stroke-width="1.6"/>
+            <text x="46" y="15" text-anchor="middle" fill="#E9BF35" font-size="9" font-weight="800" font-family="Century Gothic, sans-serif">TASK CONTRACT</text>
+            <!-- field rows fill in over time -->
+            <line x1="9" y1="26" x2="83" y2="26" stroke="#2b2b2b"/>
+            <rect x="10" y="31" width="42" height="5" rx="2.5" fill="#3AD0B0"><animate attributeName="opacity" values="0;0;1;1;1;1" dur="8s" repeatCount="indefinite"/></rect>
+            <rect x="10" y="41" width="60" height="5" rx="2.5" fill="#5AA9EC"><animate attributeName="opacity" values="0;0;0;1;1;1" dur="8s" repeatCount="indefinite"/></rect>
+            <rect x="10" y="51" width="50" height="5" rx="2.5" fill="#9B5DE5"><animate attributeName="opacity" values="0;0;0;0;1;1" dur="8s" repeatCount="indefinite"/></rect>
+            <rect x="10" y="61" width="36" height="5" rx="2.5" fill="#FE9A3A"><animate attributeName="opacity" values="0;0;0;0;0;1" dur="8s" repeatCount="indefinite"/></rect>
+          </g>
+          <animateMotion dur="8s" repeatCount="indefinite" keyPoints="0;0;0.33;0.33;0.66;0.66;1;1" keyTimes="0;0.12;0.30;0.45;0.62;0.74;0.90;1" calcMode="linear">
+            <mpath href="#hop"/>
+          </animateMotion>
+        </g>
+        <!-- caption -->
+        <text x="500" y="212" text-anchor="middle" fill="#bdbdbd" font-size="11" font-family="Century Gothic, sans-serif">empty slots become filled fields at each hop — the package is complete before <tspan fill="#FE9A3A" font-weight="700">Action</tspan> ever runs</text>
+      </svg>
+    </div>
+
+    <!-- 03 THE CONTRACT FIELDS -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">03</div><div class="ctitle">The eight contract fields <span class="t2">— what every handoff should carry</span></div></div>
+      <div class="trio" style="grid-template-columns:1fr 1fr 1fr 1fr">
+        <div class="mini"><h4 style="color:#3AD0B0">🎯 Objective</h4><p>The single outcome wanted, in one testable sentence.</p></div>
+        <div class="mini"><h4 style="color:#5AA9EC">🗂️ Context</h4><p>Facts, inputs &amp; prior decisions the receiver needs.</p></div>
+        <div class="mini"><h4 style="color:#FF5A4D">🚧 Constraints</h4><p>Hard limits — policy, scope, budget, do-nots.</p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">🧰 Allowed tools</h4><p>The exact tools/permissions it may use — no more.</p></div>
+        <div class="mini"><h4 style="color:#81BB42">📐 Output schema</h4><p>The shape of the result, so it's machine-checkable.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">⏱️ Due / SLA</h4><p>Deadline or time budget before it must report back.</p></div>
+        <div class="mini"><h4 style="color:#9B5DE5">📊 Confidence</h4><p>How sure it must be — and how to flag uncertainty.</p></div>
+        <div class="mini"><h4 style="color:#FF5A4D">🚨 Escalation</h4><p>When to stop and hand back to a human or caller.</p></div>
+      </div>
+      <p style="margin-top:9px"><span class="em">Objective + Context + Constraints scope the work; Tools + Schema make it safe and checkable; SLA + Confidence + Escalation keep it accountable.</span></p>
+    </div>
+
+    <!-- 04 BAD vs GOOD -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Bad vs good handoff</div></div>
+      <table>
+        <tr><th>Field</th><th>❌ Bad</th><th>✓ Good</th></tr>
+        <tr><td class="k">Ask</td><td class="no">"Handle this customer issue."</td><td class="win">Summarize, check policy, draft reply</td></tr>
+        <tr><td class="k">Constraints</td><td class="no">none</td><td class="win">do <b>not</b> send without approval</td></tr>
+        <tr><td class="k">Output</td><td class="no">"sort it out"</td><td class="win">draft + cited policy ref</td></tr>
+        <tr><td class="k">Escalation</td><td class="no">implicit</td><td class="win">refund &gt; $50 → human</td></tr>
+      </table>
+      <p style="margin-top:8px">Same task, two worlds. <span class="em">The good handoff is one sentence longer and an order of magnitude safer.</span></p>
+    </div>
+
+    <!-- 05 COMMON FAILURE -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Why vague handoffs fail</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔁</span><div><b>Delegation loops</b> — <span>receiver re-asks "what do you mean?"; work ping-pongs, never finishes.</span></div></div>
+        <div class="gx"><span class="ic">👯</span><div><b>Duplicate work</b> — <span>no shared objective, so two agents redo the same step.</span></div></div>
+        <div class="gx"><span class="ic">💥</span><div><b>Unsafe actions</b> — <span>no constraints or escalation rule, so an agent sends, spends, or deletes unprompted.</span></div></div>
+        <div class="gx"><span class="ic">🌫️</span><div><b>Silent drift</b> — <span>no output schema, so a wrong-shaped result slips downstream unnoticed.</span></div></div>
+      </div>
+      <p style="margin-top:7px"><span class="em">Vague handoffs create loops, duplicate work, and unsafe actions.</span></p>
+    </div>
+
+    <!-- 06 SCHEMA SNIPPET -->
+    <div class="card span2 c-green">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The contract, on the wire <span class="t2">— a handoff is just a structured object the receiver can validate</span></div></div>
+      <div style="display:grid; grid-template-columns:1.12fr .88fr; gap:11px; align-items:start">
+        <div class="wire">
+<span class="cm">// Planner → Research : a task contract</span><br>
+{ <span class="key">"objective"</span>: <span class="str">"draft reply to refund request #812"</span>,<br>
+&nbsp;&nbsp;<span class="key">"context"</span>: { <span class="key">"ticket"</span>: <span class="str">"#812"</span>, <span class="key">"tier"</span>: <span class="str">"gold"</span> },<br>
+&nbsp;&nbsp;<span class="key">"constraints"</span>: [ <span class="str">"no send without approval"</span> ],<br>
+&nbsp;&nbsp;<span class="key">"allowed_tools"</span>: [ <span class="str">"kb.search"</span>, <span class="str">"policy.lookup"</span> ],<br>
+&nbsp;&nbsp;<span class="key">"output_schema"</span>: <span class="str">"DraftReply"</span>,<br>
+&nbsp;&nbsp;<span class="key">"sla_seconds"</span>: <span class="num2">120</span>, <span class="key">"min_confidence"</span>: <span class="num2">0.8</span>,<br>
+&nbsp;&nbsp;<span class="key">"escalate_if"</span>: <span class="str">"refund &gt; 50 USD"</span> }
+        </div>
+        <div>
+          <p style="margin-bottom:6px">Because it's structured, the receiver can <b>reject a malformed handoff up front</b> — a missing <span class="em">objective</span> or <span class="em">escalation rule</span> fails validation before any tool runs.</p>
+          <div class="gotchas">
+            <div class="gx"><span class="ic">✅</span><div><b>Validate on receive</b> — <span>required fields present &amp; well-typed.</span></div></div>
+            <div class="gx"><span class="ic">🧾</span><div><b>Echo the contract</b> — <span>return result tagged with the objective it answers.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 ROLES IN THE RELAY -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Each role's job in the relay</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🧭</span><div><b>Planner</b> — <span>writes the objective, constraints &amp; escalation rule.</span></div></div>
+        <div class="gx"><span class="ic">🔎</span><div><b>Research</b> — <span>fills context with evidence; stays read-only.</span></div></div>
+        <div class="gx"><span class="ic">🛡️</span><div><b>Review</b> — <span>checks the draft against constraints + schema.</span></div></div>
+        <div class="gx"><span class="ic">⚙️</span><div><b>Action</b> — <span>executes only what the contract permits — gated.</span></div></div>
+      </div>
+      <p style="margin-top:7px"><span class="em">The contract is the baton — it travels intact; only its filled fields grow.</span></p>
+    </div>
+
+    <!-- 08 NOT TO CONFUSE -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Don't confuse the layers</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🤝</span><div><b>Handoff ≠ transport</b> — <span>the contract is <i>what</i> crosses; A2A / a sub-agent call is <i>how</i>.</span></div></div>
+        <div class="gx"><span class="ic">🧰</span><div><b>Handoff ≠ tool call</b> — <span>a tool runs a function; a handoff delegates a goal to a reasoner.</span></div></div>
+        <div class="gx"><span class="ic">📇</span><div><b>Contract ≠ Agent Card</b> — <span>the card advertises capability; the contract is one specific work order.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 09 AI SDLC PLACEMENT -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Where it lives in the AI SDLC <span class="t2">— a design-time pattern with an eval-time payoff</span></div></div>
+      <div class="steps">
+        <span class="step" style="border-color:#1f3a2c;color:#3AD0B0">DESIGN</span>
+        <span class="dim" style="color:#8c8c8c;font-size:10.5px">define the contract schema &amp; required fields</span>
+        <span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">ORCHESTRATION</span>
+        <span class="dim" style="color:#8c8c8c;font-size:10.5px">agents pass &amp; validate contracts at runtime</span>
+        <span class="arrow">→</span>
+        <span class="step" style="border-color:#2a3550;color:#5AA9EC">EVALUATION</span>
+        <span class="dim" style="color:#8c8c8c;font-size:10.5px">score handoff quality; catch loops &amp; drift</span>
+      </div>
+      <p style="margin-top:9px">A clean contract isn't just tidy — it's <b>testable</b>: you can assert that every handoff carried an objective, stayed in-scope, and escalated when it should. <span class="em">Good handoffs are how you evaluate a multi-agent system at all.</span></p>
+    </div>
+
+    <!-- 10 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">10</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Treat agent handoffs like <span class="em">API contracts for reasoning work</span> — explicit inputs, a typed output, and a rule for when to stop. Vague asks scale into chaos; signed work orders scale into teams.</div>
+      <div class="flow2">
+        <span class="step">Name the objective</span><span class="arrow">→</span>
+        <span class="step">Attach constraints + schema</span><span class="arrow">→</span>
+        <span class="step">Validate on receive</span><span class="arrow">→</span>
+        <span class="step">Escalate by rule</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

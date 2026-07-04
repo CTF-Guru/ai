@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAG — Retrieval-Augmented Generation · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="rag-poster.gif" download>GIF</a> · <a href="rag-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>HOW RAG <span class="b">WORKS</span></h1>
+  <div class="sub">Give the model YOUR facts <span class="dim">— retrieve, augment, generate</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 THE PROBLEM -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">01</div><div class="ctitle">The problem <span class="t2">— a bare LLM is confidently wrong</span></div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🧠</span><div><b>Answers from memory</b> — <span>it pattern-completes from training, not from a fact-store. It can <b>hallucinate</b> — fluent, plausible, wrong.</span></div></div>
+        <div class="gx"><span class="ic">📅</span><div><b>Frozen at the cutoff</b> — <span>training stopped on a date. It knows nothing newer — today's pricing, this week's policy.</span></div></div>
+        <div class="gx"><span class="ic">🔒</span><div><b>Blind to YOUR data</b> — <span>your private docs, wiki, tickets, codebase were never in its training set.</span></div></div>
+      </div>
+      <p style="margin-top:9px"><span class="em">The fix isn't a bigger model — it's giving it the right facts to read.</span></p>
+    </div>
+
+    <!-- 02 WHAT RAG IS -->
+    <div class="card c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">What RAG is <span class="t2">— read first, then answer</span></div></div>
+      <p style="margin-bottom:8px">Three verbs. The model <b>looks things up before it speaks</b> instead of answering from memory.</p>
+      <div class="steps">
+        <span class="step" style="border-color:#1d3a52;color:#5AA9EC">① Retrieve</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#4a3010;color:#FE9A3A">② Augment</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a1410;color:#FF5A4D">③ Generate</span>
+      </div>
+      <p style="margin-top:9px">Fetch the relevant facts → bolt them onto the prompt → let the model write a grounded answer. <span class="em">Knowledge and reasoning, kept separate.</span></p>
+    </div>
+
+    <!-- 03 INDEXING PIPELINE (offline) -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">03</div><div class="ctitle">The indexing pipeline <span class="t2">— offline · prepare your knowledge once</span></div></div>
+      <svg viewBox="0 0 1000 150" width="100%" style="display:block">
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <!-- 1 docs -->
+          <rect x="20" y="50" width="150" height="58" rx="10" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="95" y="40" text-anchor="middle" fill="#5AA9EC" font-size="12" font-weight="800">YOUR DOCUMENTS</text>
+          <text x="95" y="78" text-anchor="middle" fill="#fff" font-size="11">📄 wiki · PDFs · tickets</text>
+          <text x="95" y="95" text-anchor="middle" fill="#8c8c8c" font-size="10">code · policies</text>
+          <!-- 2 chunk -->
+          <rect x="270" y="50" width="150" height="58" rx="10" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="345" y="40" text-anchor="middle" fill="#3AD0B0" font-size="12" font-weight="800">CHUNK</text>
+          <g fill="#101010" stroke="#2b2b2b"><rect x="288" y="66" width="114" height="9" rx="2"/><rect x="288" y="79" width="114" height="9" rx="2"/><rect x="288" y="92" width="78" height="9" rx="2"/></g>
+          <text x="345" y="124" text-anchor="middle" fill="#8c8c8c" font-size="10">split into passages</text>
+          <!-- 3 embed -->
+          <rect x="520" y="50" width="150" height="58" rx="10" fill="#0c0c0c" stroke="#E9BF35"/>
+          <text x="595" y="40" text-anchor="middle" fill="#E9BF35" font-size="12" font-weight="800">EMBED</text>
+          <text x="595" y="76" text-anchor="middle" fill="#fff" font-size="11" font-family="SF Mono, monospace">[0.12, ‑0.84, …]</text>
+          <text x="595" y="124" text-anchor="middle" fill="#8c8c8c" font-size="10">text → vectors</text>
+          <!-- 4 store -->
+          <g>
+            <ellipse cx="845" cy="58" rx="48" ry="11" fill="#0c0c0c" stroke="#9B5DE5"/>
+            <path d="M797 58 V104 a48 11 0 0 0 96 0 V58" fill="#0c0c0c" stroke="#9B5DE5"/>
+            <ellipse cx="845" cy="58" rx="48" ry="11" fill="#150f22" stroke="#9B5DE5"/>
+            <text x="845" y="40" text-anchor="middle" fill="#9B5DE5" font-size="12" font-weight="800">VECTOR DB</text>
+            <text x="845" y="90" text-anchor="middle" fill="#fff" font-size="10.5">store + index</text>
+          </g>
+          <!-- arrows -->
+          <g stroke="#DADADA" stroke-width="1.6" fill="none" opacity=".5" marker-end="url(#ah3)">
+            <line x1="170" y1="79" x2="262" y2="79"/><line x1="420" y1="79" x2="512" y2="79"/><line x1="670" y1="79" x2="789" y2="79"/>
+          </g>
+          <!-- active flow: documents streaming through the indexing pipeline -->
+          <g fill="none" stroke="none">
+            <path id="rix1" d="M170,79 L262,79"/><path id="rix2" d="M420,79 L512,79"/><path id="rix3" d="M670,79 L789,79"/>
+          </g>
+          <circle r="3.6" fill="#E9BF35"><animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#rix1"/></animateMotion></circle>
+          <circle r="3.6" fill="#E9BF35"><animateMotion dur="1.2s" begin="-0.4s" repeatCount="indefinite"><mpath href="#rix2"/></animateMotion></circle>
+          <circle r="3.6" fill="#E9BF35"><animateMotion dur="1.2s" begin="-0.8s" repeatCount="indefinite"><mpath href="#rix3"/></animateMotion></circle>
+        </g>
+        <defs><marker id="ah3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#DADADA" opacity=".6"/></marker></defs>
+      </svg>
+      <p style="margin-top:8px">Done <b>ahead of time</b>, not per question. Add or change a doc → re-embed just that doc and it's searchable. <span class="em">The store holds the facts; the model never memorizes them.</span></p>
+    </div>
+
+    <!-- 04 QUERY PIPELINE (online) — animated traveling pulse -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">04</div><div class="ctitle">The query pipeline <span class="t2">— online · what happens on every question</span></div></div>
+      <svg viewBox="0 0 1000 168" width="100%" style="display:block">
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <!-- question -->
+          <rect x="16" y="62" width="132" height="44" rx="10" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="82" y="80" text-anchor="middle" fill="#3AD0B0" font-size="11.5" font-weight="800">QUESTION</text>
+          <text x="82" y="96" text-anchor="middle" fill="#bdbdbd" font-size="9.5">"today's pricing?"</text>
+          <!-- embed query -->
+          <rect x="190" y="62" width="118" height="44" rx="10" fill="#0c0c0c" stroke="#E9BF35"/>
+          <text x="249" y="80" text-anchor="middle" fill="#E9BF35" font-size="11" font-weight="800">EMBED QUERY</text>
+          <text x="249" y="96" text-anchor="middle" fill="#bdbdbd" font-size="9.5">→ a vector</text>
+          <!-- vector DB -->
+          <g>
+            <ellipse cx="404" cy="60" rx="42" ry="10" fill="#150f22" stroke="#9B5DE5"/>
+            <path d="M362 60 V108 a42 10 0 0 0 84 0 V60" fill="#0c0c0c" stroke="#9B5DE5"/>
+            <ellipse cx="404" cy="60" rx="42" ry="10" fill="#150f22" stroke="#9B5DE5"/>
+            <text x="404" y="46" text-anchor="middle" fill="#9B5DE5" font-size="11" font-weight="800">VECTOR DB</text>
+            <text x="404" y="92" text-anchor="middle" fill="#fff" font-size="9">similarity</text>
+            <text x="404" y="103" text-anchor="middle" fill="#fff" font-size="9">search</text>
+          </g>
+          <!-- top-k chunks -->
+          <rect x="500" y="50" width="120" height="68" rx="10" fill="#0c0c0c" stroke="#E9BF35"/>
+          <text x="560" y="42" text-anchor="middle" fill="#E9BF35" font-size="11" font-weight="800">TOP-K CHUNKS</text>
+          <g><rect x="514" y="58" width="92" height="14" rx="3" fill="#1a1305" stroke="#E9BF35"/><rect x="514" y="76" width="92" height="14" rx="3" fill="#1a1305" stroke="#E9BF35"/><rect x="514" y="94" width="92" height="14" rx="3" fill="#1a1305" stroke="#E9BF35"/></g>
+          <!-- augment -->
+          <rect x="672" y="62" width="120" height="44" rx="10" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <text x="732" y="80" text-anchor="middle" fill="#FE9A3A" font-size="11" font-weight="800">AUGMENT</text>
+          <text x="732" y="96" text-anchor="middle" fill="#bdbdbd" font-size="9.5">question + facts</text>
+          <!-- generate -->
+          <rect x="844" y="62" width="120" height="44" rx="10" fill="#0c0c0c" stroke="#FF5A4D"/>
+          <text x="904" y="80" text-anchor="middle" fill="#FF5A4D" font-size="11" font-weight="800">GENERATE</text>
+          <text x="904" y="96" text-anchor="middle" fill="#81BB42" font-size="9.5">grounded ✓ cited</text>
+
+          <!-- connecting paths (carry the pulse) -->
+          <g id="ragflow" stroke="#5AA9EC" stroke-width="1.7" fill="none" opacity=".55">
+            <path id="q1" d="M148 84 L188 84"/>
+            <path id="q2" d="M308 84 L360 78"/>
+            <path id="q3" d="M448 78 L498 84"/>
+            <path id="q4" d="M620 84 L670 84"/>
+            <path id="q5" d="M792 84 L842 84"/>
+          </g>
+        </g>
+        <!-- traveling pulse: question → … → generate, then repeats -->
+        <circle r="4" fill="#E9BF35">
+          <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0;0.18;1" calcMode="linear"><mpath href="#q1"/></animateMotion>
+        </circle>
+        <circle r="4" fill="#E9BF35">
+          <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.18;0.36;1" calcMode="linear"><mpath href="#q2"/></animateMotion>
+        </circle>
+        <circle r="4" fill="#E9BF35">
+          <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.40;0.58;1" calcMode="linear"><mpath href="#q3"/></animateMotion>
+        </circle>
+        <circle r="4" fill="#FE9A3A">
+          <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.60;0.74;1" calcMode="linear"><mpath href="#q4"/></animateMotion>
+        </circle>
+        <circle r="4" fill="#FF5A4D">
+          <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.76;0.92;1" calcMode="linear"><mpath href="#q5"/></animateMotion>
+        </circle>
+      </svg>
+      <p style="margin-top:8px">Embed the question → find the nearest chunks → paste them into the prompt → the LLM answers from <b>those</b> passages, and can <span class="em">cite its sources</span>.</p>
+    </div>
+
+    <!-- 05 EMBEDDINGS & VECTOR SEARCH -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Embeddings & vector search</div></div>
+      <p style="margin-bottom:7px">Text becomes a <b>vector</b> — coordinates in "meaning space". Close vectors = close meaning. You search by <span class="em">meaning, not keywords</span>.</p>
+      <svg viewBox="0 0 460 120" width="100%" style="display:block">
+        <rect x="2" y="2" width="456" height="116" rx="9" fill="#0c0c0c" stroke="#2b2b2b"/>
+        <g stroke="#1f1f1f" stroke-width="1"><line x1="30" y1="100" x2="440" y2="100"/><line x1="30" y1="16" x2="30" y2="100"/></g>
+        <!-- query point -->
+        <circle cx="150" cy="55" r="5.5" fill="#E9BF35"/><text x="150" y="44" text-anchor="middle" fill="#E9BF35" font-size="10" font-weight="700" font-family="Century Gothic, sans-serif">query</text>
+        <!-- near (relevant) cluster -->
+        <g fill="#5AA9EC"><circle cx="120" cy="72" r="4.5"/><circle cx="178" cy="74" r="4.5"/><circle cx="158" cy="84" r="4.5"/></g>
+        <!-- similarity radius -->
+        <circle cx="150" cy="55" r="40" fill="none" stroke="#3AD0B0" stroke-dasharray="4 4" opacity=".8"/>
+        <text x="150" y="112" text-anchor="middle" fill="#3AD0B0" font-size="9.5" font-family="Century Gothic, sans-serif">cosine-similar = retrieved</text>
+        <!-- far (irrelevant) -->
+        <g fill="#555"><circle cx="370" cy="35" r="4.5"/><circle cx="400" cy="60" r="4.5"/><circle cx="350" cy="80" r="4.5"/></g>
+        <text x="378" y="100" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-family="Century Gothic, sans-serif">far = ignored</text>
+      </svg>
+    </div>
+
+    <!-- 06 + 07 paired halves: CHUNKING / RERANKING -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">06</div><div class="ctitle">Chunking</div></div>
+      <p>Split docs into passages with the right <b>size + overlap</b>. The dial everyone gets wrong:</p>
+      <div class="gotchas" style="margin-top:7px">
+        <div class="gx"><span class="ic">🧱</span><div><b>Too big</b> — <span>noise drowns the answer; the model loses the thread.</span></div></div>
+        <div class="gx"><span class="ic">🔪</span><div><b>Too small</b> — <span>context gets cut; a fact is split across chunks.</span></div></div>
+      </div>
+      <p style="margin-top:8px"><span class="em">Semantic chunking</span> — cut on meaning (headings, topics), not a blind character count.</p>
+    </div>
+
+    <div class="card c-green">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Reranking</div></div>
+      <p>Similarity search is fast but rough. A <b>reranker</b> takes the top-k and <b>re-scores</b> them so the <span class="em">best evidence</span> reaches the model first.</p>
+      <div class="steps" style="margin-top:8px">
+        <span class="step">top-20 (rough)</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">rerank</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#244a1a;color:#81BB42">top-5 (best)</span>
+      </div>
+      <p style="margin-top:8px">A cheap second pass that lifts answer quality a lot — fewer, sharper chunks beat many fuzzy ones.</p>
+    </div>
+
+    <!-- 08 AGENTIC RAG -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Agentic RAG <span class="t2">— retrieval becomes a reasoning loop, not one shot</span></div></div>
+      <p style="margin-bottom:8px">Put RAG <b>inside an agent loop</b>: the agent rewrites the query, retrieves, checks whether it has enough, and retrieves again until it can answer.</p>
+      <div class="steps">
+        <span class="step" style="border-color:#1d3a52;color:#5AA9EC">rewrite query</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1a4038;color:#3AD0B0">retrieve</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#4a3010;color:#FE9A3A">gap? missing info</span><span class="arrow">↺</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">multi-step retrieve</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#244a1a;color:#81BB42">answer</span>
+      </div>
+      <p style="margin-top:9px">One-shot RAG retrieves <b>once</b> and hopes. Agentic RAG <span class="em">keeps pulling threads</span> until the evidence is complete — at the cost of more calls.</p>
+    </div>
+
+    <!-- 09 GOTCHAS -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">09</div><div class="ctitle">What nobody tells you <span class="t2">— where RAG quietly fails</span></div></div>
+      <div class="gotchas" style="grid-template-columns:1fr 1fr; column-gap:22px">
+        <div class="gx"><span class="ic">🎯</span><div><b>Wrong source retrieved</b> — <span>the right answer exists but the search missed it. Garbage in → confident garbage out.</span></div></div>
+        <div class="gx"><span class="ic">🕰️</span><div><b>Stale embeddings</b> — <span>docs changed, the index didn't. <b>Re-index when content changes.</b></span></div></div>
+        <div class="gx"><span class="ic">🔑</span><div><b>Missing access control</b> — <span>retrieval can surface docs a user shouldn't see. Filter by permission first.</span></div></div>
+        <div class="gx"><span class="ic">📊</span><div><b>Weak reranking</b> — <span>good chunk buried at rank 15 never reaches the model.</span></div></div>
+        <div class="gx"><span class="ic">🌊</span><div><b>Context overload</b> — <span>too many chunks → "lost in the middle"; the answer drowns.</span></div></div>
+        <div class="gx"><span class="ic">🧪</span><div><b>Hallucinated synthesis</b> — <span>chunks are right; the model still stitches a wrong claim across them.</span></div></div>
+        <div class="gx"><span class="ic">♾️</span><div><b>Retrieval-loop explosion</b> — <span>agentic RAG re-queries forever. Cap the steps.</span></div></div>
+        <div class="gx"><span class="ic">☠️</span><div><b>Context contamination</b> — <span>an untrusted retrieved doc carries an injected instruction. Treat retrieved text as data, not commands.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 10 COMPARISON -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">10</div><div class="ctitle">RAG vs fine-tuning vs long-context</div></div>
+      <table>
+        <tr><th>Approach</th><th>Best for</th><th>Facts fresh?</th><th>Cost to update</th><th>Citations</th></tr>
+        <tr><td class="k">RAG</td><td>current · private · citable facts</td><td class="win">Live</td><td class="win">Edit a doc</td><td class="win">Yes</td></tr>
+        <tr><td class="k">Fine-tuning</td><td>style · format · a skill</td><td class="no">Baked in</td><td class="no">Retrain</td><td class="no">No</td></tr>
+        <tr><td class="k">Long-context</td><td>one big doc, ad-hoc</td><td>Per prompt</td><td>Re-paste</td><td>Weak</td></tr>
+      </table>
+      <p style="margin-top:8px">Fine-tuning teaches <b>how to behave</b>, not <b>what's true today</b>. Long-context is simple but pricey and "loses the middle". <span class="em">For current, private, citable facts → reach for RAG.</span></p>
+    </div>
+
+    <!-- 11 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">11</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">RAG <span class="em">separates the knowledge from the reasoning</span>. The knowledge base holds the facts; the model supplies the explanation. Change a document → instantly current, <span class="em">no retraining</span>.</div>
+      <div class="flow2">
+        <span class="step">Retrieve</span><span class="arrow">→</span>
+        <span class="step">Augment</span><span class="arrow">→</span>
+        <span class="step">Generate</span><span class="arrow">→</span>
+        <span class="step">Cite</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

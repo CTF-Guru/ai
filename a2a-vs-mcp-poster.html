@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A2A vs MCP · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="a2a-vs-mcp-poster.gif" download>GIF</a> · <a href="a2a-vs-mcp-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>A2A <span class="b">vs</span> MCP</h1>
+  <div class="sub" style="margin-top:2px">Agent-to-agent vs agent-to-tool <span class="dim">— two different jobs, and they're complementary, not rivals</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 CORE MESSAGE -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">01</div><div class="ctitle">The one-line answer <span class="t2">— different layers of the same stack</span></div></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:11px; align-items:stretch">
+        <div class="mini" style="border-color:#2a3550">
+          <h4 style="color:#5AA9EC">🤝 A2A — agents collaborate</h4>
+          <p>An agent <b>delegates a task</b> to another agent and gets a result back. The unit of work is a <span class="em">task</span> handed between peers.</p>
+        </div>
+        <div class="mini" style="border-color:#1f3a2c">
+          <h4 style="color:#3AD0B0">🔌 MCP — agents connect to tools</h4>
+          <p>One agent <b>calls a tool</b> or reads context — calendar, DB, files, search. The unit of work is a <span class="em">tool call</span> to a system.</p>
+        </div>
+      </div>
+      <p style="margin-top:6px" class="lead"><b>A2A helps agents collaborate. MCP helps an agent connect to its tools and context.</b> Most real systems use both — A2A between the agents, MCP inside each one.</p>
+    </div>
+
+    <!-- 02 SPLIT-SCREEN DIAGRAM -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">02</div><div class="ctitle">Side by side <span class="t2">— A2A passes a task between peers · MCP calls a tool and gets a result</span></div></div>
+      <svg viewBox="0 0 1000 158" width="100%" style="display:block">
+        <!-- ===== LEFT: A2A — agents collaborate ===== -->
+        <text x="20" y="16" fill="#5AA9EC" font-size="13" font-weight="700" font-family="Century Gothic, sans-serif">A2A — agent ⇄ agent (peers exchange a task)</text>
+        <g font-family="Century Gothic, sans-serif" font-size="11" font-weight="700">
+          <!-- three peer agents in a row -->
+          <rect x="26"  y="78" width="104" height="50" rx="11" fill="#0c0c0c" stroke="#5AA9EC" stroke-width="1.4"/>
+          <text x="78"  y="100" text-anchor="middle" fill="#fff" font-size="12">Agent A</text>
+          <text x="78"  y="116" text-anchor="middle" fill="#8c8c8c" font-size="9.5">planner</text>
+          <rect x="186" y="78" width="104" height="50" rx="11" fill="#0c0c0c" stroke="#3AD0B0" stroke-width="1.4"/>
+          <text x="238" y="100" text-anchor="middle" fill="#fff" font-size="12">Agent B</text>
+          <text x="238" y="116" text-anchor="middle" fill="#8c8c8c" font-size="9.5">research</text>
+          <rect x="346" y="78" width="104" height="50" rx="11" fill="#0c0c0c" stroke="#9B5DE5" stroke-width="1.4"/>
+          <text x="398" y="100" text-anchor="middle" fill="#fff" font-size="12">Agent C</text>
+          <text x="398" y="116" text-anchor="middle" fill="#8c8c8c" font-size="9.5">reviewer</text>
+          <!-- connecting rails between peers -->
+          <path id="a2a1" d="M130 96 L186 96" stroke="#5AA9EC" stroke-width="1.6" fill="none"/>
+          <path id="a2a2" d="M290 110 L346 110" stroke="#3AD0B0" stroke-width="1.6" fill="none"/>
+          <line x1="130" y1="110" x2="186" y2="110" stroke="#2b2b2b" stroke-width="1"/>
+          <line x1="290" y1="96"  x2="346" y2="96"  stroke="#2b2b2b" stroke-width="1"/>
+          <!-- animated task token hopping A → B (handoff) -->
+          <g>
+            <rect x="-19" y="-9" width="38" height="18" rx="5" fill="#1a1305" stroke="#E9BF35" stroke-width="1.3"/>
+            <text x="0" y="4" text-anchor="middle" fill="#E9BF35" font-size="9" font-weight="800" font-family="Century Gothic, sans-serif">task</text>
+            <animateMotion dur="2.6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear"><mpath href="#a2a1"/></animateMotion>
+          </g>
+          <!-- animated result token returning B → A -->
+          <g>
+            <rect x="-22" y="-9" width="44" height="18" rx="5" fill="#0e1a12" stroke="#81BB42" stroke-width="1.3"/>
+            <text x="0" y="4" text-anchor="middle" fill="#81BB42" font-size="9" font-weight="800" font-family="Century Gothic, sans-serif">result</text>
+            <animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear"><mpath href="#a2a2"/></animateMotion>
+          </g>
+          <text x="238" y="140" text-anchor="middle" fill="#bdbdbd" font-size="10.5">request · status · result — exchanged between peers</text>
+          <text x="238" y="153" text-anchor="middle" fill="#5AA9EC" font-size="10.5" font-weight="700">no one agent sees inside another</text>
+        </g>
+
+        <!-- divider -->
+        <line x1="500" y1="34" x2="500" y2="150" stroke="#2b2b2b" stroke-width="1" stroke-dasharray="3 5"/>
+
+        <!-- ===== RIGHT: MCP — agent → tools ===== -->
+        <text x="540" y="16" fill="#3AD0B0" font-size="13" font-weight="700" font-family="Century Gothic, sans-serif">MCP — agent → tools &amp; context (one agent, many tools)</text>
+        <g font-family="Century Gothic, sans-serif" font-size="11" font-weight="700">
+          <!-- single agent on the left -->
+          <rect x="540" y="78" width="118" height="50" rx="11" fill="#0c0c0c" stroke="#3AD0B0" stroke-width="1.4"/>
+          <text x="599" y="100" text-anchor="middle" fill="#fff" font-size="12">one agent</text>
+          <text x="599" y="116" text-anchor="middle" fill="#8c8c8c" font-size="9.5">via MCP client</text>
+          <!-- four tools fanned out on the right -->
+          <rect x="852" y="40"  width="128" height="26" rx="7" fill="#0c0c0c" stroke="#FE9A3A"/><text x="916" y="57"  text-anchor="middle" fill="#fff" font-size="10.5">📅 calendar</text>
+          <rect x="852" y="74"  width="128" height="26" rx="7" fill="#0c0c0c" stroke="#5AA9EC"/><text x="916" y="91"  text-anchor="middle" fill="#fff" font-size="10.5">🗄️ database</text>
+          <rect x="852" y="108" width="128" height="26" rx="7" fill="#0c0c0c" stroke="#9B5DE5"/><text x="916" y="125" text-anchor="middle" fill="#fff" font-size="10.5">📁 files</text>
+          <rect x="852" y="142" width="128" height="26" rx="7" fill="#0c0c0c" stroke="#81BB42"/><text x="916" y="159" text-anchor="middle" fill="#fff" font-size="10.5">🔍 search</text>
+          <!-- spokes from agent to each tool -->
+          <g stroke="#3AD0B0" stroke-width="1.4" fill="none" opacity=".85">
+            <path id="mcp1" d="M658 95 L852 53"/>
+            <path id="mcp2" d="M658 100 L852 87"/>
+            <path id="mcp3" d="M658 106 L852 121"/>
+            <path id="mcp4" d="M658 111 L852 155"/>
+          </g>
+          <!-- animated call going out + result coming back on tool #2 (database) -->
+          <circle r="3.6" fill="#E9BF35"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#mcp2"/></animateMotion></circle>
+          <circle r="3.6" fill="#81BB42"><animateMotion dur="2.4s" begin="1.2s" keyPoints="1;0" keyTimes="0;1" calcMode="linear" repeatCount="indefinite"><mpath href="#mcp2"/></animateMotion></circle>
+          <!-- subtle pulses on the other spokes -->
+          <circle r="3" fill="#3AD0B0" opacity=".75"><animateMotion dur="2.4s" begin=".4s" repeatCount="indefinite"><mpath href="#mcp1"/></animateMotion></circle>
+          <circle r="3" fill="#3AD0B0" opacity=".75"><animateMotion dur="2.4s" begin=".8s" repeatCount="indefinite"><mpath href="#mcp4"/></animateMotion></circle>
+          <text x="755" y="140" text-anchor="middle" fill="#bdbdbd" font-size="10.5">call a tool → get a result → use it</text>
+          <text x="755" y="153" text-anchor="middle" fill="#3AD0B0" font-size="10.5" font-weight="700">the agent drives; tools are passive</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 03 USE A2A WHEN -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Use A2A when</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🤝</span><div><b>Multiple agents must coordinate</b> — <span>they negotiate, delegate, and divide the work between them.</span></div></div>
+        <div class="gx"><span class="ic">🏢</span><div><b>Different teams / vendors / frameworks</b> — <span>agents built on separate stacks need one shared language.</span></div></div>
+        <div class="gx"><span class="ic">📦</span><div><b>Tasks need handoff + status + result</b> — <span>work passes between peers and you track its state across the hop.</span></div></div>
+      </div>
+      <p style="margin-top:6px"><span class="em">Think: a team of specialists passing work to each other.</span></p>
+    </div>
+
+    <!-- 04 USE MCP WHEN -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Use MCP when</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔌</span><div><b>An app needs external data or actions</b> — <span>tools, resources, prompts, or workflows beyond the model itself.</span></div></div>
+        <div class="gx"><span class="ic">♻️</span><div><b>You want reusable connectors</b> — <span>build a tool once, every MCP-aware agent can use it.</span></div></div>
+        <div class="gx"><span class="ic">🧩</span><div><b>You need a standard tool interface</b> — <span>one protocol for context &amp; tools instead of bespoke glue.</span></div></div>
+      </div>
+      <p style="margin-top:6px"><span class="em">Think: a standard plug between one agent and its toolbox.</span></p>
+    </div>
+
+    <!-- 05 TOGETHER -->
+    <div class="card span2 c-green">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Together <span class="t2">— A2A between the agents, MCP inside each one</span></div></div>
+      <svg viewBox="0 0 1000 124" width="100%" style="display:block">
+        <!-- Agent A -->
+        <rect x="30" y="46" width="200" height="64" rx="12" fill="#0c0c0c" stroke="#5AA9EC" stroke-width="1.4"/>
+        <text x="130" y="39" text-anchor="middle" fill="#5AA9EC" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">Agent A</text>
+        <g font-family="Century Gothic, sans-serif" font-size="10" font-weight="700">
+          <rect x="44" y="62" width="78" height="20" rx="6" fill="#101010" stroke="#1f3a2c"/><text x="83" y="76" text-anchor="middle" fill="#3AD0B0">MCP → DB</text>
+          <rect x="138" y="62" width="78" height="20" rx="6" fill="#101010" stroke="#1f3a2c"/><text x="177" y="76" text-anchor="middle" fill="#3AD0B0">MCP → files</text>
+          <text x="130" y="100" text-anchor="middle" fill="#8c8c8c" font-size="9.5">uses its own tools via MCP</text>
+        </g>
+        <!-- A2A handshake in the middle -->
+        <path id="t1" d="M230 70 L520 70" stroke="#E9BF35" stroke-width="1.8" fill="none"/>
+        <path id="t2" d="M520 86 L230 86" stroke="#E9BF35" stroke-width="1.8" fill="none" opacity=".55"/>
+        <rect x="338" y="20" width="84" height="22" rx="7" fill="#1a1305" stroke="#E9BF35" stroke-width="1.4"/>
+        <text x="380" y="35" text-anchor="middle" fill="#E9BF35" font-size="11" font-weight="800" font-family="Century Gothic, sans-serif">A2A task</text>
+        <!-- token A → B along A2A -->
+        <g>
+          <rect x="-20" y="-9" width="40" height="18" rx="5" fill="#1a1305" stroke="#E9BF35" stroke-width="1.3"/>
+          <text x="0" y="4" text-anchor="middle" fill="#E9BF35" font-size="9" font-weight="800" font-family="Century Gothic, sans-serif">task</text>
+          <animateMotion dur="3s" repeatCount="indefinite"><mpath href="#t1"/></animateMotion>
+        </g>
+        <!-- result B → A -->
+        <g>
+          <rect x="-22" y="-9" width="44" height="18" rx="5" fill="#0e1a12" stroke="#81BB42" stroke-width="1.3"/>
+          <text x="0" y="4" text-anchor="middle" fill="#81BB42" font-size="9" font-weight="800" font-family="Century Gothic, sans-serif">result</text>
+          <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite"><mpath href="#t2"/></animateMotion>
+        </g>
+        <!-- Agent B -->
+        <rect x="520" y="46" width="200" height="64" rx="12" fill="#0c0c0c" stroke="#9B5DE5" stroke-width="1.4"/>
+        <text x="620" y="39" text-anchor="middle" fill="#9B5DE5" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">Agent B</text>
+        <g font-family="Century Gothic, sans-serif" font-size="10" font-weight="700">
+          <rect x="534" y="62" width="86" height="20" rx="6" fill="#101010" stroke="#1f3a2c"/><text x="577" y="76" text-anchor="middle" fill="#3AD0B0">MCP → search</text>
+          <rect x="630" y="62" width="78" height="20" rx="6" fill="#101010" stroke="#1f3a2c"/><text x="669" y="76" text-anchor="middle" fill="#3AD0B0">MCP → API</text>
+          <text x="620" y="100" text-anchor="middle" fill="#8c8c8c" font-size="9.5">uses its own tools via MCP</text>
+        </g>
+        <!-- annotation on the right -->
+        <g font-family="Century Gothic, sans-serif">
+          <text x="755" y="58" fill="#E9BF35" font-size="11" font-weight="800">A2A</text><text x="800" y="58" fill="#bdbdbd" font-size="10.5">= the link between agents</text>
+          <text x="755" y="78" fill="#3AD0B0" font-size="11" font-weight="800">MCP</text><text x="800" y="78" fill="#bdbdbd" font-size="10.5">= each agent's link to tools</text>
+          <text x="755" y="100" fill="#8c8c8c" font-size="10">two protocols, two jobs,</text>
+          <text x="755" y="114" fill="#8c8c8c" font-size="10">one working system</text>
+        </g>
+      </svg>
+      <p style="margin-top:6px">Agent A talks to Agent B through <b style="color:#E9BF35">A2A</b>; each agent reaches its own tools through <b style="color:#3AD0B0">MCP</b>. <span class="em">They stack — they don't compete.</span></p>
+    </div>
+
+    <!-- 06 COMPARISON TABLE -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The comparison <span class="t2">— same questions, two different answers</span></div></div>
+      <table>
+        <tr><th>Dimension</th><th>A2A</th><th>MCP</th></tr>
+        <tr><td class="k">Connects an agent to…</td><td class="win">other agents (peers)</td><td>tools, data &amp; context</td></tr>
+        <tr><td class="k">Unit of work</td><td class="win">a delegated task</td><td>a tool call / resource read</td></tr>
+        <tr><td class="k">Relationship</td><td class="win">peer ⇄ peer</td><td>caller → tool (driver/passive)</td></tr>
+        <tr><td class="k">Visibility</td><td class="win">opaque — capabilities only</td><td>tools &amp; schemas are exposed</td></tr>
+        <tr><td class="k">Discovery via</td><td class="win">Agent Card (/.well-known)</td><td>tools/list on the server</td></tr>
+        <tr><td class="k">"USB-C for…"</td><td class="win">teamwork</td><td>tools</td></tr>
+        <tr><td class="k">Originated by</td><td class="win">Google → Linux Foundation</td><td>Anthropic, open-sourced</td></tr>
+      </table>
+      <p style="margin-top:6px"><span class="em">Both ride JSON-RPC 2.0 — the difference is who's on the other end: a peer agent, or a tool.</span></p>
+    </div>
+
+    <!-- 07 THE COMMON TRAP -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">07</div><div class="ctitle">The common trap</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">⚠️</span><div><b>Don't confuse a tool call with peer collaboration.</b> <span>Calling an MCP tool is not the same as delegating to an agent that reasons, plans, and can push back.</span></div></div>
+        <div class="gx"><span class="ic">🚫</span><div><b>Don't fake A2A with tools.</b> <span>Wrapping another agent as "just a tool" loses status, async progress, and the security boundary peers give you.</span></div></div>
+        <div class="gx"><span class="ic">🏷️</span><div><b>Don't call everything an "agent".</b> <span>A passive tool that returns data isn't a collaborating peer — name the layer you're actually on.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 08 HOW TO CHOOSE -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Quick decision <span class="t2">— ask one question</span></div></div>
+      <p style="margin-bottom:7px">Is the thing on the other end <b>a peer that reasons</b>, or <b>a tool that responds</b>?</p>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🤝</span><div><b>Reasons &amp; can push back</b> → <span class="em">A2A</span> <span>— delegate a task to it.</span></div></div>
+        <div class="gx"><span class="ic">🔧</span><div><b>Executes a function &amp; returns</b> → <span class="em">MCP</span> <span>— call it as a tool.</span></div></div>
+      </div>
+      <p style="margin-top:6px"><span class="dim" style="color:#8c8c8c">Need both? Most agentic systems do — that's normal, not a smell.</span></p>
+    </div>
+
+    <!-- 09 BUILDER TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Builder takeaway</div></div>
+      <div class="big">MCP gives an agent its <span class="em">hands</span>; A2A lets agents work as a <span class="em">team</span>. Pick by the other end — a tool, or a peer — and reach for both when the system needs both.</div>
+      <div class="flow2">
+        <span class="step">Give each agent its tools (MCP)</span><span class="arrow">→</span>
+        <span class="step">Connect the agents (A2A)</span><span class="arrow">→</span>
+        <span class="step">Delegate &amp; collaborate</span>
+      </div>
+    </div>
+
+    <!-- 10 AI SDLC PLACEMENT -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">10</div><div class="ctitle">Where it sits in the AI SDLC</div></div>
+      <div class="steps">
+        <span class="step" style="border-color:#2a3550;color:#5AA9EC">Architecture</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Orchestration</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1f3a2c;color:#3AD0B0">Integration</span>
+      </div>
+      <p style="margin-top:6px"><b>Architecture</b> decides which capabilities are peers vs tools · <b>Orchestration</b> wires the agents together with A2A · <b>Integration</b> connects each agent to its tools &amp; context with MCP.</p>
+    </div>
+
+    <!-- 11 ACCURACY NOTE -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">11</div><div class="ctitle">Reading note <span class="t2">— A2A is young; verify before you quote</span></div></div>
+      <div class="gotchas" style="grid-template-columns:1fr 1fr; column-gap:18px">
+        <div class="gx"><span class="ic">📐</span><div><b>Version-sensitive</b> — <span>A2A is evolving fast; method names, the Agent Card path &amp; states can change. Check the current spec: <b>github.com/a2aproject/A2A</b>.</span></div></div>
+        <div class="gx"><span class="ic">🧭</span><div><b>Governance</b> — <span>announced by Google (Apr 2025), donated to the <b>Linux Foundation</b> for vendor-neutral stewardship.</span></div></div>
+        <div class="gx"><span class="ic">🔌</span><div><b>MCP baseline</b> — <span>open-sourced by Anthropic; the de-facto agent-to-tool standard. See <b>modelcontextprotocol.io</b>.</span></div></div>
+        <div class="gx"><span class="ic">✅</span><div><b>Stable idea</b> — <span>the <i>roles</i> here — peer-collaboration vs tool-access — are durable even as the protocol details move.</span></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

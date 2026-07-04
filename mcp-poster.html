@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP — Model Context Protocol · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="mcp-poster.gif" download>GIF</a> · <a href="mcp-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>MODEL CONTEXT <span class="b">PROTOCOL</span></h1>
+  <div class="sub">The universal interface for AI tools <span class="dim">— from zero to plumbing, the whole architecture on one page</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 PROBLEM -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">01</div><div class="ctitle">The problem MCP solves <span class="t2">— N×M integrations → N+M</span></div></div>
+      <svg viewBox="0 0 1000 188" width="100%" style="display:block">
+        <!-- BEFORE -->
+        <text x="20" y="16" fill="#FF5A4D" font-size="13" font-weight="700" font-family="var(--font)">BEFORE — every tool wired to every model</text>
+        <g font-size="11" font-weight="700" font-family="Century Gothic, sans-serif">
+          <!-- left models -->
+          <g fill="#e7e7e7">
+            <rect x="20" y="34" width="78" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="59" y="50" text-anchor="middle" fill="#fff">GPT</text>
+            <rect x="20" y="66" width="78" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="59" y="82" text-anchor="middle" fill="#fff">Claude</text>
+            <rect x="20" y="98" width="78" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="59" y="114" text-anchor="middle" fill="#fff">Gemini</text>
+            <rect x="20" y="130" width="78" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="59" y="146" text-anchor="middle" fill="#fff">Llama</text>
+          </g>
+          <!-- right tools -->
+          <g>
+            <rect x="360" y="34" width="78" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="399" y="50" text-anchor="middle" fill="#fff">DB</text>
+            <rect x="360" y="66" width="78" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="399" y="82" text-anchor="middle" fill="#fff">API</text>
+            <rect x="360" y="98" width="78" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="399" y="114" text-anchor="middle" fill="#fff">Files</text>
+            <rect x="360" y="130" width="78" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="399" y="146" text-anchor="middle" fill="#fff">Slack</text>
+          </g>
+          <!-- mess of lines -->
+          <g class="mess" stroke="#FF5A4D" stroke-width="1.1" fill="none">
+            <line x1="98" y1="46" x2="360" y2="46"/><line x1="98" y1="46" x2="360" y2="78"/><line x1="98" y1="46" x2="360" y2="110"/><line x1="98" y1="46" x2="360" y2="142"/>
+            <line x1="98" y1="78" x2="360" y2="46"/><line x1="98" y1="78" x2="360" y2="110"/><line x1="98" y1="78" x2="360" y2="142"/>
+            <line x1="98" y1="110" x2="360" y2="46"/><line x1="98" y1="110" x2="360" y2="78"/><line x1="98" y1="110" x2="360" y2="142"/>
+            <line x1="98" y1="142" x2="360" y2="46"/><line x1="98" y1="142" x2="360" y2="78"/><line x1="98" y1="142" x2="360" y2="110"/>
+          </g>
+          <!-- BEFORE: chaotic packets zipping across the tangle -->
+          <g fill="none" stroke="none">
+            <path id="mcpb1" d="M98,46 L360,142"/><path id="mcpb2" d="M98,142 L360,46"/><path id="mcpb3" d="M98,110 L360,46"/>
+          </g>
+          <circle r="2.8" fill="#FF5A4D"><animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#mcpb1"/></animateMotion></circle>
+          <circle r="2.8" fill="#FF5A4D"><animateMotion dur="1.2s" begin="-0.4s" repeatCount="indefinite"><mpath href="#mcpb2"/></animateMotion></circle>
+          <circle r="2.8" fill="#FF5A4D"><animateMotion dur="1.2s" begin="-0.8s" repeatCount="indefinite"><mpath href="#mcpb3"/></animateMotion></circle>
+          <text x="229" y="178" text-anchor="middle" fill="#FF5A4D" font-size="12">N × M custom connectors 🔥</text>
+        </g>
+        <!-- divider arrow -->
+        <text x="500" y="100" text-anchor="middle" fill="#E9BF35" font-size="30" font-weight="800">→</text>
+        <!-- AFTER -->
+        <text x="560" y="16" fill="#81BB42" font-size="13" font-weight="700" font-family="Century Gothic, sans-serif">WITH MCP — one standard plug in the middle</text>
+        <g font-size="11" font-weight="700" font-family="Century Gothic, sans-serif">
+          <g>
+            <rect x="560" y="34" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="597" y="50" text-anchor="middle" fill="#fff">GPT</text>
+            <rect x="560" y="66" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="597" y="82" text-anchor="middle" fill="#fff">Claude</text>
+            <rect x="560" y="98" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="597" y="114" text-anchor="middle" fill="#fff">Gemini</text>
+            <rect x="560" y="130" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="597" y="146" text-anchor="middle" fill="#fff">Llama</text>
+          </g>
+          <!-- hub -->
+          <rect x="726" y="74" width="70" height="40" rx="9" fill="#1a1305" stroke="#E9BF35" stroke-width="1.6"/>
+          <text x="761" y="99" text-anchor="middle" fill="#E9BF35" font-size="14" font-weight="800">MCP</text>
+          <g>
+            <rect x="906" y="34" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="943" y="50" text-anchor="middle" fill="#fff">DB</text>
+            <rect x="906" y="66" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="943" y="82" text-anchor="middle" fill="#fff">API</text>
+            <rect x="906" y="98" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="943" y="114" text-anchor="middle" fill="#fff">Files</text>
+            <rect x="906" y="130" width="74" height="24" rx="6" fill="#0c0c0c" stroke="#2b2b2b"/><text x="943" y="146" text-anchor="middle" fill="#fff">Slack</text>
+          </g>
+          <g stroke="#E9BF35" stroke-width="1.4" fill="none" opacity=".85">
+            <line class="spoke" x1="634" y1="46" x2="726" y2="92"/><line class="spoke" x1="634" y1="78" x2="726" y2="94"/>
+            <line class="spoke" x1="634" y1="110" x2="726" y2="96"/><line class="spoke" x1="634" y1="142" x2="726" y2="98"/>
+            <line class="spoke" x1="796" y1="92" x2="906" y2="46"/><line class="spoke" x1="796" y1="94" x2="906" y2="78"/>
+            <line class="spoke" x1="796" y1="96" x2="906" y2="110"/><line class="spoke" x1="796" y1="98" x2="906" y2="142"/>
+          </g>
+          <!-- AFTER: one clean flow model → MCP hub → tool -->
+          <g fill="none" stroke="none">
+            <path id="mcpf1" d="M634,46 L726,92 L796,94 L906,46"/>
+            <path id="mcpf2" d="M634,110 L726,96 L796,96 L906,110"/>
+            <path id="mcpf3" d="M634,142 L726,98 L796,98 L906,142"/>
+          </g>
+          <circle r="3.2" fill="#E9BF35"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#mcpf1"/></animateMotion></circle>
+          <circle r="3.2" fill="#E9BF35"><animateMotion dur="2.4s" begin="-0.8s" repeatCount="indefinite"><mpath href="#mcpf2"/></animateMotion></circle>
+          <circle r="3.2" fill="#E9BF35"><animateMotion dur="2.4s" begin="-1.6s" repeatCount="indefinite"><mpath href="#mcpf3"/></animateMotion></circle>
+          <text x="770" y="178" text-anchor="middle" fill="#81BB42" font-size="12">N + M · build a connector once ✓</text>
+        </g>
+      </svg>
+      <p style="margin-top:9px" class="lead">One protocol to connect them all. Less custom glue, more building.</p>
+    </div>
+
+    <!-- 02 TIMELINE -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">When it arrived <span class="t2">— zero to de-facto standard in ~18 months</span></div></div>
+      <svg viewBox="0 0 1000 96" width="100%" style="display:block">
+        <line x1="20" y1="34" x2="980" y2="34" stroke="#2b2b2b" stroke-width="2"/>
+        <!-- adoption sweep: a comet travelling the timeline left → right -->
+        <path id="mcptl" d="M20,34 L980,34" fill="none" stroke="none"/>
+        <circle r="6" fill="#E9BF35" opacity=".28"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#mcptl"/></animateMotion></circle>
+        <circle r="3.4" fill="#fff"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#mcptl"/></animateMotion></circle>
+        <g font-family="Century Gothic, sans-serif">
+          <!-- nodes -->
+          <g><circle class="tlDot" cx="80" cy="34" r="6" fill="#E9BF35" style="animation-delay:0s"/>
+            <text x="80" y="20" text-anchor="middle" fill="#E9BF35" font-size="12" font-weight="800">Nov 2024</text>
+            <text x="80" y="58" text-anchor="middle" fill="#bdbdbd" font-size="10.5">Anthropic</text><text x="80" y="72" text-anchor="middle" fill="#bdbdbd" font-size="10.5">open-sources MCP</text></g>
+          <g><circle class="tlDot" cx="320" cy="34" r="6" fill="#5AA9EC" style="animation-delay:.5s"/>
+            <text x="320" y="20" text-anchor="middle" fill="#5AA9EC" font-size="12" font-weight="800">Mar 2025</text>
+            <text x="320" y="58" text-anchor="middle" fill="#bdbdbd" font-size="10.5">OpenAI adopts</text></g>
+          <g><circle class="tlDot" cx="540" cy="34" r="6" fill="#3AD0B0" style="animation-delay:1s"/>
+            <text x="540" y="20" text-anchor="middle" fill="#3AD0B0" font-size="12" font-weight="800">Apr 2025</text>
+            <text x="540" y="58" text-anchor="middle" fill="#bdbdbd" font-size="10.5">Google DeepMind adopts</text></g>
+          <g><circle class="tlDot" cx="760" cy="34" r="6" fill="#FE9A3A" style="animation-delay:1.5s"/>
+            <text x="760" y="20" text-anchor="middle" fill="#FE9A3A" font-size="12" font-weight="800">2025</text>
+            <text x="760" y="58" text-anchor="middle" fill="#bdbdbd" font-size="10.5">Cursor · Zed · Windsurf ·</text><text x="760" y="72" text-anchor="middle" fill="#bdbdbd" font-size="10.5">Claude Code ship native</text></g>
+          <g><circle class="tlDot" cx="940" cy="34" r="6" fill="#81BB42" style="animation-delay:2s"/>
+            <text x="940" y="20" text-anchor="middle" fill="#81BB42" font-size="12" font-weight="800">2026</text>
+            <text x="940" y="58" text-anchor="middle" fill="#bdbdbd" font-size="10.5">de-facto standard</text></g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 03 WHAT IT IS -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">03</div><div class="ctitle">What MCP actually is</div></div>
+      <p style="margin-bottom:8px">Three parts. Built on <b>JSON-RPC 2.0</b>.</p>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#5AA9EC">🖥️ Host</h4><p>The AI app. Claude&nbsp;Code, Cursor, a desktop client.</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">🔌 Client</h4><p>Lives inside the host. <b>One per server</b>, 1:1.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">🗄️ Server</h4><p>Exposes capabilities. Local process or remote.</p></div>
+      </div>
+      <p style="margin-top:9px"><span class="em">Host contains Clients · each Client talks to one Server.</span></p>
+    </div>
+
+    <!-- 04 PRIMITIVES -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">04</div><div class="ctitle">The three primitives</div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#5AA9EC">Tools</h4><p>Model-controlled — functions it can <b>call</b>.<span class="ex">search_db, send_email</span></p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">Resources</h4><p>App-controlled — data it can <b>read</b>.<span class="ex">files, schemas</span></p></div>
+        <div class="mini"><h4 style="color:#9B5DE5">Prompts</h4><p>User-controlled — reusable <b>templates</b>.<span class="ex">/summarize</span></p></div>
+      </div>
+      <p style="margin-top:9px">Most cheat-sheets skip this. <span class="em">It's the whole mental model.</span></p>
+    </div>
+
+    <!-- 05 TRANSPORT -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">05</div><div class="ctitle">How it travels</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">⚡</span><div><b>stdio</b> — local subprocess. <span>Fastest, no network. Filesystem, git.</span></div></div>
+        <div class="gx"><span class="ic">🌐</span><div><b>Streamable HTTP</b> — remote servers. <span>Replaced HTTP+SSE in 2025. Cloud services.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 06 LIFECYCLE -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">06</div><div class="ctitle">Lifecycle</div></div>
+      <div class="steps">
+        <span class="step">initialize</span><span class="arrow">→</span>
+        <span class="step">capabilities</span><span class="arrow">→</span>
+        <span class="step">initialized</span>
+      </div>
+      <div class="steps" style="margin-top:7px">
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">tools/list</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">tools/call</span><span class="arrow">→</span>
+        <span class="step">shutdown</span>
+      </div>
+      <p style="margin-top:9px"><span class="dim" style="color:#8c8c8c">Handshake first, then the operation phase repeats.</span></p>
+    </div>
+
+    <!-- 07 ON THE WIRE -->
+    <div class="card span2 c-green">
+      <div class="chead"><div class="num">07</div><div class="ctitle">On the wire <span class="t2">— every call is one JSON-RPC message</span></div></div>
+      <div class="wire">
+<span class="cm">// the model asks the server to run a tool</span><br>
+{ <span class="key">"jsonrpc"</span>: <span class="str">"2.0"</span>, <span class="key">"id"</span>: <span class="num2">42</span>, <span class="key">"method"</span>: <span class="str">"tools/call"</span>,<br>
+&nbsp;&nbsp;<span class="key">"params"</span>: { <span class="key">"name"</span>: <span class="str">"query_database"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"arguments"</span>: { <span class="key">"sql"</span>: <span class="str">"SELECT * FROM users LIMIT 10"</span> } } }
+      </div>
+      <p style="margin-top:8px">Request → response, every time. <span class="em">That's the entire protocol surface.</span></p>
+    </div>
+
+    <!-- 08 COMPLETE PICTURE -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">08</div><div class="ctitle">The complete picture</div></div>
+      <svg viewBox="0 0 1000 150" width="100%" style="display:block">
+        <!-- host -->
+        <rect x="20" y="40" width="250" height="78" rx="11" fill="#0c0c0c" stroke="#5AA9EC"/>
+        <text x="145" y="33" text-anchor="middle" fill="#5AA9EC" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">HOST — Claude Code / Cursor</text>
+        <g font-family="Century Gothic, sans-serif" font-size="10.5" font-weight="700">
+          <rect x="35" y="56" width="70" height="22" rx="6" fill="#101010" stroke="#2b2b2b"/><text x="70" y="71" text-anchor="middle" fill="#fff">client #1</text>
+          <rect x="110" y="56" width="70" height="22" rx="6" fill="#101010" stroke="#2b2b2b"/><text x="145" y="71" text-anchor="middle" fill="#fff">client #2</text>
+          <rect x="185" y="56" width="70" height="22" rx="6" fill="#101010" stroke="#2b2b2b"/><text x="220" y="71" text-anchor="middle" fill="#fff">client #3</text>
+          <text x="145" y="104" text-anchor="middle" fill="#8c8c8c" font-size="10">one client per server</text>
+        </g>
+        <!-- cables w/ travelling pulses -->
+        <g stroke="#E9BF35" stroke-width="1.6" fill="none">
+          <path id="p1" d="M270 67 L520 60"/><path id="p2" d="M270 78 L520 95"/><path id="p3" d="M270 90 L520 130"/>
+        </g>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" begin="-0.8s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" begin="-1.6s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle>
+        <!-- servers -->
+        <g font-family="Century Gothic, sans-serif" font-size="11" font-weight="700">
+          <rect x="520" y="44" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#3AD0B0"/><text x="595" y="64" text-anchor="middle" fill="#fff">Filesystem server</text>
+          <rect x="520" y="80" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#FE9A3A"/><text x="595" y="100" text-anchor="middle" fill="#fff">GitHub server</text>
+          <rect x="520" y="116" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#9B5DE5"/><text x="595" y="136" text-anchor="middle" fill="#fff">Postgres server</text>
+          <!-- real systems -->
+          <text x="760" y="55" fill="#8c8c8c" font-size="10">→ your files</text>
+          <text x="760" y="100" fill="#8c8c8c" font-size="10">→ GitHub API</text>
+          <text x="760" y="136" fill="#8c8c8c" font-size="10">→ database</text>
+          <line x1="670" y1="60" x2="752" y2="52" stroke="#2b2b2b"/><line x1="670" y1="96" x2="752" y2="96" stroke="#2b2b2b"/><line x1="670" y1="132" x2="752" y2="132" stroke="#2b2b2b"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 09 GOTCHAS -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">09</div><div class="ctitle">What nobody tells you</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🪙</span><div><b>Token tax</b> — <span>every tool schema rides in the context. 50 tools ≈ 50 schemas, every turn.</span></div></div>
+        <div class="gx"><span class="ic">🔑</span><div><b>OAuth sprawl</b> — <span>secret rotation across N remote servers gets real.</span></div></div>
+        <div class="gx"><span class="ic">🧰</span><div><b>Tool sprawl</b> — <span>more tools = more surface to mis-pick. Curate.</span></div></div>
+        <div class="gx"><span class="ic">📐</span><div><b>Schema drift</b> — <span>server v2 changes a field; agents break silently.</span></div></div>
+        <div class="gx"><span class="ic">🔭</span><div><b>Observability gap</b> — <span>no standard tracing yet. Log across calls.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 10 COMPARISON -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">10</div><div class="ctitle">When MCP wins</div></div>
+      <table>
+        <tr><th>Need</th><th>MCP</th><th>Fn-calling</th><th>Plugin</th></tr>
+        <tr><td class="k">Vendor-neutral</td><td class="win">High</td><td class="no">Low</td><td class="no">Med</td></tr>
+        <tr><td class="k">Reuse a connector</td><td class="win">High</td><td class="no">Low</td><td>Med</td></tr>
+        <tr><td class="k">Local + remote</td><td class="win">Both</td><td>Either</td><td class="no">Remote</td></tr>
+        <tr><td class="k">Standard transport</td><td class="win">Yes</td><td class="no">No</td><td class="no">No</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">Build once → every MCP-aware agent uses it.</span></p>
+    </div>
+
+    <!-- 11 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">11</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">MCP isn't magic. It's <span class="em">plumbing</span> — simple primitives, clean transport, open standard. Master the basics; build the future.</div>
+      <div class="flow2">
+        <span class="step">Build tools</span><span class="arrow">→</span>
+        <span class="step">Expose via MCP</span><span class="arrow">→</span>
+        <span class="step">Ship value</span><span class="arrow">→</span>
+        <span class="step">Repeat</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Architecture · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="mcp-architecture-poster.gif" download>GIF</a> · <a href="mcp-architecture-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>MCP <span class="b">ARCHITECTURE</span></h1>
+  <div class="sub">The AI integration layer <span class="dim">— host, client, server, and what flows between them, on one page</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What MCP is <span class="t2">— the next-level architecture view</span></div></div>
+      <p class="lead">MCP standardizes how AI applications connect to external <b>tools</b>, <b>data sources</b>, <b>prompts</b>, and <b>workflows</b>.</p>
+      <p style="margin-top:6px">One open protocol in the middle, so the model and the systems it touches stay cleanly separated. <span class="em">Build a connector once → every MCP-aware app can use it.</span></p>
+      <div class="chips">
+        <span class="chip">open standard</span>
+        <span class="chip">JSON-RPC 2.0</span>
+        <span class="chip">model ⟷ systems boundary</span>
+        <span class="chip">reusable connectors</span>
+      </div>
+    </div>
+
+    <!-- 02 MAIN DIAGRAM — the architecture flow -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The architecture flow <span class="t2">— user request → app → client → server → systems → response</span></div></div>
+      <svg viewBox="0 0 1000 250" width="100%" style="display:block" role="img" aria-label="MCP architecture flow: a user request travels from the AI app through an MCP client to an MCP server, which exposes tools, resources, and prompts to reach external systems, then returns a result.">
+        <defs>
+          <marker id="ar" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+            <path d="M0 0 L7 3 L0 6 Z" fill="#E9BF35"/>
+          </marker>
+        </defs>
+
+        <!-- USER -->
+        <g font-family="Century Gothic, sans-serif">
+          <circle cx="58" cy="120" r="22" fill="#0c0c0c" stroke="#bdbdbd" stroke-width="1.4"/>
+          <text x="58" y="125" text-anchor="middle" fill="#fff" font-size="15">🧑</text>
+          <text x="58" y="166" text-anchor="middle" fill="#bdbdbd" font-size="11" font-weight="700">User</text>
+          <text x="58" y="180" text-anchor="middle" fill="#8c8c8c" font-size="10">request</text>
+        </g>
+
+        <!-- HOST (AI APP) containing CLIENT -->
+        <rect x="120" y="78" width="210" height="86" rx="11" fill="#0c0c0c" stroke="#5AA9EC" stroke-width="1.4"/>
+        <text x="225" y="71" text-anchor="middle" fill="#5AA9EC" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">AI APP / HOST</text>
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <text x="225" y="100" text-anchor="middle" fill="#e7e7e7" font-size="11">Claude Code · Cursor · desktop client</text>
+          <rect x="150" y="112" width="150" height="34" rx="8" fill="#101010" stroke="#3AD0B0"/>
+          <text x="225" y="128" text-anchor="middle" fill="#3AD0B0" font-size="11" font-weight="800">MCP CLIENT</text>
+          <text x="225" y="140" text-anchor="middle" fill="#8c8c8c" font-size="9.5">speaks MCP · one per server</text>
+        </g>
+
+        <!-- SERVER -->
+        <rect x="470" y="78" width="200" height="118" rx="11" fill="#0c0c0c" stroke="#E9BF35" stroke-width="1.4"/>
+        <text x="570" y="71" text-anchor="middle" fill="#E9BF35" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">MCP SERVER</text>
+        <g font-family="Century Gothic, sans-serif" font-weight="700" font-size="10.5">
+          <rect x="486" y="92" width="168" height="28" rx="7" fill="#101010" stroke="#3AD0B0"/>
+          <text x="498" y="110" fill="#3AD0B0" font-size="10.5">🔧 Tools</text><text x="660" y="110" text-anchor="end" fill="#8c8c8c" font-size="9.5">actions to call</text>
+          <rect x="486" y="124" width="168" height="28" rx="7" fill="#101010" stroke="#FE9A3A"/>
+          <text x="498" y="142" fill="#FE9A3A" font-size="10.5">📄 Resources</text><text x="660" y="142" text-anchor="end" fill="#8c8c8c" font-size="9.5">data to read</text>
+          <rect x="486" y="156" width="168" height="28" rx="7" fill="#101010" stroke="#9B5DE5"/>
+          <text x="498" y="174" fill="#9B5DE5" font-size="10.5">💬 Prompts</text><text x="660" y="174" text-anchor="end" fill="#8c8c8c" font-size="9.5">reusable templates</text>
+        </g>
+
+        <!-- EXTERNAL SYSTEMS -->
+        <g font-family="Century Gothic, sans-serif" font-weight="700" font-size="10.5">
+          <text x="900" y="71" text-anchor="middle" fill="#bdbdbd" font-size="12" font-weight="800">EXTERNAL SYSTEMS</text>
+          <rect x="822" y="84" width="156" height="26" rx="7" fill="#0c0c0c" stroke="#2b2b2b"/><text x="900" y="101" text-anchor="middle" fill="#fff">Databases</text>
+          <rect x="822" y="114" width="156" height="26" rx="7" fill="#0c0c0c" stroke="#2b2b2b"/><text x="900" y="131" text-anchor="middle" fill="#fff">APIs &amp; SaaS</text>
+          <rect x="822" y="144" width="156" height="26" rx="7" fill="#0c0c0c" stroke="#2b2b2b"/><text x="900" y="161" text-anchor="middle" fill="#fff">Files &amp; services</text>
+        </g>
+
+        <!-- connecting paths (left → right) -->
+        <g stroke="#E9BF35" stroke-width="1.7" fill="none" opacity=".9">
+          <path id="m1" d="M80 120 L120 120" marker-end="url(#ar)"/>
+          <path id="m2" d="M330 128 L470 132" marker-end="url(#ar)"/>
+          <path id="m3" d="M670 134 L822 124" marker-end="url(#ar)"/>
+        </g>
+        <!-- travelling request packets (user → app → client → server → systems) -->
+        <circle r="3.6" fill="#E9BF35"><animateMotion dur="2.4s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0;0.85;1" calcMode="linear"><mpath href="#m1"/></animateMotion></circle>
+        <circle r="3.6" fill="#E9BF35"><animateMotion dur="2.4s" begin="-0.9s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0;0.85;1" calcMode="linear"><mpath href="#m2"/></animateMotion></circle>
+        <circle r="3.6" fill="#E9BF35"><animateMotion dur="2.4s" begin="-1.8s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0;0.85;1" calcMode="linear"><mpath href="#m3"/></animateMotion></circle>
+
+        <!-- return path: result flows back along the bottom -->
+        <path id="ret" d="M900 196 C 760 230, 360 230, 120 200" stroke="#3AD0B0" stroke-width="1.3" fill="none" stroke-dasharray="5 5" opacity=".7" marker-end="url(#ar2)"/>
+        <marker id="ar2" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 Z" fill="#3AD0B0"/></marker>
+        <text x="510" y="242" text-anchor="middle" fill="#3AD0B0" font-size="10.5" font-weight="700" font-family="Century Gothic, sans-serif">result returns to the user</text>
+        <circle r="3" fill="#3AD0B0"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#ret"/></animateMotion></circle>
+      </svg>
+    </div>
+
+    <!-- 03 HOST / CLIENT / SERVER -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">03</div><div class="ctitle">The three actors</div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#5AA9EC">🖥️ Host</h4><p>The AI application the user talks to. <b>Owns the conversation</b> &amp; the model.</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">🔌 Client</h4><p>The connector inside the host that speaks MCP. <b>One per server</b>.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">🗄️ Server</h4><p>Exposes capabilities. A local process or a remote service.</p></div>
+      </div>
+      <p style="margin-top:9px"><span class="em">Host holds Clients · each Client talks to one Server.</span></p>
+    </div>
+
+    <!-- 04 TOOLS / RESOURCES / PROMPTS -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">04</div><div class="ctitle">What a server exposes</div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#3AD0B0">🔧 Tools</h4><p>An <b>action</b> the model can request.<span class="ex">search_db · send_email</span></p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">📄 Resources</h4><p><b>Data</b> the model can read.<span class="ex">files · schemas · docs</span></p></div>
+        <div class="mini"><h4 style="color:#9B5DE5">💬 Prompts</h4><p>A reusable <b>task template</b> the server offers.<span class="ex">/summarize</span></p></div>
+      </div>
+      <p style="margin-top:9px">Three primitives — <span class="em">the whole mental model of MCP.</span></p>
+    </div>
+
+    <!-- 05 WHAT FLOWS THROUGH MCP -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">05</div><div class="ctitle">What flows through MCP</div></div>
+      <div class="steps">
+        <span class="step" style="border-color:#264a6e;color:#5AA9EC">tools</span><span class="arrow">·</span>
+        <span class="step" style="border-color:#1e4e44;color:#3AD0B0">resources</span><span class="arrow">·</span>
+        <span class="step" style="border-color:#4a3514;color:#FE9A3A">prompts</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#2f4a1e;color:#81BB42">results</span>
+      </div>
+      <p style="margin-top:9px">The client <b>discovers</b> what a server offers, the model <b>calls a tool</b> or <b>reads a resource</b>, and a structured <b>result</b> flows back — request → response, every time.</p>
+    </div>
+
+    <!-- 06 WHY IT MATTERS -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">06</div><div class="ctitle">Why it matters</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔗</span><div><b>Standard integration</b> — <span>one protocol instead of N×M bespoke connectors.</span></div></div>
+        <div class="gx"><span class="ic">♻️</span><div><b>Reusable connectors</b> — <span>build a server once; any MCP-aware host plugs in.</span></div></div>
+        <div class="gx"><span class="ic">🧱</span><div><b>Cleaner separation</b> — <span>a real boundary between the model and your systems.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 07 COMMON TRAP -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Common trap <span class="t2">— MCP is an integration pattern, not automatic safety</span></div></div>
+      <div class="gotchas" style="grid-template-columns:1fr 1fr; column-gap:18px">
+        <div class="gx"><span class="ic">🔒</span><div><b>Permissions still need design</b> — <span>connecting a system doesn't decide what the model is allowed to do with it. Scope every tool.</span></div></div>
+        <div class="gx"><span class="ic">✅</span><div><b>Validation is on you</b> — <span>arguments &amp; results cross a trust boundary — validate inputs and outputs, don't assume them safe.</span></div></div>
+        <div class="gx"><span class="ic">🪪</span><div><b>Identity is explicit</b> — <span>"who is acting" and under whose credentials is your call to make, not the protocol's.</span></div></div>
+        <div class="gx"><span class="ic">🧾</span><div><b>Logging isn't free</b> — <span>no standard audit trail comes built in — log every call so actions are reviewable.</span></div></div>
+      </div>
+      <p style="margin-top:7px"><span class="em">MCP connects systems. Permissions, validation, identity &amp; logging are still yours to build.</span></p>
+    </div>
+
+    <!-- 08 COMPLETE PICTURE — concrete servers -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">08</div><div class="ctitle">A concrete picture <span class="t2">— one host, three servers, three real systems</span></div></div>
+      <svg viewBox="0 0 1000 150" width="100%" style="display:block" role="img" aria-label="One host with three MCP clients, each connected to its own server: filesystem, GitHub, and Postgres, reaching files, the GitHub API, and a database.">
+        <!-- host -->
+        <rect x="20" y="40" width="250" height="78" rx="11" fill="#0c0c0c" stroke="#5AA9EC"/>
+        <text x="145" y="33" text-anchor="middle" fill="#5AA9EC" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">HOST — AI app</text>
+        <g font-family="Century Gothic, sans-serif" font-size="10.5" font-weight="700">
+          <rect x="35" y="56" width="70" height="22" rx="6" fill="#101010" stroke="#2b2b2b"/><text x="70" y="71" text-anchor="middle" fill="#fff">client #1</text>
+          <rect x="110" y="56" width="70" height="22" rx="6" fill="#101010" stroke="#2b2b2b"/><text x="145" y="71" text-anchor="middle" fill="#fff">client #2</text>
+          <rect x="185" y="56" width="70" height="22" rx="6" fill="#101010" stroke="#2b2b2b"/><text x="220" y="71" text-anchor="middle" fill="#fff">client #3</text>
+          <text x="145" y="104" text-anchor="middle" fill="#8c8c8c" font-size="10">one client per server</text>
+        </g>
+        <!-- cables w/ travelling pulses -->
+        <g stroke="#E9BF35" stroke-width="1.6" fill="none">
+          <path id="c1" d="M270 67 L520 60"/><path id="c2" d="M270 78 L520 95"/><path id="c3" d="M270 90 L520 130"/>
+        </g>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#c1"/></animateMotion></circle>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" begin="-0.5s" repeatCount="indefinite"><mpath href="#c2"/></animateMotion></circle>
+        <circle r="3.5" fill="#E9BF35"><animateMotion dur="2.4s" begin="-1s" repeatCount="indefinite"><mpath href="#c3"/></animateMotion></circle>
+        <!-- servers -->
+        <g font-family="Century Gothic, sans-serif" font-size="11" font-weight="700">
+          <rect x="520" y="44" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#3AD0B0"/><text x="595" y="64" text-anchor="middle" fill="#fff">Filesystem server</text>
+          <rect x="520" y="80" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#FE9A3A"/><text x="595" y="100" text-anchor="middle" fill="#fff">GitHub server</text>
+          <rect x="520" y="116" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#9B5DE5"/><text x="595" y="136" text-anchor="middle" fill="#fff">Postgres server</text>
+          <!-- real systems -->
+          <text x="760" y="55" fill="#8c8c8c" font-size="10">→ your files</text>
+          <text x="760" y="100" fill="#8c8c8c" font-size="10">→ GitHub API</text>
+          <text x="760" y="136" fill="#8c8c8c" font-size="10">→ database</text>
+          <line x1="670" y1="60" x2="752" y2="52" stroke="#2b2b2b"/><line x1="670" y1="96" x2="752" y2="96" stroke="#2b2b2b"/><line x1="670" y1="132" x2="752" y2="132" stroke="#2b2b2b"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 09 BUILDER TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Builder takeaway</div></div>
+      <div class="big">Design the <span class="em">server</span>, not just the call. Treat every tool like a production API — <span class="em">scoped, validated, logged, revocable</span> — and the architecture stays clean as you scale.</div>
+      <div class="flow2">
+        <span class="step">Expose a server</span><span class="arrow">→</span>
+        <span class="step">Scope its tools</span><span class="arrow">→</span>
+        <span class="step">Validate &amp; log</span><span class="arrow">→</span>
+        <span class="step">Reuse everywhere</span>
+      </div>
+    </div>
+
+    <!-- 10 AI SDLC PLACEMENT -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">10</div><div class="ctitle">Where it fits in the AI SDLC</div></div>
+      <div class="steps" style="justify-content:flex-start">
+        <span class="step" style="border-color:#264a6e;color:#5AA9EC">Architecture</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Build</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1e4e44;color:#3AD0B0">Integration</span>
+      </div>
+      <p style="margin-top:9px">MCP is decided in <b>architecture</b> (the boundary between model and systems), realized in <b>build</b> (servers + tools), and proven in <b>integration</b> — where permissions, validation, identity &amp; logging are actually wired in.</p>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

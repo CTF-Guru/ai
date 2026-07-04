@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Trust Boundaries · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="mcp-trust-boundaries-poster.gif" download>GIF</a> · <a href="mcp-trust-boundaries-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>MCP <span class="b">TRUST BOUNDARIES</span></h1>
+  <div class="sub">Don't give the agent the master key <span class="dim">— what it can read, what it can do, and where a human signs off</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 WHAT A TRUST BOUNDARY IS -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What a trust boundary is <span class="t2">— the line where authority changes hands</span></div></div>
+      <p class="lead">A <b>trust boundary</b> is any point where <span class="em">control, identity, data access, or execution authority</span> changes hands. MCP hands the model real capability — so each crossing has to be designed, not assumed.</p>
+      <div class="trio" style="margin-top:8px">
+        <div class="mini"><h4 style="color:#FF5A4D">Control</h4><p>Who decides what runs next — the user, the app, or the model?</p></div>
+        <div class="mini"><h4 style="color:#5AA9EC">Identity</h4><p>On whose authority does the action execute downstream?</p></div>
+        <div class="mini"><h4 style="color:#3AD0B0">Data &amp; execution</h4><p>What can be read, written, or run once the line is crossed?</p></div>
+      </div>
+      <p style="margin-top:9px"><span class="em">MCP is an integration pattern, not automatic safety.</span> Permissions, validation, identity and logging still need design.</p>
+    </div>
+
+    <!-- 02 THE LAYERED BOUNDARY MAP -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The boundary map <span class="t2">— every arrow is a line where trust is re-checked</span></div></div>
+      <svg viewBox="0 0 1000 150" width="100%" style="display:block">
+        <defs>
+          <marker id="bArrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#E9BF35"/>
+          </marker>
+        </defs>
+        <g font-family="Century Gothic, sans-serif" font-size="11" font-weight="700">
+          <!-- trusted zone band -->
+          <rect x="14" y="30" width="300" height="86" rx="10" fill="#0c0c0c" stroke="#2b2b2b" stroke-dasharray="4 4"/>
+          <text x="164" y="24" text-anchor="middle" fill="#8c8c8c" font-size="10">YOUR TRUSTED ZONE</text>
+          <!-- untrusted zone band -->
+          <rect x="690" y="30" width="296" height="86" rx="10" fill="#0c0c0c" stroke="#2b2b2b" stroke-dasharray="4 4"/>
+          <text x="838" y="24" text-anchor="middle" fill="#8c8c8c" font-size="10">EXTERNAL / UNTRUSTED</text>
+
+          <!-- nodes -->
+          <rect x="24" y="56" width="84" height="40" rx="8" fill="#101010" stroke="#5AA9EC"/><text x="66" y="80" text-anchor="middle" fill="#fff">User</text>
+          <rect x="120" y="56" width="84" height="40" rx="8" fill="#101010" stroke="#5AA9EC"/><text x="162" y="76" text-anchor="middle" fill="#fff">AI App</text><text x="162" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">/ Host</text>
+          <rect x="216" y="56" width="88" height="40" rx="8" fill="#101010" stroke="#3AD0B0"/><text x="260" y="76" text-anchor="middle" fill="#fff">MCP</text><text x="260" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">Client</text>
+
+          <!-- gate -->
+          <rect x="332" y="50" width="60" height="52" rx="9" fill="#1a1305" stroke="#E9BF35" stroke-width="1.6"/>
+          <text x="362" y="72" text-anchor="middle" fill="#E9BF35" font-size="16">🛡️</text>
+          <text x="362" y="90" text-anchor="middle" fill="#E9BF35" font-size="9" font-weight="800">GATE</text>
+
+          <rect x="420" y="56" width="92" height="40" rx="8" fill="#101010" stroke="#FE9A3A"/><text x="466" y="76" text-anchor="middle" fill="#fff">MCP</text><text x="466" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">Server</text>
+          <rect x="528" y="56" width="84" height="40" rx="8" fill="#101010" stroke="#9B5DE5"/><text x="570" y="80" text-anchor="middle" fill="#fff">Tools</text>
+          <rect x="624" y="56" width="84" height="40" rx="8" fill="#101010" stroke="#81BB42"/><text x="666" y="80" text-anchor="middle" fill="#fff">Data</text>
+          <rect x="700" y="56" width="120" height="40" rx="8" fill="#101010" stroke="#2b2b2b"/><text x="760" y="76" text-anchor="middle" fill="#fff">External</text><text x="760" y="89" text-anchor="middle" fill="#8c8c8c" font-size="9">APIs · systems</text>
+
+          <!-- connectors -->
+          <g stroke="#E9BF35" stroke-width="1.5" fill="none" marker-end="url(#bArrow)">
+            <line x1="108" y1="76" x2="118" y2="76"/>
+            <line x1="204" y1="76" x2="214" y2="76"/>
+            <line x1="304" y1="76" x2="330" y2="76"/>
+            <line x1="392" y1="76" x2="418" y2="76"/>
+            <line x1="512" y1="76" x2="526" y2="76"/>
+            <line x1="612" y1="76" x2="622" y2="76"/>
+            <line x1="688" y1="76" x2="698" y2="76"/>
+          </g>
+          <!-- active flow: a request crossing the chain; blue (trusted) → orange (untrusted) at the gate -->
+          <path id="tbFlow" d="M66,76 L162,76 L260,76 L362,76 L466,76 L570,76 L666,76 L760,76" fill="none" stroke="none"/>
+          <circle r="3.4" fill="#5AA9EC">
+            <animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#tbFlow"/></animateMotion>
+            <animate attributeName="fill" values="#5AA9EC;#5AA9EC;#FE9A3A;#FE9A3A" keyTimes="0;0.4;0.5;1" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="3.4" fill="#5AA9EC">
+            <animateMotion dur="2.4s" begin="-1.2s" repeatCount="indefinite"><mpath href="#tbFlow"/></animateMotion>
+            <animate attributeName="fill" values="#5AA9EC;#5AA9EC;#FE9A3A;#FE9A3A" keyTimes="0;0.4;0.5;1" dur="2.4s" begin="-1.2s" repeatCount="indefinite"/>
+          </circle>
+          <text x="362" y="128" text-anchor="middle" fill="#bdbdbd" font-size="10.5">The gate is where you enforce least privilege, approval, validation &amp; logging — before the call reaches your systems.</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 03 FIVE PERMISSION LEVELS -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Five permission levels <span class="t2">— classify every tool before you expose it</span></div></div>
+      <div class="chips" style="margin-top:2px">
+        <span class="chip" style="border-color:#2c4a2a;color:#81BB42;background:#0c130b">👁️ READ &nbsp;·&nbsp; look, don't touch</span>
+        <span class="chip" style="border-color:#2a3c52;color:#5AA9EC;background:#0a0f14">✏️ WRITE &nbsp;·&nbsp; create / update state</span>
+        <span class="chip" style="border-color:#4a3410;color:#FE9A3A;background:#130d04">⚙️ EXECUTE &nbsp;·&nbsp; run code / commands</span>
+        <span class="chip" style="border-color:#4a1f1c;color:#FF5A4D;background:#140907">🗑️ DELETE &nbsp;·&nbsp; destroy / irreversible</span>
+        <span class="chip" style="border-color:#3a2150;color:#9B5DE5;background:#0f0916">📤 EXTERNAL&#8209;SEND &nbsp;·&nbsp; leaves your perimeter</span>
+      </div>
+      <p style="margin-top:9px"><span class="em">Risk climbs left → right.</span> Read is cheap to grant; write, execute, delete and external-send each widen the blast radius and should demand stronger controls.</p>
+    </div>
+
+    <!-- 04 THE PERMISSION GATE (controls) -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">04</div><div class="ctitle">The permission gate</div></div>
+      <p style="margin-bottom:6px">Six controls that decide whether a call passes:</p>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔒</span><div><b>Least privilege</b> — <span>grant the narrowest scope the task needs, nothing more.</span></div></div>
+        <div class="gx"><span class="ic">✅</span><div><b>Tool allowlists</b> — <span>only named, approved tools are callable.</span></div></div>
+        <div class="gx"><span class="ic">🙋</span><div><b>Human approval</b> — <span>high-risk actions pause for a sign-off.</span></div></div>
+        <div class="gx"><span class="ic">🧪</span><div><b>Input/output validation</b> — <span>check arguments and results, both ways.</span></div></div>
+        <div class="gx"><span class="ic">📋</span><div><b>Audit logging</b> — <span>who/what/when/why for every call.</span></div></div>
+        <div class="gx"><span class="ic">📦</span><div><b>Sandboxed execution</b> — <span>contain blast radius if a call misbehaves.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 05 ANIMATED GATE -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">05</div><div class="ctitle">The gate in motion <span class="t2">— read passes, write waits</span></div></div>
+      <svg viewBox="0 0 480 200" width="100%" style="display:block">
+        <g font-family="Century Gothic, sans-serif" font-size="11" font-weight="700">
+          <!-- the gate column -->
+          <rect x="222" y="20" width="36" height="160" rx="8" fill="#1a1305" stroke="#E9BF35" stroke-width="1.6"/>
+          <text x="240" y="15" text-anchor="middle" fill="#E9BF35" font-size="9.5" font-weight="800">GATE</text>
+
+          <!-- READ lane: passes through automatically -->
+          <text x="14" y="52" fill="#81BB42" font-size="10.5">READ request</text>
+          <line x1="14" y1="62" x2="466" y2="62" stroke="#1f2b1c" stroke-width="1" stroke-dasharray="3 4"/>
+          <path id="readPath" d="M14 62 L466 62" fill="none" stroke="none"/>
+          <circle r="6" fill="#81BB42">
+            <animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#readPath"/></animateMotion>
+          </circle>
+          <text x="430" y="52" text-anchor="end" fill="#81BB42" font-size="10">✓ allowed</text>
+
+          <!-- WRITE / DELETE / EXTERNAL lane: pauses at the gate for approval -->
+          <text x="14" y="118" fill="#FF5A4D" font-size="10.5">WRITE · DELETE · EXTERNAL-SEND</text>
+          <line x1="14" y1="128" x2="222" y2="128" stroke="#2b1c1b" stroke-width="1" stroke-dasharray="3 4"/>
+          <line x1="258" y1="128" x2="466" y2="128" stroke="#2b1c1b" stroke-width="1" stroke-dasharray="3 4"/>
+          <!-- approaches, then holds at the gate, then resumes after a human approves -->
+          <path id="writePath" d="M14 128 L210 128" fill="none" stroke="none"/>
+          <circle r="6" fill="#FF5A4D">
+            <animateMotion dur="2.4s" repeatCount="indefinite"
+              keyPoints="0;1;1" keyTimes="0;0.45;1" calcMode="linear"><mpath href="#writePath"/></animateMotion>
+            <animate attributeName="fill" values="#FF5A4D;#FF5A4D;#E9BF35;#81BB42;#81BB42"
+              keyTimes="0;0.45;0.6;0.8;1" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+          <!-- pause / approval indicator at the gate -->
+          <text x="240" y="150" text-anchor="middle" fill="#E9BF35" font-size="14">
+            ⏸<animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.4;0.55;0.75;1" dur="2.4s" repeatCount="indefinite"/>
+          </text>
+          <text x="240" y="172" text-anchor="middle" fill="#bdbdbd" font-size="9">human approval</text>
+          <text x="430" y="118" text-anchor="end" fill="#FF5A4D" font-size="10">⏸ paused</text>
+        </g>
+      </svg>
+      <p style="margin-top:6px"><span class="dim" style="color:#8c8c8c">Risk-tiered, not blanket: low-risk flows; high-risk waits for a human.</span></p>
+    </div>
+
+    <!-- 06 PERMISSION x CONTROL TABLE -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">06</div><div class="ctitle">Matching control to risk <span class="t2">— stronger gates for bigger blast radius</span></div></div>
+      <table>
+        <tr><th>Permission</th><th>Example tool</th><th>Reversible?</th><th>Default gate</th></tr>
+        <tr><td class="k">👁️ Read</td><td>fetch_doc, list_tickets</td><td class="win">n/a</td><td>allowlist + log</td></tr>
+        <tr><td class="k">✏️ Write</td><td>create_record, update_row</td><td>Usually</td><td>validate + log</td></tr>
+        <tr><td class="k">⚙️ Execute</td><td>run_script, deploy</td><td class="no">Often not</td><td>sandbox + approval</td></tr>
+        <tr><td class="k">🗑️ Delete</td><td>drop_table, remove_file</td><td class="no">No</td><td class="k">approval + audit</td></tr>
+        <tr><td class="k">📤 External-send</td><td>send_email, post_webhook</td><td class="no">No</td><td class="k">approval + audit</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">Read-only is the safe default.</span> The moment a tool can change or emit state, it earns a stronger gate.</p>
+    </div>
+
+    <!-- 07 COMMON FAILURE -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">07</div><div class="ctitle">The common failure <span class="t2">— oversized blast radius</span></div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">💥</span><div><b>One broad MCP server + broad credentials = one oversized blast radius.</b> <span>A single over-scoped server holding admin-grade keys means any mistake — or any injected instruction — can read, write, delete, and exfiltrate across everything it touches.</span></div></div>
+        <div class="gx"><span class="ic">🪪</span><div><b>Shared service account</b> — <span>every agent acting as the same all-powerful identity erases who actually did what.</span></div></div>
+        <div class="gx"><span class="ic">🧨</span><div><b>"MCP = safe" assumption</b> — <span>the protocol standardizes the connection; it does not scope, validate, or approve anything for you.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 08 BAD vs GOOD -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Bad pattern vs good pattern</div></div>
+      <div class="trio" style="grid-template-columns:1fr 1fr">
+        <div class="mini" style="border-color:#4a1f1c">
+          <h4 style="color:#FF5A4D">✗ Master key</h4>
+          <p>One server, one admin token, every tool — read, write, delete, send — all ungated.</p>
+        </div>
+        <div class="mini" style="border-color:#2c4a2a">
+          <h4 style="color:#81BB42">✓ Scoped keys</h4>
+          <p>Servers split by risk &amp; owner; per-tool scopes; approval on destructive calls; every call logged.</p>
+        </div>
+      </div>
+      <p style="margin-top:9px">Split MCP servers by <span class="em">risk, ownership, and permission boundary</span> — not convenience.</p>
+    </div>
+
+    <!-- 09 DESIGN LIKE PRODUCTION APIS -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Treat tools like prod APIs</div></div>
+      <div class="steps">
+        <span class="step">Scoped</span><span class="arrow">→</span>
+        <span class="step">Validated</span><span class="arrow">→</span>
+        <span class="step">Logged</span><span class="arrow">→</span>
+        <span class="step">Revocable</span>
+      </div>
+      <p style="margin-top:9px">Each MCP tool is a production endpoint: it has a narrow contract, checks its inputs, records its use, and its access can be <span class="em">pulled the instant it's misused.</span></p>
+    </div>
+
+    <!-- 10 BUILDER TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">10</div><div class="ctitle">Builder takeaway</div></div>
+      <div class="big">Design MCP tools like <span class="em">production APIs</span>: scoped, logged, validated, and revocable. Give the agent a labelled keyring — never the master key.</div>
+      <div class="flow2">
+        <span class="step">Scope it</span><span class="arrow">→</span>
+        <span class="step">Validate it</span><span class="arrow">→</span>
+        <span class="step">Gate the risky calls</span><span class="arrow">→</span>
+        <span class="step">Log everything</span><span class="arrow">→</span>
+        <span class="step">Revoke on misuse</span>
+      </div>
+    </div>
+
+    <!-- 11 AI SDLC PLACEMENT -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">11</div><div class="ctitle">Where this lives in the AI SDLC</div></div>
+      <div class="steps" style="margin-top:1px">
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Security Design</span><span class="arrow">→</span>
+        <span class="step">Build</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Release Gate</span><span class="arrow">→</span>
+        <span class="step">Monitor</span>
+      </div>
+      <p style="margin-top:9px"><span class="dim" style="color:#8c8c8c">Decide boundaries and permission levels in <b style="color:#bdbdbd">design</b>; wire scopes, validation and allowlists in <b style="color:#bdbdbd">build</b>; verify approvals and audit at the <b style="color:#bdbdbd">release gate</b>; watch the audit trail in <b style="color:#bdbdbd">monitoring</b>.</span></p>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

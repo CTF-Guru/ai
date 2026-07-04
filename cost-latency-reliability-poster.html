@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cost · Latency · Reliability · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="cost-latency-reliability-poster.gif" download>GIF</a> · <a href="cost-latency-reliability-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>COST · LATENCY · <span class="b">RELIABILITY</span></h1>
+  <div class="sub">The production triangle <span class="dim">— a great answer that's too slow, too costly, or too flaky still fails in production</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What the production triangle is <span class="t2">— quality is necessary, not sufficient</span></div></div>
+      <p class="lead">In a demo, the only question is "is the answer good?" In production, three more questions decide whether it ships: <b>what did it cost</b>, <b>how long did it take</b>, and <b>did it work every time</b>. Production AI must balance answer quality against <b>cost</b>, <b>latency</b>, and <b>reliability</b> — and these three pull against each other.</p>
+      <div class="steps" style="margin-top:9px">
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">measure quality</span><span class="arrow">+</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">cost</span><span class="arrow">+</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">latency</span><span class="arrow">+</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">reliability</span><span class="arrow">→</span>
+        <span class="step">ship decision</span>
+      </div>
+    </div>
+
+    <!-- 02 THE THREE DIALS (main inline-SVG visual) -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The three dials <span class="t2">— pull one lever and watch the others move</span></div></div>
+      <svg viewBox="0 0 1000 250" width="100%" style="display:block">
+        <defs>
+          <!-- gauge arc ticks reused per dial -->
+          <g id="gaugeArc">
+            <path d="M-58 0 A58 58 0 0 1 58 0" fill="none" stroke="#2b2b2b" stroke-width="9" stroke-linecap="round"/>
+          </g>
+        </defs>
+
+        <!-- ===== DIAL 1 · COST ===== -->
+        <g transform="translate(165,150)" font-family="Century Gothic, sans-serif">
+          <use href="#gaugeArc"/>
+          <!-- live coloured fill that breathes (loops 2.4s) -->
+          <path d="M-58 0 A58 58 0 0 1 58 0" fill="none" stroke="#FE9A3A" stroke-width="9" stroke-linecap="round"
+                stroke-dasharray="182" stroke-dashoffset="78">
+            <animate attributeName="stroke-dashoffset" values="78;120;78" dur="2.4s" repeatCount="indefinite"/>
+          </path>
+          <!-- needle pivots in step with the fill -->
+          <g>
+            <line x1="0" y1="0" x2="0" y2="-46" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+            <animateTransform attributeName="transform" type="rotate" values="18;-38;18" dur="2.4s" repeatCount="indefinite"/>
+          </g>
+          <circle cx="0" cy="0" r="5" fill="#FE9A3A"/>
+          <text x="0" y="34" text-anchor="middle" fill="#FE9A3A" font-size="14" font-weight="800" letter-spacing=".04em">COST</text>
+          <text x="0" y="50" text-anchor="middle" fill="#8c8c8c" font-size="10">$ / 1K requests</text>
+          <text x="-58" y="16" text-anchor="middle" fill="#5c5c5c" font-size="9">low</text>
+          <text x="58" y="16" text-anchor="middle" fill="#5c5c5c" font-size="9">high</text>
+        </g>
+
+        <!-- ===== DIAL 2 · LATENCY ===== -->
+        <g transform="translate(500,150)" font-family="Century Gothic, sans-serif">
+          <use href="#gaugeArc"/>
+          <path d="M-58 0 A58 58 0 0 1 58 0" fill="none" stroke="#5AA9EC" stroke-width="9" stroke-linecap="round"
+                stroke-dasharray="182" stroke-dashoffset="96">
+            <animate attributeName="stroke-dashoffset" values="96;58;96" dur="2.4s" begin="-0.8s" repeatCount="indefinite"/>
+          </path>
+          <g>
+            <line x1="0" y1="0" x2="0" y2="-46" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+            <animateTransform attributeName="transform" type="rotate" values="-12;42;-12" dur="2.4s" begin="-0.8s" repeatCount="indefinite"/>
+          </g>
+          <circle cx="0" cy="0" r="5" fill="#5AA9EC"/>
+          <text x="0" y="34" text-anchor="middle" fill="#5AA9EC" font-size="14" font-weight="800" letter-spacing=".04em">LATENCY</text>
+          <text x="0" y="50" text-anchor="middle" fill="#8c8c8c" font-size="10">time to first / full</text>
+          <text x="-58" y="16" text-anchor="middle" fill="#5c5c5c" font-size="9">fast</text>
+          <text x="58" y="16" text-anchor="middle" fill="#5c5c5c" font-size="9">slow</text>
+        </g>
+
+        <!-- ===== DIAL 3 · RELIABILITY ===== -->
+        <g transform="translate(835,150)" font-family="Century Gothic, sans-serif">
+          <use href="#gaugeArc"/>
+          <path d="M-58 0 A58 58 0 0 1 58 0" fill="none" stroke="#81BB42" stroke-width="9" stroke-linecap="round"
+                stroke-dasharray="182" stroke-dashoffset="40">
+            <animate attributeName="stroke-dashoffset" values="40;64;40" dur="2.4s" begin="-1.6s" repeatCount="indefinite"/>
+          </path>
+          <g>
+            <line x1="0" y1="0" x2="0" y2="-46" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+            <animateTransform attributeName="transform" type="rotate" values="58;22;58" dur="2.4s" begin="-1.6s" repeatCount="indefinite"/>
+          </g>
+          <circle cx="0" cy="0" r="5" fill="#81BB42"/>
+          <text x="0" y="34" text-anchor="middle" fill="#81BB42" font-size="14" font-weight="800" letter-spacing=".04em">RELIABILITY</text>
+          <text x="0" y="50" text-anchor="middle" fill="#8c8c8c" font-size="10">success / uptime %</text>
+          <text x="-58" y="16" text-anchor="middle" fill="#5c5c5c" font-size="9">flaky</text>
+          <text x="58" y="16" text-anchor="middle" fill="#5c5c5c" font-size="9">solid</text>
+        </g>
+
+        <!-- tension triangle linking the three dials -->
+        <g opacity="0.5">
+          <polygon points="165,92 835,92 500,200" fill="none" stroke="#E9BF35" stroke-width="1.2"
+                   stroke-dasharray="6 6">
+            <animate attributeName="stroke-dashoffset" values="0;-24" dur="2.4s" repeatCount="indefinite"/>
+          </polygon>
+        </g>
+        <text x="500" y="226" text-anchor="middle" fill="#E9BF35" font-size="11" font-weight="700" font-family="Century Gothic, sans-serif">tune one → the other two move · there is no free lunch</text>
+      </svg>
+      <p style="margin-top:6px">A faster, cheaper system often answers slightly worse; a more reliable one usually costs more. <span class="em">You engineer the trade-off on purpose — you don't get all four for free.</span></p>
+    </div>
+
+    <!-- 03 ENGINEERING LEVERS (left) -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Levers — speed &amp; cost</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔀</span><div><b>Model routing</b> — <span>send each request to the cheapest model that can do it well; escalate only when needed.</span></div></div>
+        <div class="gx"><span class="ic">🪶</span><div><b>Smaller models</b> — <span>use a small/fast model for simple tasks; reserve the big one for hard reasoning.</span></div></div>
+        <div class="gx"><span class="ic">✂️</span><div><b>Context trimming</b> — <span>send only what's needed; long context inflates both cost <i>and</i> latency.</span></div></div>
+        <div class="gx"><span class="ic">💾</span><div><b>Caching</b> — <span>reuse prompt prefixes and repeated answers; don't pay twice for the same work.</span></div></div>
+        <div class="gx"><span class="ic">📦</span><div><b>Batching</b> — <span>group offline work to cut per-call overhead and unit cost.</span></div></div>
+        <div class="gx"><span class="ic">🌊</span><div><b>Streaming</b> — <span>stream tokens so the user <i>feels</i> fast — perceived latency drops even if total time holds.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 04 ENGINEERING LEVERS (right) -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Levers — reliability</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔁</span><div><b>Retry / fallback</b> — <span>retry transient errors; fall back to a second model or a safe default so one failure isn't user-facing.</span></div></div>
+        <div class="gx"><span class="ic">⏲️</span><div><b>Tool timeouts</b> — <span>bound every tool call; a hung dependency must fail fast, not stall the whole request.</span></div></div>
+        <div class="gx"><span class="ic">📚</span><div><b>RAG quality</b> — <span>better retrieval means fewer re-asks and corrections — that lifts reliability while cutting wasted tokens.</span></div></div>
+      </div>
+      <div class="mini" style="margin-top:8px">
+        <h4 style="color:#E9BF35">🎚️ The pattern</h4>
+        <p>Each lever moves the dials in a known direction. Routing &amp; smaller models cut cost; caching &amp; streaming cut latency; retries, timeouts &amp; fallbacks raise reliability. <b>Pick levers for the dial you need to move.</b></p>
+      </div>
+    </div>
+
+    <!-- 05 LEVER → DIAL MAP -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Which lever moves which dial <span class="t2">— and what it can cost you elsewhere</span></div></div>
+      <table>
+        <tr><th>Lever</th><th>Cost</th><th>Latency</th><th>Reliability</th><th>Watch the trade-off</th></tr>
+        <tr><td class="k">Route to smaller model</td><td class="win">↓↓</td><td class="win">↓</td><td>—</td><td>quality may dip on hard tasks</td></tr>
+        <tr><td class="k">Trim context</td><td class="win">↓</td><td class="win">↓</td><td>—</td><td>cutting too much loses needed info</td></tr>
+        <tr><td class="k">Caching</td><td class="win">↓↓</td><td class="win">↓</td><td>—</td><td>stale cache returns old answers</td></tr>
+        <tr><td class="k">Streaming</td><td>—</td><td class="win">↓ (felt)</td><td>—</td><td>total time unchanged; UX only</td></tr>
+        <tr><td class="k">Retry + fallback</td><td class="no">↑</td><td class="no">↑</td><td class="win">↑↑</td><td>more calls = more spend &amp; tail latency</td></tr>
+        <tr><td class="k">Tool timeouts</td><td>—</td><td class="win">↓ tail</td><td class="win">↑</td><td>too tight → false failures</td></tr>
+      </table>
+      <p style="margin-top:7px"><span class="em">No lever is purely free.</span> Every dial you push down tends to push another up — that's why you measure all four together.</p>
+    </div>
+
+    <!-- 06 WATCH OUT -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">06</div><div class="ctitle">Watch out <span class="t2">— scale amplifies all three</span></div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">📜</span><div><b>Long context</b> — <span>more tokens in the window raise <i>both</i> cost and latency, every single call.</span></div></div>
+        <div class="gx"><span class="ic">🤝</span><div><b>More agents</b> — <span>each added agent is another hop that can stall or disagree — coordination failures climb.</span></div></div>
+        <div class="gx"><span class="ic">🧰</span><div><b>More tools</b> — <span>every tool is another dependency that can time out or error — more failure points to cover.</span></div></div>
+      </div>
+      <p style="margin-top:8px"><span class="dim" style="color:#8c8c8c">Capability and the production triangle trade off: the more the system can do, the harder it is to keep fast, cheap, and reliable.</span></p>
+    </div>
+
+    <!-- 07 COMMON FAILURE -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">07</div><div class="ctitle">The common failure</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🐢</span><div><b>Right but too slow</b> — <span>a correct answer that takes 30s — users leave before it lands.</span></div></div>
+        <div class="gx"><span class="ic">💸</span><div><b>Right but too costly</b> — <span>a great answer whose unit economics never let it scale past the pilot.</span></div></div>
+        <div class="gx"><span class="ic">🎲</span><div><b>Right but flaky</b> — <span>works in the demo, fails 1 in 20 in production — trust evaporates.</span></div></div>
+      </div>
+      <p style="margin-top:7px"><span class="em">A high-quality answer that's too slow, too expensive, or unreliable still fails in production.</span></p>
+    </div>
+
+    <!-- 08 MEASURE TOGETHER -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Measure the four together <span class="t2">— one dashboard, not four separate teams</span></div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#E9BF35">🎯 Quality</h4><p>Eval scores on a golden set — the answer is good enough to ship.</p><span class="ex">groundedness · correctness</span></div>
+        <div class="mini"><h4 style="color:#FE9A3A">💰 Cost</h4><p>Tokens &amp; $ per request and per task — and where they're spent.</p><span class="ex">$ / 1K req · tok/call</span></div>
+        <div class="mini"><h4 style="color:#5AA9EC">⏱️ Latency</h4><p>Time to first token and full response — track the <b>tail</b>, not just the mean.</p><span class="ex">p50 · p95 · p99</span></div>
+      </div>
+      <div class="trio" style="margin-top:7px">
+        <div class="mini"><h4 style="color:#81BB42">🛡️ Reliability</h4><p>Success rate, error rate, timeout rate, uptime — does it work <b>every</b> time?</p><span class="ex">success % · error %</span></div>
+        <div class="mini"><h4 style="color:#3AD0B0">🔭 Per-step</h4><p>Break the numbers down by model, tool, and agent hop to find the real culprit.</p><span class="ex">trace each span</span></div>
+        <div class="mini"><h4 style="color:#9B5DE5">🎚️ Budgets</h4><p>Set a target per dial; a build that blows the budget doesn't pass the gate.</p><span class="ex">cost · latency SLO</span></div>
+      </div>
+      <p style="margin-top:8px">Optimizing one number in isolation just moves the pain somewhere else. <span class="em">Watch all four on one screen, or you'll trade a problem you can see for one you can't.</span></p>
+    </div>
+
+    <!-- 09 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">09</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Quality alone doesn't ship. <span class="em">Measure quality, cost, latency, and reliability together</span> — engineer the trade-offs on purpose, and gate the release on all four.</div>
+      <div class="flow2">
+        <span class="step">Measure all four</span><span class="arrow">→</span>
+        <span class="step">Pick the right lever</span><span class="arrow">→</span>
+        <span class="step">Re-measure</span><span class="arrow">→</span>
+        <span class="step">Gate &amp; ship</span>
+      </div>
+    </div>
+
+    <!-- 10 AI SDLC PLACEMENT -->
+    <div class="card span2 c-green">
+      <div class="chead"><div class="num">10</div><div class="ctitle">Where it lives in the AI SDLC <span class="t2">— Build → Optimize → Monitor → Scale</span></div></div>
+      <svg viewBox="0 0 1000 92" width="100%" style="display:block">
+        <line x1="60" y1="46" x2="940" y2="46" stroke="#2b2b2b" stroke-width="2"/>
+        <!-- a pulse travelling the placement rail, looping 2.4s -->
+        <circle r="4" fill="#E9BF35"><animateMotion dur="2.4s" repeatCount="indefinite" path="M60 46 L940 46"/></circle>
+        <g font-family="Century Gothic, sans-serif">
+          <g><circle class="tlDot" cx="120" cy="46" r="6" fill="#5AA9EC" style="animation-delay:0s"/>
+            <text x="120" y="30" text-anchor="middle" fill="#5AA9EC" font-size="12.5" font-weight="800">BUILD</text>
+            <text x="120" y="68" text-anchor="middle" fill="#bdbdbd" font-size="10">make it work + good</text></g>
+          <g><circle class="tlDot" cx="380" cy="46" r="6" fill="#3AD0B0" style="animation-delay:.6s"/>
+            <text x="380" y="30" text-anchor="middle" fill="#3AD0B0" font-size="12.5" font-weight="800">OPTIMIZE</text>
+            <text x="380" y="68" text-anchor="middle" fill="#bdbdbd" font-size="10">pull levers on the dials</text></g>
+          <g><circle class="tlDot" cx="640" cy="46" r="6" fill="#E9BF35" style="animation-delay:1.2s"/>
+            <text x="640" y="30" text-anchor="middle" fill="#E9BF35" font-size="12.5" font-weight="800">MONITOR</text>
+            <text x="640" y="68" text-anchor="middle" fill="#bdbdbd" font-size="10">watch all four in prod</text></g>
+          <g><circle class="tlDot" cx="900" cy="46" r="6" fill="#81BB42" style="animation-delay:1.8s"/>
+            <text x="900" y="30" text-anchor="middle" fill="#81BB42" font-size="12.5" font-weight="800">SCALE</text>
+            <text x="900" y="68" text-anchor="middle" fill="#bdbdbd" font-size="10">hold the budget as load grows</text></g>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

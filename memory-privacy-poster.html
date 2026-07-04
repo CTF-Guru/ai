@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memory Privacy · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="memory-privacy-poster.gif" download>GIF</a> · <a href="memory-privacy-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>MEMORY <span class="b">PRIVACY</span></h1>
+  <div class="sub">Remember only what you should <span class="dim">— consent, transparency, control &amp; retention for agent memory</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What memory privacy is <span class="t2">— governance, not a feature toggle</span></div></div>
+      <p class="lead">Memory privacy controls <b>what</b> an agent may remember, <b>why</b> it remembers it, <b>how long</b> it keeps it, and <b>how users can control it</b>.</p>
+      <p style="margin-top:7px">Persistent memory makes agents feel personal — but every fact it keeps is data you now hold, govern, and can leak. <span class="em">Personalization is a privilege the user grants, not a default the agent assumes.</span></p>
+    </div>
+
+    <!-- 02 THE VAULT — four gates (animated candidate) -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The memory vault <span class="t2">— nothing is stored until it clears four gates</span></div></div>
+      <svg viewBox="0 0 1000 196" width="100%" style="display:block">
+        <!-- path the candidate memory travels -->
+        <path id="vflow" d="M40 98 H912" fill="none" stroke="none"/>
+        <!-- baseline rail -->
+        <line x1="40" y1="98" x2="912" y2="98" stroke="#2b2b2b" stroke-width="2"/>
+
+        <!-- candidate memory (entry) -->
+        <g font-family="Century Gothic, sans-serif">
+          <rect x="14" y="80" width="58" height="36" rx="8" fill="#0c0c0c" stroke="#bdbdbd"/>
+          <text x="43" y="96" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">candidate</text>
+          <text x="43" y="109" text-anchor="middle" fill="#8c8c8c" font-size="9">memory</text>
+        </g>
+
+        <!-- GATE 1 — CONSENT -->
+        <g font-family="Century Gothic, sans-serif">
+          <rect x="120" y="40" width="160" height="116" rx="11" fill="#0c0c0c" stroke="#5AA9EC" stroke-width="1.4"/>
+          <text x="200" y="32" text-anchor="middle" fill="#5AA9EC" font-size="12" font-weight="800">① CONSENT</text>
+          <text x="200" y="84" text-anchor="middle" fill="#e7e7e7" font-size="10.5" font-weight="700">Did the user agree</text>
+          <text x="200" y="99" text-anchor="middle" fill="#e7e7e7" font-size="10.5" font-weight="700">to remember this?</text>
+          <text x="200" y="124" text-anchor="middle" fill="#8c8c8c" font-size="9.5">opt-in, not opt-out</text>
+        </g>
+        <!-- GATE 2 — TRANSPARENCY -->
+        <g font-family="Century Gothic, sans-serif">
+          <rect x="318" y="40" width="160" height="116" rx="11" fill="#0c0c0c" stroke="#3AD0B0" stroke-width="1.4"/>
+          <text x="398" y="32" text-anchor="middle" fill="#3AD0B0" font-size="12" font-weight="800">② TRANSPARENCY</text>
+          <text x="398" y="84" text-anchor="middle" fill="#e7e7e7" font-size="10.5" font-weight="700">Can the user see</text>
+          <text x="398" y="99" text-anchor="middle" fill="#e7e7e7" font-size="10.5" font-weight="700">what is stored?</text>
+          <text x="398" y="124" text-anchor="middle" fill="#8c8c8c" font-size="9.5">a visible memory log</text>
+        </g>
+        <!-- GATE 3 — EDIT / DELETE -->
+        <g font-family="Century Gothic, sans-serif">
+          <rect x="516" y="40" width="160" height="116" rx="11" fill="#0c0c0c" stroke="#FE9A3A" stroke-width="1.4"/>
+          <text x="596" y="32" text-anchor="middle" fill="#FE9A3A" font-size="12" font-weight="800">③ EDIT / DELETE</text>
+          <text x="596" y="84" text-anchor="middle" fill="#e7e7e7" font-size="10.5" font-weight="700">Can the user</text>
+          <text x="596" y="99" text-anchor="middle" fill="#e7e7e7" font-size="10.5" font-weight="700">correct or remove it?</text>
+          <text x="596" y="124" text-anchor="middle" fill="#8c8c8c" font-size="9.5">user-controlled forget</text>
+        </g>
+        <!-- GATE 4 — RETENTION -->
+        <g font-family="Century Gothic, sans-serif">
+          <rect x="714" y="40" width="160" height="116" rx="11" fill="#0c0c0c" stroke="#9B5DE5" stroke-width="1.4"/>
+          <text x="794" y="32" text-anchor="middle" fill="#9B5DE5" font-size="12" font-weight="800">④ RETENTION</text>
+          <text x="794" y="84" text-anchor="middle" fill="#e7e7e7" font-size="10.5" font-weight="700">When does it</text>
+          <text x="794" y="99" text-anchor="middle" fill="#e7e7e7" font-size="10.5" font-weight="700">expire?</text>
+          <!-- retention timer ring -->
+          <circle cx="794" cy="124" r="10" fill="none" stroke="#3a2d08" stroke-width="3"/>
+          <circle cx="794" cy="124" r="10" fill="none" stroke="#9B5DE5" stroke-width="3"
+                  stroke-linecap="round" stroke-dasharray="62.8" stroke-dashoffset="62.8"
+                  transform="rotate(-90 794 124)">
+            <animate attributeName="stroke-dashoffset" from="62.8" to="0" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- vault door -->
+        <g font-family="Century Gothic, sans-serif">
+          <rect x="908" y="56" width="84" height="84" rx="12" fill="#140f02" stroke="#E9BF35" stroke-width="1.8"/>
+          <text x="950" y="94" text-anchor="middle" fill="#E9BF35" font-size="16" font-weight="800">🔒</text>
+          <text x="950" y="116" text-anchor="middle" fill="#E9BF35" font-size="10.5" font-weight="800">VAULT</text>
+        </g>
+
+        <!-- travelling candidate dot through all four gates -->
+        <circle r="5" fill="#E9BF35">
+          <animateMotion dur="2.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+            <mpath href="#vflow"/>
+          </animateMotion>
+        </circle>
+      </svg>
+      <p style="margin-top:8px"><span class="em">Pass all four → store. Fail any one → ask, scope, redact, or drop.</span></p>
+    </div>
+
+    <!-- 03 CLASSIFICATION OUTCOMES -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Classify every candidate memory <span class="t2">— five outcomes, not just yes/no</span></div></div>
+      <div class="steps" style="gap:7px">
+        <span class="step" style="border-color:#1f3a2a;color:#81BB42">✓ Store</span><span class="arrow">·</span>
+        <span class="step" style="border-color:#15314a;color:#5AA9EC">? Ask first</span><span class="arrow">·</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">⏱ Store temporarily</span><span class="arrow">·</span>
+        <span class="step" style="border-color:#3a1414;color:#FF5A4D">✕ Do not store</span><span class="arrow">·</span>
+        <span class="step" style="border-color:#2e1a3a;color:#9B5DE5">▦ Redact / protect</span>
+      </div>
+      <div class="trio" style="margin-top:8px">
+        <div class="mini"><h4 style="color:#81BB42">✓ Store · ? Ask first</h4><p><b>Store</b> a stated preference the user opted into. <b>Ask first</b> when it's useful but consent is unclear.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">⏱ Store temporarily</h4><p>Keep only for the task or session, then auto-expire. The default for transient context.</p></div>
+        <div class="mini"><h4 style="color:#FF5A4D">✕ Do not store · ▦ Redact</h4><p><b>Drop</b> what should never persist. <b>Redact</b> when part is needed but identifiers are not.</p></div>
+      </div>
+    </div>
+
+    <!-- 04 NEVER CASUALLY REMEMBER -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Never casually remember</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🔑</span><div><b>Secrets &amp; credentials</b> — <span>passwords, API keys, tokens. Never persist.</span></div></div>
+        <div class="gx"><span class="ic">🪪</span><div><b>Regulated personal data</b> — <span>PII under GDPR / HIPAA / CCPA.</span></div></div>
+        <div class="gx"><span class="ic">🏥</span><div><b>Sensitive health / financial / legal</b> — <span>protect or avoid entirely.</span></div></div>
+        <div class="gx"><span class="ic">🏢</span><div><b>Confidential business data</b> — <span>contracts, internal plans, customer lists.</span></div></div>
+        <div class="gx"><span class="ic">❓</span><div><b>Unverified claims about people</b> — <span>storing a guess turns it into a "fact".</span></div></div>
+      </div>
+    </div>
+
+    <!-- 05 COMMON FAILURE -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">05</div><div class="ctitle">The common failure</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🕳️</span><div><b>Silent memory collection</b> — <span>the agent quietly remembers things the user never agreed to and cannot see.</span></div></div>
+        <div class="gx"><span class="ic">⚖️</span><div><b>Trust &amp; compliance fallout</b> — <span>invisible retention = surprise, broken trust, and regulatory exposure.</span></div></div>
+        <div class="gx"><span class="ic">🔭</span><div><b>No audit trail</b> — <span>if you can't show what was stored and why, you can't defend it.</span></div></div>
+      </div>
+      <p style="margin-top:8px"><span class="em">If memory is invisible, it is a liability — not a feature.</span></p>
+    </div>
+
+    <!-- 06 AI SDLC PLACEMENT -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">06</div><div class="ctitle">Where it lives in the AI SDLC <span class="t2">— privacy is designed in, then watched</span></div></div>
+      <div class="steps">
+        <span class="step" style="border-color:#15314a;color:#5AA9EC">Product Design</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#2e1a3a;color:#9B5DE5">Privacy Review</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1f3a2a;color:#81BB42">Build</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Monitor</span>
+      </div>
+      <p style="margin-top:9px"><span class="dim" style="color:#8c8c8c">Decide what may be remembered at design time · gate it in a privacy/governance review · enforce consent &amp; expiry in the build · audit live memory in monitoring.</span></p>
+    </div>
+
+    <!-- 07 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">07</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Good memory isn't "remember everything." It's <span class="em">remember only what you should</span> — and prove you can show, change, scope, and forget it.</div>
+      <div class="flow2">
+        <span class="step">Visible</span><span class="arrow">→</span>
+        <span class="step">Editable</span><span class="arrow">→</span>
+        <span class="step">Scoped</span><span class="arrow">→</span>
+        <span class="step">Expirable</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

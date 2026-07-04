@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAG Evaluation · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="rag-evaluation-poster.gif" download>GIF</a> · <a href="rag-evaluation-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>RAG <span class="b">EVALUATION</span></h1>
+  <div class="sub">Did we retrieve right <span class="dim">— and answer right? Two separate scorecards, one launch decision.</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What RAG evaluation measures <span class="t2">— retrieval quality AND answer quality, scored apart</span></div></div>
+      <p class="lead">RAG quality has two halves: <b>did the system retrieve the right evidence</b>, and <b>did the model answer correctly using it</b>. Score them separately — a confident, fluent answer can sit on top of completely failed retrieval, and a single end-to-end "looks good" number hides which half is broken.</p>
+      <div class="steps" style="margin-top:9px">
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">retrieve evidence</span><span class="arrow">→</span>
+        <span class="step">assemble context</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1f3a2a;color:#81BB42">generate answer</span><span class="arrow">→</span>
+        <span class="step">cite + check</span>
+      </div>
+    </div>
+
+    <!-- 02 TWO SCORECARDS DIAGRAM -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">02</div><div class="ctitle">Two scorecards <span class="t2">— a question flows through retrieval eval, then answer eval, into the gate</span></div></div>
+      <svg viewBox="0 0 1000 196" width="100%" style="display:block">
+        <!-- question source -->
+        <rect x="14" y="78" width="118" height="40" rx="9" fill="#0c0c0c" stroke="#5AA9EC" stroke-width="1.4"/>
+        <text x="73" y="95" text-anchor="middle" fill="#5AA9EC" font-size="11.5" font-weight="800" font-family="Century Gothic, sans-serif">QUESTION</text>
+        <text x="73" y="110" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-family="Century Gothic, sans-serif">from golden set</text>
+
+        <!-- retrieval scorecard -->
+        <rect x="232" y="34" width="220" height="128" rx="11" fill="#0c0c0c" stroke="#E9BF35" stroke-width="1.5"/>
+        <text x="342" y="26" text-anchor="middle" fill="#E9BF35" font-size="12.5" font-weight="800" font-family="Century Gothic, sans-serif">RETRIEVAL QUALITY</text>
+        <g font-family="Century Gothic, sans-serif" font-size="10.5" font-weight="700" fill="#e7e7e7">
+          <text x="248" y="58">Recall</text><text x="436" y="58" text-anchor="end" fill="#81BB42">PASS</text>
+          <text x="248" y="79">Precision</text><text x="436" y="79" text-anchor="end" fill="#81BB42">PASS</text>
+          <text x="248" y="100">Relevance</text><text x="436" y="100" text-anchor="end" fill="#81BB42">PASS</text>
+          <text x="248" y="121">Freshness</text><text x="436" y="121" text-anchor="end" fill="#FE9A3A">WARN</text>
+          <text x="248" y="142">Coverage</text><text x="436" y="142" text-anchor="end" fill="#81BB42">PASS</text>
+        </g>
+
+        <!-- answer scorecard -->
+        <rect x="548" y="34" width="220" height="128" rx="11" fill="#0c0c0c" stroke="#81BB42" stroke-width="1.5"/>
+        <text x="658" y="26" text-anchor="middle" fill="#81BB42" font-size="12.5" font-weight="800" font-family="Century Gothic, sans-serif">ANSWER QUALITY</text>
+        <g font-family="Century Gothic, sans-serif" font-size="10.5" font-weight="700" fill="#e7e7e7">
+          <text x="564" y="58">Correctness</text><text x="752" y="58" text-anchor="end" fill="#81BB42">PASS</text>
+          <text x="564" y="79">Groundedness</text><text x="752" y="79" text-anchor="end" fill="#81BB42">PASS</text>
+          <text x="564" y="100">Completeness</text><text x="752" y="100" text-anchor="end" fill="#81BB42">PASS</text>
+          <text x="564" y="121">Citations</text><text x="752" y="121" text-anchor="end" fill="#81BB42">PASS</text>
+          <text x="564" y="142">Refusal</text><text x="752" y="142" text-anchor="end" fill="#81BB42">PASS</text>
+        </g>
+
+        <!-- release gate -->
+        <rect x="858" y="62" width="128" height="72" rx="11" fill="#13130a" stroke="#E9BF35" stroke-width="1.8"/>
+        <text x="922" y="88" text-anchor="middle" fill="#E9BF35" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">RELEASE</text>
+        <text x="922" y="104" text-anchor="middle" fill="#E9BF35" font-size="12" font-weight="800" font-family="Century Gothic, sans-serif">GATE</text>
+        <text x="922" y="122" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-family="Century Gothic, sans-serif">both must pass</text>
+
+        <!-- connecting paths -->
+        <g stroke="#E9BF35" stroke-width="1.6" fill="none">
+          <path id="rPath" d="M132 98 L232 98"/>
+          <path id="aPath" d="M452 98 L548 98"/>
+          <path id="gPath" d="M768 98 L858 98"/>
+        </g>
+        <!-- a single question pulse running the whole length, looping in 2.2s -->
+        <circle r="4" fill="#5AA9EC"><animateMotion dur="2.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1"><mpath href="#rPath"/></animateMotion></circle>
+        <circle r="4" fill="#E9BF35"><animateMotion dur="2.4s" begin="-0.55s" repeatCount="indefinite"><mpath href="#aPath"/></animateMotion></circle>
+        <circle r="4" fill="#81BB42"><animateMotion dur="2.4s" begin="-1.1s" repeatCount="indefinite"><mpath href="#gPath"/></animateMotion></circle>
+      </svg>
+      <p style="margin-top:8px">Evidence is judged before the answer is. <span class="em">If retrieval fails, the answer score is meaningless.</span></p>
+    </div>
+
+    <!-- 03 RETRIEVAL METRICS -->
+    <div class="card c-gold">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Retrieval quality metrics</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🎯</span><div><b>Recall</b> — <span>did we find the evidence the answer actually needs? Misses here cap every downstream score.</span></div></div>
+        <div class="gx"><span class="ic">🧹</span><div><b>Precision</b> — <span>did we avoid dragging in irrelevant chunks that dilute the context?</span></div></div>
+        <div class="gx"><span class="ic">🔗</span><div><b>Relevance</b> — <span>does the retrieved evidence match what the question is asking?</span></div></div>
+        <div class="gx"><span class="ic">⏱️</span><div><b>Freshness</b> — <span>is the source current enough to still be true today?</span></div></div>
+        <div class="gx"><span class="ic">📚</span><div><b>Coverage</b> — <span>did we include all the key sources, or only part of the picture?</span></div></div>
+      </div>
+    </div>
+
+    <!-- 04 ANSWER METRICS -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Answer quality metrics</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">✅</span><div><b>Correctness</b> — <span>is the answer factually right for the question asked?</span></div></div>
+        <div class="gx"><span class="ic">⚓</span><div><b>Groundedness</b> — <span>is every claim supported by the retrieved evidence, not invented?</span></div></div>
+        <div class="gx"><span class="ic">🧩</span><div><b>Completeness</b> — <span>does it cover what was asked, without leaving gaps?</span></div></div>
+        <div class="gx"><span class="ic">📎</span><div><b>Citation accuracy</b> — <span>do the cited sources actually say what the answer claims?</span></div></div>
+        <div class="gx"><span class="ic">🚫</span><div><b>Refusal quality</b> — <span>when evidence is missing, does it decline instead of guessing?</span></div></div>
+      </div>
+    </div>
+
+    <!-- 05 EVALUATION ASSETS -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">05</div><div class="ctitle">The evaluation assets <span class="t2">— what you build once, then run every release</span></div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#3AD0B0">📋 Golden questions</h4><p>A fixed, representative set of real questions with known-good answers — your regression baseline.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">📄 Expected sources</h4><p>For each question, the documents that <b>should</b> be retrieved — this is how you score recall.</p></div>
+        <div class="mini"><h4 style="color:#5AA9EC">📏 Rubrics</h4><p>Explicit pass/fail criteria per metric, so scoring is consistent across runs and graders.</p></div>
+      </div>
+      <div class="trio" style="margin-top:7px">
+        <div class="mini"><h4 style="color:#9B5DE5">👤 Human review</h4><p>Sampled judgments on a slice of outputs — calibrates and audits the automated scores.</p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">🔁 Regression tests</h4><p>Re-run the golden set on every change; a passing build yesterday must still pass today.</p></div>
+        <div class="mini"><h4 style="color:#81BB42">📊 Scorecards</h4><p>One retrieval card, one answer card — track both over time, not a single blended number.</p></div>
+      </div>
+    </div>
+
+    <!-- 06 COMMON FAILURE -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The failure that hides</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🎭</span><div><b>Fluency masks failure</b> — <span>a confident, well-written answer can sit on top of completely wrong or missing evidence.</span></div></div>
+        <div class="gx"><span class="ic">🙈</span><div><b>End-to-end only</b> — <span>scoring just the final answer hides <i>which</i> half broke — retrieval or generation.</span></div></div>
+        <div class="gx"><span class="ic">📉</span><div><b>Top-k ≠ correct</b> — <span>returning <i>some</i> chunks is not the same as returning the <i>right</i> evidence.</span></div></div>
+      </div>
+      <p style="margin-top:7px"><span class="em">A fluent answer can hide failed retrieval.</span></p>
+    </div>
+
+    <!-- 07 RETRIEVAL vs ANSWER — WHO TO BLAME -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Read the two scores together</div></div>
+      <table>
+        <tr><th>Retrieval</th><th>Answer</th><th>What it means</th></tr>
+        <tr><td class="win">Good</td><td class="win">Good</td><td>System is healthy — ship.</td></tr>
+        <tr><td class="no">Bad</td><td class="no">Bad</td><td class="k">Fix retrieval first.</td></tr>
+        <tr><td class="win">Good</td><td class="no">Bad</td><td>Generation / prompt issue.</td></tr>
+        <tr><td class="no">Bad</td><td class="win">Good</td><td class="k">Lucky guess — not trustworthy.</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">Two numbers tell you where to look. One number doesn't.</span></p>
+    </div>
+
+    <!-- 08 AI SDLC PLACEMENT -->
+    <div class="card span2 c-orange">
+      <div class="chead"><div class="num">08</div><div class="ctitle">Where it lives in the AI SDLC <span class="t2">— evaluation is a gate, not an afterthought</span></div></div>
+      <svg viewBox="0 0 1000 92" width="100%" style="display:block">
+        <line x1="60" y1="46" x2="940" y2="46" stroke="#2b2b2b" stroke-width="2"/>
+        <!-- lifecycle sweep: a comet travelling the timeline left → right -->
+        <path id="reTl" d="M60,46 L940,46" fill="none" stroke="none"/>
+        <circle r="6" fill="#E9BF35" opacity=".28"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#reTl"/></animateMotion></circle>
+        <circle r="3.4" fill="#fff"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#reTl"/></animateMotion></circle>
+        <g font-family="Century Gothic, sans-serif">
+          <g><circle class="tlDot" cx="120" cy="46" r="6" fill="#5AA9EC" style="animation-delay:0s"/>
+            <text x="120" y="30" text-anchor="middle" fill="#5AA9EC" font-size="12.5" font-weight="800">TEST</text>
+            <text x="120" y="68" text-anchor="middle" fill="#bdbdbd" font-size="10">unit + integration</text></g>
+          <g><circle class="tlDot" cx="380" cy="46" r="6" fill="#E9BF35" style="animation-delay:.5s"/>
+            <text x="380" y="30" text-anchor="middle" fill="#E9BF35" font-size="12.5" font-weight="800">EVALUATE</text>
+            <text x="380" y="68" text-anchor="middle" fill="#bdbdbd" font-size="10">retrieval + answer scorecards</text></g>
+          <g><circle class="tlDot" cx="640" cy="46" r="6" fill="#81BB42" style="animation-delay:1s"/>
+            <text x="640" y="30" text-anchor="middle" fill="#81BB42" font-size="12.5" font-weight="800">RELEASE GATE</text>
+            <text x="640" y="68" text-anchor="middle" fill="#bdbdbd" font-size="10">both must clear threshold</text></g>
+          <g><circle class="tlDot" cx="900" cy="46" r="6" fill="#FE9A3A" style="animation-delay:1.5s"/>
+            <text x="900" y="30" text-anchor="middle" fill="#FE9A3A" font-size="12.5" font-weight="800">MONITOR</text>
+            <text x="900" y="68" text-anchor="middle" fill="#bdbdbd" font-size="10">watch drift in production</text></g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 09 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">09</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">RAG quality is two questions, not one. <span class="em">Evaluate retrieval and generation separately</span> — score the evidence before you trust the answer, and gate the release on both.</div>
+      <div class="flow2">
+        <span class="step">Build golden set</span><span class="arrow">→</span>
+        <span class="step">Score retrieval</span><span class="arrow">→</span>
+        <span class="step">Score answer</span><span class="arrow">→</span>
+        <span class="step">Gate · then monitor</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

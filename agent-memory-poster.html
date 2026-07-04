@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Layers of Agent Memory · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="agent-memory-poster.gif" download>GIF</a> · <a href="agent-memory-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>THE LAYERS OF <span class="b">AGENT MEMORY</span></h1>
+  <div class="sub">How agents remember <span class="dim">— working, episodic, semantic, procedural, meta</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 WHY MEMORY -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">01</div><div class="ctitle">Why memory at all <span class="t2">— a bare LLM is stateless</span></div></div>
+      <p class="lead" style="margin-bottom:8px">Every turn starts from zero. The model only sees what's inside its <b>context window</b> right now — close the session and it's all gone.</p>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#FF5A4D">No persistence</h4><p>Yesterday's decisions, your name, what worked — <b>forgotten</b> by default.</p></div>
+        <div class="mini"><h4 style="color:#E9BF35">No learning</h4><p>It can't get better at <i>your</i> task over time. Same mistakes, every time.</p></div>
+        <div class="mini"><h4 style="color:#81BB42">With memory</h4><p>The agent can <b>persist, recall, and compound</b> — and not repeat itself.</p></div>
+      </div>
+      <p style="margin-top:9px"><span class="em">Memory is the layer that turns a stateless model into an agent that accumulates.</span></p>
+    </div>
+
+    <!-- 02 THE RUNTIME -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The runtime — one turn <span class="t2">— long-term layers are READ before, WRITTEN after</span></div></div>
+      <svg viewBox="0 0 1000 168" width="100%" style="display:block">
+        <defs>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#E9BF35"/>
+          </marker>
+        </defs>
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <!-- pipeline boxes -->
+          <rect x="14" y="58" width="150" height="44" rx="9" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="89" y="80" text-anchor="middle" fill="#fff" font-size="12">USER INPUT</text>
+          <text x="89" y="95" text-anchor="middle" fill="#8c8c8c" font-size="9.5">the request</text>
+
+          <rect x="208" y="58" width="160" height="44" rx="9" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="288" y="80" text-anchor="middle" fill="#fff" font-size="12">WORKING MEMORY</text>
+          <text x="288" y="95" text-anchor="middle" fill="#8c8c8c" font-size="9.5">assemble the context</text>
+
+          <rect x="412" y="58" width="150" height="44" rx="9" fill="#0c0c0c" stroke="#E9BF35"/>
+          <text x="487" y="80" text-anchor="middle" fill="#fff" font-size="12">LLM PLANNING</text>
+          <text x="487" y="95" text-anchor="middle" fill="#8c8c8c" font-size="9.5">decide next step</text>
+
+          <rect x="606" y="58" width="150" height="44" rx="9" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <text x="681" y="80" text-anchor="middle" fill="#fff" font-size="12">TOOL EXECUTION</text>
+          <text x="681" y="95" text-anchor="middle" fill="#8c8c8c" font-size="9.5">act &amp; observe</text>
+
+          <rect x="800" y="58" width="150" height="44" rx="9" fill="#0c0c0c" stroke="#81BB42"/>
+          <text x="875" y="80" text-anchor="middle" fill="#fff" font-size="12">RESPONSE</text>
+          <text x="875" y="95" text-anchor="middle" fill="#8c8c8c" font-size="9.5">answer the user</text>
+
+          <!-- connectors -->
+          <g stroke="#E9BF35" stroke-width="1.7" fill="none">
+            <path id="mp1" d="M164 80 L206 80" marker-end="url(#ah)"/>
+            <path id="mp2" d="M368 80 L410 80" marker-end="url(#ah)"/>
+            <path id="mp3" d="M562 80 L604 80" marker-end="url(#ah)"/>
+            <path id="mp4" d="M756 80 L798 80" marker-end="url(#ah)"/>
+          </g>
+          <!-- the travelling "turn" pulse flowing through the whole pipeline -->
+          <path id="mflow" d="M89 80 L288 80 L487 80 L681 80 L875 80" fill="none" stroke="none"/>
+          <circle r="5" fill="#fff">
+            <animateMotion dur="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+              <mpath href="#mflow"/>
+            </animateMotion>
+          </circle>
+
+          <!-- READ at planning -->
+          <text x="487" y="22" text-anchor="middle" fill="#5AA9EC" font-size="10.5" font-weight="800">READ AT PLANNING ▼</text>
+          <line x1="487" y1="28" x2="487" y2="56" stroke="#5AA9EC" stroke-width="1.3" stroke-dasharray="3 3"/>
+          <text x="487" y="40" text-anchor="middle" fill="#8c8c8c" font-size="9">episodic · semantic · procedural</text>
+
+          <!-- WRITE after the turn -->
+          <text x="681" y="128" text-anchor="middle" fill="#81BB42" font-size="10.5" font-weight="800">▲ WRITE AFTER THE TURN</text>
+          <line x1="681" y1="104" x2="681" y2="122" stroke="#81BB42" stroke-width="1.3" stroke-dasharray="3 3"/>
+          <text x="681" y="146" text-anchor="middle" fill="#8c8c8c" font-size="9">append trace · extract entities · reflect</text>
+
+          <!-- meta watches everything -->
+          <text x="20" y="146" fill="#9B5DE5" font-size="9.5" font-weight="700">META-MEMORY supervises the whole loop (archive · dedupe · decay)</text>
+        </g>
+      </svg>
+      <p style="margin-top:7px">Working memory holds the live turn; the long-term layers are <b>retrieved into the prompt at planning time</b> and <b>updated once the turn is done</b>.</p>
+    </div>
+
+    <!-- 03 WORKING -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">03</div><div class="ctitle">L1 · Working memory <span class="t2">— now</span></div></div>
+      <p>The current turn's context — the prompt, the recent steps, the scratch state the agent is reasoning over right this moment.</p>
+      <div class="chips" style="margin-top:7px">
+        <span class="chip">bounded by the context window</span>
+        <span class="chip">resets at session end</span>
+      </div>
+      <p style="margin-top:8px"><span class="em">Without it:</span> the agent can't hold a coherent train of thought across a single task.</p>
+    </div>
+
+    <!-- 04 EPISODIC -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">04</div><div class="ctitle">L2 · Episodic memory <span class="t2">— what happened</span></div></div>
+      <p>Cross-session <b>traces</b> of past interactions — what was asked, what was done, how it went. Append-only; retrieved at planning.</p>
+      <div class="chips" style="margin-top:7px">
+        <span class="chip">append-only log</span>
+        <span class="chip">retrieved by relevance</span>
+      </div>
+      <p style="margin-top:8px"><span class="em">Without it:</span> every session feels like the first — no continuity.</p>
+    </div>
+
+    <!-- 05 SEMANTIC -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">05</div><div class="ctitle">L3 · Semantic memory <span class="t2">— what's true</span></div></div>
+      <p>An <b>entity store</b> of typed facts — people, places, projects, preferences (who / what), queried by ID or by similarity.</p>
+      <div class="chips" style="margin-top:7px">
+        <span class="chip">typed facts</span>
+        <span class="chip">lookup by ID or similarity</span>
+      </div>
+      <p style="margin-top:8px"><span class="em">Without it:</span> the agent re-asks for things it was already told.</p>
+    </div>
+
+    <!-- 06 PROCEDURAL -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">06</div><div class="ctitle">L4 · Procedural memory <span class="t2">— how to</span></div></div>
+      <p>A <b>skill registry</b> of learned procedures and how-tos — reusable playbooks the agent has acquired, indexed by task type.</p>
+      <div class="chips" style="margin-top:7px">
+        <span class="chip">skills &amp; playbooks</span>
+        <span class="chip">indexed by task type</span>
+      </div>
+      <p style="margin-top:8px"><span class="em">Without it:</span> the agent re-derives the same method from scratch each time.</p>
+    </div>
+
+    <!-- 07 META -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">07</div><div class="ctitle">L5 · Meta-memory <span class="t2">— the control plane</span></div></div>
+      <p>The layer that <b>manages the other layers</b>: archive, dedupe, deprecate, decay — deciding what to keep, merge, age out, or forget.</p>
+      <div class="chips" style="margin-top:7px">
+        <span class="chip">dedupe &amp; resolve</span>
+        <span class="chip">decay &amp; deprecate</span>
+      </div>
+      <p style="margin-top:8px"><span class="em">Without it:</span> the stack rots — contradictions pile up and stale facts mislead.</p>
+    </div>
+
+    <!-- 08 THE STACK -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">08</div><div class="ctitle">The stack <span class="t2">— five layers, each one feeds the next</span></div></div>
+      <svg viewBox="0 0 1000 226" width="100%" style="display:block">
+        <g font-family="Century Gothic, sans-serif">
+          <!-- L1 -->
+          <rect x="14" y="6" width="972" height="38" rx="8" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <circle cx="38" cy="25" r="11" fill="#3AD0B0"/><text x="38" y="29" text-anchor="middle" fill="#000" font-size="12" font-weight="800">1</text>
+          <text x="60" y="22" fill="#fff" font-size="13" font-weight="800" letter-spacing=".04em">WORKING</text>
+          <text x="60" y="36" fill="#8c8c8c" font-size="10">holds the live turn</text>
+          <text x="978" y="22" text-anchor="end" fill="#bdbdbd" font-size="10.5">breaks without it →</text>
+          <text x="978" y="36" text-anchor="end" fill="#FF5A4D" font-size="10.5" font-weight="700">no coherent train of thought</text>
+
+          <!-- L2 -->
+          <rect x="14" y="48" width="972" height="38" rx="8" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <circle cx="38" cy="67" r="11" fill="#5AA9EC"/><text x="38" y="71" text-anchor="middle" fill="#000" font-size="12" font-weight="800">2</text>
+          <text x="60" y="64" fill="#fff" font-size="13" font-weight="800" letter-spacing=".04em">EPISODIC</text>
+          <text x="60" y="78" fill="#8c8c8c" font-size="10">traces of what happened, across sessions</text>
+          <text x="978" y="64" text-anchor="end" fill="#bdbdbd" font-size="10.5">breaks without it →</text>
+          <text x="978" y="78" text-anchor="end" fill="#FF5A4D" font-size="10.5" font-weight="700">every session feels like the first</text>
+
+          <!-- L3 -->
+          <rect x="14" y="90" width="972" height="38" rx="8" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <circle cx="38" cy="109" r="11" fill="#FE9A3A"/><text x="38" y="113" text-anchor="middle" fill="#000" font-size="12" font-weight="800">3</text>
+          <text x="60" y="106" fill="#fff" font-size="13" font-weight="800" letter-spacing=".04em">SEMANTIC</text>
+          <text x="60" y="120" fill="#8c8c8c" font-size="10">typed facts — who / what</text>
+          <text x="978" y="106" text-anchor="end" fill="#bdbdbd" font-size="10.5">breaks without it →</text>
+          <text x="978" y="120" text-anchor="end" fill="#FF5A4D" font-size="10.5" font-weight="700">re-asks what it was told</text>
+
+          <!-- L4 -->
+          <rect x="14" y="132" width="972" height="38" rx="8" fill="#0c0c0c" stroke="#9B5DE5"/>
+          <circle cx="38" cy="151" r="11" fill="#9B5DE5"/><text x="38" y="155" text-anchor="middle" fill="#000" font-size="12" font-weight="800">4</text>
+          <text x="60" y="148" fill="#fff" font-size="13" font-weight="800" letter-spacing=".04em">PROCEDURAL</text>
+          <text x="60" y="162" fill="#8c8c8c" font-size="10">learned how-tos / skills</text>
+          <text x="978" y="148" text-anchor="end" fill="#bdbdbd" font-size="10.5">breaks without it →</text>
+          <text x="978" y="162" text-anchor="end" fill="#FF5A4D" font-size="10.5" font-weight="700">re-derives the method each time</text>
+
+          <!-- L5 -->
+          <rect x="14" y="174" width="972" height="38" rx="8" fill="#0c0c0c" stroke="#DF2E28"/>
+          <circle cx="38" cy="193" r="11" fill="#DF2E28"/><text x="38" y="197" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">5</text>
+          <text x="60" y="190" fill="#fff" font-size="13" font-weight="800" letter-spacing=".04em">META</text>
+          <text x="60" y="204" fill="#8c8c8c" font-size="10">archive · dedupe · deprecate · decay</text>
+          <text x="978" y="190" text-anchor="end" fill="#bdbdbd" font-size="10.5">breaks without it →</text>
+          <text x="978" y="204" text-anchor="end" fill="#FF5A4D" font-size="10.5" font-weight="700">the whole stack rots</text>
+
+          <!-- "feeds the next" connecting dots down the left gutter -->
+          <g>
+            <circle class="tlDot" cx="38" cy="46" r="2.6" fill="#fff" style="animation-delay:0s"/>
+            <circle class="tlDot" cx="38" cy="88" r="2.6" fill="#fff" style="animation-delay:.4s"/>
+            <circle class="tlDot" cx="38" cy="130" r="2.6" fill="#fff" style="animation-delay:.8s"/>
+            <circle class="tlDot" cx="38" cy="172" r="2.6" fill="#fff" style="animation-delay:1.2s"/>
+          </g>
+        </g>
+      </svg>
+      <p style="margin-top:6px">Read top-down it's a <b>maturity stack</b>: working remembers <i>now</i>; episodic, semantic and procedural let the agent <span class="em">compound</span>; meta keeps it all clean.</p>
+    </div>
+
+    <!-- 09 READ VS WRITE -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Read vs write</div></div>
+      <p style="margin-bottom:6px"><b style="color:#5AA9EC">READ — at planning</b> (memory feeds the prompt):</p>
+      <div class="steps">
+        <span class="step" style="border-color:#1e3a52;color:#9fd0ff">recall traces</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1e3a52;color:#9fd0ff">fetch entities</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#1e3a52;color:#9fd0ff">load skills</span>
+      </div>
+      <p style="margin:9px 0 6px"><b style="color:#81BB42">WRITE — after the turn</b> (memory is updated):</p>
+      <div class="steps">
+        <span class="step" style="border-color:#244018;color:#a8d77f">append trace</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#244018;color:#a8d77f">extract entities</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#244018;color:#a8d77f">reflect on procedures</span>
+      </div>
+      <p style="margin-top:9px"><span class="dim" style="color:#8c8c8c">Working memory is live the whole turn; the long-term layers bracket it — read before, write after.</span></p>
+    </div>
+
+    <!-- 10 BIOLOGY -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">10</div><div class="ctitle">The biological analogy <span class="t2">— five brain systems</span></div></div>
+      <table>
+        <tr><th>Memory layer</th><th>Brain region</th></tr>
+        <tr><td class="k">Working</td><td>Prefrontal cortex</td></tr>
+        <tr><td class="k">Episodic</td><td>Hippocampus</td></tr>
+        <tr><td class="k">Semantic</td><td>Temporal lobe</td></tr>
+        <tr><td class="k">Procedural</td><td>Basal ganglia / cerebellum</td></tr>
+        <tr><td class="k">Meta</td><td>Anterior prefrontal cortex</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">Five memory systems in cognitive science map onto five layers in the architecture.</span></p>
+    </div>
+
+    <!-- 11 GOTCHAS -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">11</div><div class="ctitle">What nobody tells you</div></div>
+      <div class="gotchas" style="grid-template-columns:1fr 1fr; gap:7px 22px">
+        <div class="gx"><span class="ic">⚖️</span><div><b>Contradictions</b> — <span>without dedup + entity resolution, retrieval serves two conflicting "facts" at once.</span></div></div>
+        <div class="gx"><span class="ic">🪙</span><div><b>Context overload</b> — <span>unbounded memory floods the window — more tokens, more cost, worse focus.</span></div></div>
+        <div class="gx"><span class="ic">⌛</span><div><b>Stale memories</b> — <span>yesterday's truth is today's bug. Old facts need <b>decay</b>, not permanence.</span></div></div>
+        <div class="gx"><span class="ic">🎯</span><div><b>Retrieval gates everything</b> — <span>if the wrong slice is pulled in, every later layer reasons on the wrong basis.</span></div></div>
+        <div class="gx"><span class="ic">🔒</span><div><b>Privacy / PII</b> — <span>long-term stores quietly accumulate personal data — governance and deletion matter.</span></div></div>
+        <div class="gx"><span class="ic">🧭</span><div><b>It's a pattern, not a product</b> — <span>"5 layers" is a useful model; real systems split or merge these differently.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 12 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">12</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Five memory systems in cognitive science ≈ five architectural layers in production AI. Working remembers <span class="em">now</span> — the rest let the agent <span class="em">compound</span> over time.</div>
+      <div class="flow2">
+        <span class="step">Working</span><span class="arrow">→</span>
+        <span class="step">Episodic</span><span class="arrow">→</span>
+        <span class="step">Semantic</span><span class="arrow">→</span>
+        <span class="step">Procedural</span><span class="arrow">→</span>
+        <span class="step">Meta</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

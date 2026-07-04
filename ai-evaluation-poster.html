@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Evaluation · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="ai-evaluation-poster.gif" download>GIF</a> · <a href="ai-evaluation-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>AI <span class="b">EVALUATION</span></h1>
+  <div class="sub">Evaluation is the new testing <span class="dim">— a demo that works once is not a production-ready AI system</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What AI evaluation is <span class="t2">— measuring readiness, not just correctness</span></div></div>
+      <p class="lead">AI evaluation measures whether an AI system is <b>useful, safe, grounded, reliable</b>, and <b>ready for release</b>. Deterministic code is right or wrong; an AI system is <i>good enough, on a distribution of inputs</i> — so you score it against suites, not single assertions.</p>
+      <p style="margin-top:8px">Classic testing asks <span class="em">"does this function return the expected value?"</span> Evaluation asks <span class="em">"does this system behave well across many real inputs, and is it safe to ship?"</span></p>
+    </div>
+
+    <!-- 02 THE EVAL STACK (main inline-SVG) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">The eval stack <span class="t2">— the testing pyramid, evolved for AI</span></div></div>
+      <svg viewBox="0 0 1000 250" width="100%" style="display:block">
+        <defs>
+          <marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6 Z" fill="#E9BF35"/>
+          </marker>
+        </defs>
+        <!-- 7-tier stack: bottom = fast/cheap/deterministic → top = slow/judgment/live -->
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <!-- L1 unit -->
+          <rect x="300" y="214" width="400" height="28" rx="6" fill="#0c0c0c" stroke="#81BB42"/>
+          <text x="500" y="232" text-anchor="middle" fill="#fff" font-size="12">Unit tests <tspan fill="#8c8c8c" font-size="10">· deterministic glue &amp; parsing</tspan></text>
+          <!-- L2 integration -->
+          <rect x="312" y="182" width="376" height="28" rx="6" fill="#0c0c0c" stroke="#3AD0B0"/>
+          <text x="500" y="200" text-anchor="middle" fill="#fff" font-size="12">Integration tests <tspan fill="#8c8c8c" font-size="10">· wiring &amp; data flow</tspan></text>
+          <!-- L3 RAG retrieval -->
+          <rect x="328" y="150" width="344" height="28" rx="6" fill="#0c0c0c" stroke="#5AA9EC"/>
+          <text x="500" y="168" text-anchor="middle" fill="#fff" font-size="12">RAG retrieval evals <tspan fill="#8c8c8c" font-size="10">· recall · precision · groundedness</tspan></text>
+          <!-- L4 tool-use -->
+          <rect x="346" y="118" width="308" height="28" rx="6" fill="#0c0c0c" stroke="#FE9A3A"/>
+          <text x="500" y="136" text-anchor="middle" fill="#fff" font-size="12">Tool-use evals <tspan fill="#8c8c8c" font-size="10">· right tool · right args</tspan></text>
+          <!-- L5 safety/security -->
+          <rect x="366" y="86" width="268" height="28" rx="6" fill="#0c0c0c" stroke="#9B5DE5"/>
+          <text x="500" y="104" text-anchor="middle" fill="#fff" font-size="12">Safety / security evals <tspan fill="#8c8c8c" font-size="10">· injection · red team</tspan></text>
+          <!-- L6 human review -->
+          <rect x="388" y="54" width="224" height="28" rx="6" fill="#0c0c0c" stroke="#E9BF35"/>
+          <text x="500" y="72" text-anchor="middle" fill="#fff" font-size="12">Human review <tspan fill="#8c8c8c" font-size="10">· rubric judgment</tspan></text>
+          <!-- L7 production monitoring (apex) -->
+          <rect x="410" y="22" width="180" height="28" rx="6" fill="#1a1305" stroke="#FF5A4D" stroke-width="1.6"/>
+          <text x="500" y="40" text-anchor="middle" fill="#FF5A4D" font-size="12" font-weight="800">Production monitoring</text>
+        </g>
+        <!-- axis labels -->
+        <g font-family="Century Gothic, sans-serif" font-size="10.5" font-weight="700">
+          <text x="60" y="40" fill="#FF5A4D">slower · judgment</text>
+          <text x="60" y="56" fill="#8c8c8c" font-size="9.5">fewer, live, human</text>
+          <text x="60" y="228" fill="#81BB42">faster · deterministic</text>
+          <text x="60" y="212" fill="#8c8c8c" font-size="9.5">many, cheap, automated</text>
+          <!-- vertical axis arrow -->
+          <line x1="150" y1="226" x2="150" y2="40" stroke="#2b2b2b" stroke-width="1.5" marker-end="url(#ar)"/>
+        </g>
+        <!-- active flow: a probe rising the axis, taking on each tier's colour (each layer up = another kind of failure) -->
+        <path id="evAxis" d="M150,226 L150,40" fill="none" stroke="none"/>
+        <circle r="4.5" fill="#81BB42">
+          <animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#evAxis"/></animateMotion>
+          <animate attributeName="fill" values="#81BB42;#3AD0B0;#5AA9EC;#FE9A3A;#9B5DE5;#E9BF35;#FF5A4D" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="4.5" fill="#81BB42">
+          <animateMotion dur="2.4s" begin="-1.2s" repeatCount="indefinite"><mpath href="#evAxis"/></animateMotion>
+          <animate attributeName="fill" values="#81BB42;#3AD0B0;#5AA9EC;#FE9A3A;#9B5DE5;#E9BF35;#FF5A4D" dur="2.4s" begin="-1.2s" repeatCount="indefinite"/>
+        </circle>
+        <!-- right-side note -->
+        <text x="930" y="135" text-anchor="end" fill="#8c8c8c" font-family="Century Gothic, sans-serif" font-size="10.5">each layer up</text>
+        <text x="930" y="150" text-anchor="end" fill="#8c8c8c" font-family="Century Gothic, sans-serif" font-size="10.5">adds a kind of</text>
+        <text x="930" y="165" text-anchor="end" fill="#E9BF35" font-family="Century Gothic, sans-serif" font-size="10.5" font-weight="800">"can it fail?"</text>
+      </svg>
+      <p style="margin-top:8px">Unit + integration tests still apply — but they only cover the <b>deterministic</b> shell. The new layers test the <span class="em">model's behaviour</span>: what it retrieves, which tools it picks, how it resists attack, and how it holds up live.</p>
+    </div>
+
+    <!-- 03 WHY IT'S DIFFERENT -->
+    <div class="card c-teal">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Why testing isn't enough</div></div>
+      <div class="trio">
+        <div class="mini"><h4 style="color:#5AA9EC">Non-deterministic</h4><p>Same prompt, different output. <b>Pass/fail</b> becomes <b>score over a set</b>.<span class="ex">temperature &gt; 0</span></p></div>
+        <div class="mini"><h4 style="color:#FE9A3A">Open-ended</h4><p>No single right answer — judge on a <b>rubric</b>, not equality.<span class="ex">assertEquals ✗</span></p></div>
+        <div class="mini"><h4 style="color:#9B5DE5">New failures</h4><p>Hallucination, injection, bad tool calls — <b>unseen in code</b>.<span class="ex">silent &amp; plausible</span></p></div>
+      </div>
+      <p style="margin-top:9px">You can't unit-test your way to trust. <span class="em">You evaluate.</span></p>
+    </div>
+
+    <!-- 04 EVAL EXAMPLES -->
+    <div class="card c-green">
+      <div class="chead"><div class="num">04</div><div class="ctitle">What an eval looks like</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">📋</span><div><b>Golden question sets</b> <span>— curated Q→expected-behaviour pairs you re-run every change.</span></div></div>
+        <div class="gx"><span class="ic">🔗</span><div><b>Expected-source checks</b> <span>— did the answer cite the document it should have?</span></div></div>
+        <div class="gx"><span class="ic">📊</span><div><b>Rubric scoring</b> <span>— grade correctness, grounding, tone on a scale (often LLM-as-judge + spot human).</span></div></div>
+        <div class="gx"><span class="ic">🛡️</span><div><b>Prompt-injection tests</b> <span>— hostile inputs that try to override instructions.</span></div></div>
+        <div class="gx"><span class="ic">🔁</span><div><b>Regression tests</b> <span>— yesterday's fixed bug must stay fixed.</span></div></div>
+        <div class="gx"><span class="ic">💸</span><div><b>Cost / latency thresholds</b> <span>— fail the build if a turn gets too slow or too pricey.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 05 THE EVAL GATE (animated — outputs through pass/fail/review) -->
+    <div class="card span2 c-orange">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Outputs run the gate <span class="t2">— every candidate is graded: pass · review · fail</span></div></div>
+      <svg viewBox="0 0 1000 168" width="100%" style="display:block">
+        <defs>
+          <marker id="aw" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#E9BF35"/></marker>
+        </defs>
+        <!-- source: model outputs -->
+        <rect x="20" y="62" width="138" height="44" rx="10" fill="#0c0c0c" stroke="#5AA9EC"/>
+        <text x="89" y="80" text-anchor="middle" fill="#5AA9EC" font-size="11.5" font-weight="800" font-family="Century Gothic, sans-serif">AI OUTPUTS</text>
+        <text x="89" y="96" text-anchor="middle" fill="#8c8c8c" font-size="9.5" font-family="Century Gothic, sans-serif">on real inputs</text>
+
+        <!-- eval gate -->
+        <rect x="300" y="40" width="150" height="88" rx="12" fill="#1a1305" stroke="#E9BF35" stroke-width="1.6"/>
+        <text x="375" y="76" text-anchor="middle" fill="#E9BF35" font-size="13" font-weight="800" font-family="Century Gothic, sans-serif">EVAL</text>
+        <text x="375" y="94" text-anchor="middle" fill="#E9BF35" font-size="13" font-weight="800" font-family="Century Gothic, sans-serif">GATE</text>
+        <text x="375" y="116" text-anchor="middle" fill="#8c8c8c" font-size="9" font-family="Century Gothic, sans-serif">score vs threshold</text>
+
+        <!-- feed path (animated dot travels in ≤2.4s) -->
+        <path id="feed" d="M158 84 L300 84" stroke="#E9BF35" stroke-width="1.6" fill="none" marker-end="url(#aw)"/>
+        <circle r="4" fill="#5AA9EC"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#feed"/></animateMotion></circle>
+
+        <!-- three outcome lanes -->
+        <g font-family="Century Gothic, sans-serif" font-weight="700">
+          <!-- PASS -->
+          <path id="pass" d="M450 60 L700 36" stroke="#2b2b2b" stroke-width="1.4" fill="none"/>
+          <rect x="700" y="20" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#81BB42"/>
+          <text x="775" y="40" text-anchor="middle" fill="#81BB42" font-size="12">✓ PASS → release</text>
+          <circle r="4" fill="#81BB42"><animateMotion dur="2.4s" begin="0s" repeatCount="indefinite"><mpath href="#pass"/></animateMotion></circle>
+          <!-- REVIEW -->
+          <path id="rev" d="M450 84 L700 84" stroke="#2b2b2b" stroke-width="1.4" fill="none"/>
+          <rect x="700" y="68" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#E9BF35"/>
+          <text x="775" y="88" text-anchor="middle" fill="#E9BF35" font-size="12">⚑ REVIEW → human</text>
+          <circle r="4" fill="#E9BF35"><animateMotion dur="2.4s" begin="-0.7s" repeatCount="indefinite"><mpath href="#rev"/></animateMotion></circle>
+          <!-- FAIL -->
+          <path id="fail" d="M450 108 L700 132" stroke="#2b2b2b" stroke-width="1.4" fill="none"/>
+          <rect x="700" y="116" width="150" height="32" rx="8" fill="#0c0c0c" stroke="#FF5A4D"/>
+          <text x="775" y="136" text-anchor="middle" fill="#FF5A4D" font-size="12">✗ FAIL → back to fix</text>
+          <circle r="4" fill="#FF5A4D"><animateMotion dur="2.4s" begin="-1.4s" repeatCount="indefinite"><mpath href="#fail"/></animateMotion></circle>
+        </g>
+
+        <!-- fail loop-back hint -->
+        <path d="M775 148 C775 162, 375 162, 375 130" stroke="#FF5A4D" stroke-width="1.1" fill="none" stroke-dasharray="4 4" opacity=".6"/>
+      </svg>
+      <p style="margin-top:6px"><span class="dim" style="color:#8c8c8c">Same gate every run — promote what passes, escalate the uncertain, and route failures back before they reach users.</span></p>
+    </div>
+
+    <!-- 06 RETRIEVAL VS ANSWER -->
+    <div class="card c-blue">
+      <div class="chead"><div class="num">06</div><div class="ctitle">For RAG: grade both halves</div></div>
+      <table>
+        <tr><th>Layer</th><th>Asks</th><th>Metrics</th></tr>
+        <tr><td class="k">Retrieval</td><td>Found the evidence?</td><td>recall · precision</td></tr>
+        <tr><td class="k">Answer</td><td>Used it correctly?</td><td>grounding · cite acc.</td></tr>
+      </table>
+      <p style="margin-top:8px"><span class="em">A fluent answer can hide failed retrieval.</span> Score evidence and generation <b>separately</b>.</p>
+    </div>
+
+    <!-- 07 TOOL & SAFETY -->
+    <div class="card c-purple">
+      <div class="chead"><div class="num">07</div><div class="ctitle">For agents: tools &amp; safety</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🧰</span><div><b>Tool-use evals</b> <span>— did it pick the right tool, with valid arguments, in the right order?</span></div></div>
+        <div class="gx"><span class="ic">🚧</span><div><b>Safety / security evals</b> <span>— injection resilience, refusal quality, no unsafe action without approval.</span></div></div>
+      </div>
+      <p style="margin-top:8px"><span class="dim" style="color:#8c8c8c">More autonomy = more to evaluate before you hand over the keys.</span></p>
+    </div>
+
+    <!-- 08 COMMON FAILURE -->
+    <div class="card span2 c-red">
+      <div class="chead"><div class="num">08</div><div class="ctitle">The failure that ships broken AI</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">🎬</span><div><b>"It worked in the demo."</b> <span>One lucky run on one input proves nothing about the distribution real users bring.</span></div></div>
+        <div class="gx"><span class="ic">🫥</span><div><b>Silent regressions</b> <span>— a prompt tweak or model swap quietly breaks cases that used to pass; no eval = no alarm.</span></div></div>
+        <div class="gx"><span class="ic">📈</span><div><b>Vibes, not numbers</b> <span>— "feels better" can't gate a release. You need a score and a threshold.</span></div></div>
+      </div>
+      <p style="margin-top:7px"><span class="em">A demo that works once is not a production-ready AI system.</span></p>
+    </div>
+
+    <!-- 09 AI SDLC PLACEMENT -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">09</div><div class="ctitle">Where it sits in the AI SDLC</div></div>
+      <div class="steps">
+        <span class="step">Test</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Evaluate</span><span class="arrow">→</span>
+        <span class="step" style="border-color:#3a2d08;color:#E9BF35">Release Gate</span><span class="arrow">→</span>
+        <span class="step">Monitor</span>
+      </div>
+      <p style="margin-top:9px">Evals run <b>offline</b> in CI (block the merge if scores drop) <b>and</b> become the <b>release gate</b> before more users, tools, or autonomy — then the same checks run <b>live</b> as production monitoring. <span class="em">Eval is not a phase; it's a loop.</span></p>
+    </div>
+
+    <!-- 10 TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">10</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Tests check the code around the model. <span class="em">Evals check the model itself.</span> Build the eval suite <i>before</i> you scale users, tools, and autonomy — it's the seatbelt, not the trophy.</div>
+      <div class="flow2">
+        <span class="step">Write evals first</span><span class="arrow">→</span>
+        <span class="step">Gate on scores</span><span class="arrow">→</span>
+        <span class="step">Then scale</span><span class="arrow">→</span>
+        <span class="step">Monitor live</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

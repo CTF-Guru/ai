@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAG Chunking · AIISV</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+<div class="back-bar"><a href="index.html">← Gallery</a></div>
+<div class="dl-bar">⬇ <a href="chunking-metadata-poster.gif" download>GIF</a> · <a href="chunking-metadata-poster.png" download>PNG</a></div>
+<div class="poster">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="kicker">AI SDLC · field guide</div>
+  <h1>RAG <span class="b">CHUNKING</span></h1>
+  <div class="sub">How you split &amp; label content decides what RAG can find <span class="dim">— the hidden quality lever, from bad cuts to semantic chunks with metadata</span></div>
+  <div class="byline">
+    <div class="brandmark"><span class="logo">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="who">· AI SDLC course · explainer series</div>
+    <div class="badge">v2026.06</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 DEFINITION -->
+    <div class="card span2 c-teal">
+      <div class="chead"><div class="num">01</div><div class="ctitle">What chunking is <span class="t2">— the step before retrieval that quietly sets the ceiling</span></div></div>
+      <p class="lead">Chunking is how source content is <b>split into retrievable pieces</b> for RAG — and how each piece is <b>labeled with metadata</b> before it ever reaches a vector index.</p>
+      <p style="margin-top:6px">The model only ever sees the chunks you retrieve. If a chunk cuts a procedure in half, drops its heading, mixes two topics, or carries no source — retrieval has nothing good to find, no matter how strong the model is. Chunking is the <span class="em">data-prep decision</span> that sets the quality ceiling for everything downstream.</p>
+    </div>
+
+    <!-- 02 BAD vs GOOD (main diagram, animated) -->
+    <div class="card span2 c-gold">
+      <div class="chead"><div class="num">02</div><div class="ctitle">Bad cuts vs good chunks <span class="t2">— same document, split two ways</span></div></div>
+      <svg viewBox="0 0 1000 232" width="100%" style="display:block">
+        <defs>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#E9BF35"/>
+          </marker>
+        </defs>
+
+        <!-- ===== SOURCE DOC (left) ===== -->
+        <g font-family="Century Gothic, sans-serif">
+          <text x="92" y="14" text-anchor="middle" fill="#bdbdbd" font-size="11" font-weight="700">SOURCE DOC</text>
+          <rect x="44" y="24" width="96" height="184" rx="8" fill="#0c0c0c" stroke="#2b2b2b"/>
+          <!-- heading + body lines -->
+          <rect x="56" y="36" width="60" height="7" rx="2" fill="#E9BF35"/>
+          <rect x="56" y="50" width="72" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="58" width="72" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="66" width="52" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="84" width="64" height="7" rx="2" fill="#E9BF35"/>
+          <rect x="56" y="98" width="72" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="106" width="72" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="114" width="48" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="132" width="58" height="7" rx="2" fill="#E9BF35"/>
+          <rect x="56" y="146" width="72" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="154" width="72" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="162" width="56" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="180" width="40" height="4" rx="2" fill="#3a3a3a"/>
+          <rect x="56" y="188" width="62" height="4" rx="2" fill="#3a3a3a"/>
+        </g>
+
+        <!-- split arrows to both lanes -->
+        <g stroke="#E9BF35" stroke-width="1.6" fill="none" marker-end="url(#ah)">
+          <path d="M140 88 L176 60"/>
+          <path d="M140 150 L176 168"/>
+        </g>
+
+        <!-- ===== BAD LANE (top) ===== -->
+        <g font-family="Century Gothic, sans-serif">
+          <text x="188" y="40" fill="#FF5A4D" font-size="11.5" font-weight="800">BAD — fixed cuts, blind to meaning</text>
+          <!-- three chunks that slice mid-sentence / mix topics. .mess = flicker (existing keyframe) -->
+          <g class="mess">
+            <rect x="188" y="48" width="150" height="34" rx="6" fill="#1a0b0a" stroke="#FF5A4D"/>
+            <rect x="346" y="48" width="150" height="34" rx="6" fill="#1a0b0a" stroke="#FF5A4D"/>
+            <rect x="504" y="48" width="150" height="34" rx="6" fill="#1a0b0a" stroke="#FF5A4D"/>
+          </g>
+          <!-- broken content inside: half a heading, mid-line cut -->
+          <g>
+            <rect x="198" y="58" width="30" height="5" rx="2" fill="#7a3a36"/>
+            <rect x="198" y="68" width="120" height="3.5" rx="2" fill="#3a3a3a"/>
+            <rect x="356" y="58" width="110" height="3.5" rx="2" fill="#3a3a3a"/>
+            <rect x="356" y="68" width="44" height="5" rx="2" fill="#7a3a36"/>
+            <rect x="514" y="58" width="96" height="3.5" rx="2" fill="#3a3a3a"/>
+            <rect x="514" y="68" width="120" height="3.5" rx="2" fill="#3a3a3a"/>
+          </g>
+          <text x="188" y="98" fill="#8c8c8c" font-size="9.5">✗ heading lost  ✗ topics mixed  ✗ no source  ✗ cut mid-step</text>
+        </g>
+
+        <!-- ===== GOOD LANE (bottom) ===== -->
+        <g font-family="Century Gothic, sans-serif">
+          <text x="188" y="132" fill="#81BB42" font-size="11.5" font-weight="800">GOOD — semantic sections + metadata</text>
+          <!-- three clean chunks aligned to sections, each carries a heading bar + a metadata tag strip -->
+          <g>
+            <rect x="188" y="140" width="150" height="50" rx="6" fill="#10160f" stroke="#81BB42"/>
+            <rect x="346" y="140" width="150" height="50" rx="6" fill="#10160f" stroke="#81BB42"/>
+            <rect x="504" y="140" width="150" height="50" rx="6" fill="#10160f" stroke="#81BB42"/>
+          </g>
+          <!-- heading kept whole + body, per chunk -->
+          <g>
+            <rect x="198" y="149" width="58" height="6" rx="2" fill="#E9BF35"/>
+            <rect x="198" y="160" width="124" height="3.5" rx="2" fill="#3a3a3a"/>
+            <rect x="198" y="167" width="108" height="3.5" rx="2" fill="#3a3a3a"/>
+            <rect x="356" y="149" width="64" height="6" rx="2" fill="#E9BF35"/>
+            <rect x="356" y="160" width="124" height="3.5" rx="2" fill="#3a3a3a"/>
+            <rect x="356" y="167" width="96" height="3.5" rx="2" fill="#3a3a3a"/>
+            <rect x="514" y="149" width="52" height="6" rx="2" fill="#E9BF35"/>
+            <rect x="514" y="160" width="124" height="3.5" rx="2" fill="#3a3a3a"/>
+            <rect x="514" y="167" width="112" height="3.5" rx="2" fill="#3a3a3a"/>
+          </g>
+          <!-- metadata tag strips (the part bad chunks never get) -->
+          <g font-size="7.5" font-weight="700">
+            <rect x="198" y="177" width="40" height="9" rx="2" fill="#0c0c0c" stroke="#5AA9EC"/><text x="218" y="184" text-anchor="middle" fill="#5AA9EC">§ section</text>
+            <rect x="242" y="177" width="38" height="9" rx="2" fill="#0c0c0c" stroke="#3AD0B0"/><text x="261" y="184" text-anchor="middle" fill="#3AD0B0">source</text>
+            <rect x="356" y="177" width="40" height="9" rx="2" fill="#0c0c0c" stroke="#5AA9EC"/><text x="376" y="184" text-anchor="middle" fill="#5AA9EC">§ section</text>
+            <rect x="400" y="177" width="34" height="9" rx="2" fill="#0c0c0c" stroke="#FE9A3A"/><text x="417" y="184" text-anchor="middle" fill="#FE9A3A">date</text>
+            <rect x="514" y="177" width="40" height="9" rx="2" fill="#0c0c0c" stroke="#5AA9EC"/><text x="534" y="184" text-anchor="middle" fill="#5AA9EC">§ section</text>
+            <rect x="558" y="177" width="44" height="9" rx="2" fill="#0c0c0c" stroke="#9B5DE5"/><text x="580" y="184" text-anchor="middle" fill="#9B5DE5">access</text>
+          </g>
+          <text x="188" y="204" fill="#8c8c8c" font-size="9.5">✓ section intact  ✓ heading kept  ✓ metadata attached  ✓ traceable to source</text>
+        </g>
+
+        <!-- ===== reassembly: a tag travels from the doc and attaches to a good chunk (animateMotion, ≤2.4s loop) ===== -->
+        <g>
+          <!-- metadata tag that flies in and snaps onto a chunk -->
+          <g>
+            <rect x="-15" y="-6" width="30" height="12" rx="3" fill="#1a1305" stroke="#E9BF35"/>
+            <text x="0" y="3" text-anchor="middle" fill="#E9BF35" font-size="7.5" font-weight="800" font-family="Century Gothic, sans-serif">tag</text>
+            <animateMotion dur="2.4s" repeatCount="indefinite" path="M92 120 L92 165 L504 165 L600 165"/>
+          </g>
+        </g>
+
+        <!-- active flow: source feeds BOTH lanes; the good lane streams on to precise retrieval -->
+        <g fill="none" stroke="none">
+          <path id="cmBad" d="M140,88 L176,60"/><path id="cmGood" d="M140,150 L176,168"/><path id="cmStream" d="M188,165 L654,165"/>
+        </g>
+        <circle r="3" fill="#E9BF35"><animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#cmBad"/></animateMotion></circle>
+        <circle r="3" fill="#E9BF35"><animateMotion dur="1.2s" begin="-0.6s" repeatCount="indefinite"><mpath href="#cmGood"/></animateMotion></circle>
+        <circle r="3" fill="#81BB42"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#cmStream"/></animateMotion></circle>
+        <circle r="3" fill="#81BB42"><animateMotion dur="2.4s" begin="-1.2s" repeatCount="indefinite"><mpath href="#cmStream"/></animateMotion></circle>
+
+        <!-- right-edge outcome label -->
+        <g font-family="Century Gothic, sans-serif">
+          <text x="690" y="60" fill="#FF5A4D" font-size="10" font-weight="700">→ poor</text>
+          <text x="690" y="73" fill="#8c8c8c" font-size="9">retrieval</text>
+          <text x="690" y="160" fill="#81BB42" font-size="10" font-weight="700">→ precise</text>
+          <text x="690" y="173" fill="#8c8c8c" font-size="9">retrieval +</text>
+          <text x="690" y="183" fill="#8c8c8c" font-size="9">citations</text>
+        </g>
+      </svg>
+      <p style="margin-top:7px" class="lead">Same source, two splits. The good lane keeps a section whole, preserves its heading, and <span class="em">tags every chunk</span> — so the right evidence is findable and citable.</p>
+    </div>
+
+    <!-- 03 METADATA TAG SET -->
+    <div class="card span2 c-blue">
+      <div class="chead"><div class="num">03</div><div class="ctitle">Metadata to attach to every chunk <span class="t2">— the labels that make a chunk filterable &amp; trustworthy</span></div></div>
+      <div class="chips" style="margin-top:2px">
+        <span class="chip" style="border-color:#274a6e;color:#9cc8f2">📄 title</span>
+        <span class="chip" style="border-color:#274a6e;color:#9cc8f2">§ section / heading</span>
+        <span class="chip" style="border-color:#0e3a32;color:#6fd9c2">🔗 source URL / doc ID</span>
+        <span class="chip" style="border-color:#5a3a14;color:#f2b777">👤 owner</span>
+        <span class="chip" style="border-color:#5a3a14;color:#f2b777">🗓️ date</span>
+        <span class="chip" style="border-color:#3a2d08;color:#E9BF35">#️⃣ version</span>
+        <span class="chip" style="border-color:#3d2658;color:#c39bea">🔐 access group</span>
+        <span class="chip" style="border-color:#5a1a18;color:#f08a82">⚠️ sensitivity</span>
+        <span class="chip" style="border-color:#2b2b2b;color:#ddd">🗂️ document type</span>
+      </div>
+      <p style="margin-top:9px">These aren't decoration. <b>Section &amp; title</b> restore the context a cut throws away; <b>source &amp; version</b> power citations and freshness checks; <b>access group &amp; sensitivity</b> let retrieval filter <em>before</em> a private chunk ever reaches the model. <span class="em">No chunk ships untagged.</span></p>
+    </div>
+
+    <!-- 04 CHUNKING CHOICES -->
+    <div class="card c-orange">
+      <div class="chead"><div class="num">04</div><div class="ctitle">Chunking choices <span class="t2">— match the strategy to the content</span></div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">📏</span><div><b>Fixed-size</b> — <span>N tokens with overlap. Simple &amp; fast; blind to meaning, cuts mid-thought.</span></div></div>
+        <div class="gx"><span class="ic">🧩</span><div><b>Semantic</b> — <span>split on headings / topic shifts. Keeps a section whole — the default for prose.</span></div></div>
+        <div class="gx"><span class="ic">🌳</span><div><b>Parent–child</b> — <span>retrieve a small chunk, hand the model its larger parent for context.</span></div></div>
+        <div class="gx"><span class="ic">▦</span><div><b>Table-aware</b> — <span>keep rows + header together; never slice a table across chunks.</span></div></div>
+        <div class="gx"><span class="ic">{ }</span><div><b>Code-aware</b> — <span>split on function / class boundaries, not arbitrary line counts.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 05 COMMON FAILURE -->
+    <div class="card c-red">
+      <div class="chead"><div class="num">05</div><div class="ctitle">Common failure</div></div>
+      <div class="gotchas">
+        <div class="gx"><span class="ic">⚠️</span><div><b>Poor chunks → poor retrieval</b> — <span>even with a strong model. The chunk is the unit of retrieval; if it's malformed, no reranker or prompt rescues it.</span></div></div>
+        <div class="gx"><span class="ic">🪓</span><div><b>One size for everything</b> — <span>fixed-size cuts shred tables, code, and procedures. Different content needs different splits.</span></div></div>
+        <div class="gx"><span class="ic">🏷️</span><div><b>Untagged chunks</b> — <span>no source means no citation; no access group means private docs leak into answers.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 06 BUILDER TAKEAWAY -->
+    <div class="card span2 takeaway c-gold">
+      <div class="chead"><div class="num">06</div><div class="ctitle">The takeaway</div></div>
+      <div class="big">Design chunks around <span class="em">how users ask questions</span> and <span class="em">how evidence should be cited</span> — not around a round token count. A retrievable, well-labeled chunk is what turns a strong model into a trustworthy answer.</div>
+      <div class="flow2">
+        <span class="step">Split on meaning</span><span class="arrow">→</span>
+        <span class="step">Tag every chunk</span><span class="arrow">→</span>
+        <span class="step">Filter on metadata</span><span class="arrow">→</span>
+        <span class="step">Cite the source</span>
+      </div>
+    </div>
+
+    <!-- 07 AI SDLC PLACEMENT -->
+    <div class="card span2 c-purple">
+      <div class="chead"><div class="num">07</div><div class="ctitle">Where it lives in the AI SDLC</div></div>
+      <div class="steps">
+        <span class="step">Data Prep</span><span class="arrow">→</span>
+        <span class="step">Build</span><span class="arrow">→</span>
+        <span class="step">Evaluation</span>
+      </div>
+      <p style="margin-top:9px">Chunking &amp; metadata are a <b>Data Preparation</b> decision — made before you build the index, then carried through <b>Build</b> (the retrieval pipeline reads those tags) and pressure-tested in <b>Evaluation</b>, where bad chunks show up as low retrieval recall long before the answer looks wrong.</p>
+      <p style="margin-top:6px"><span class="dim" style="color:#8c8c8c">Get the split right at ingest — it's the cheapest place to fix retrieval quality.</span></p>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="foot">
+    <div class="brandmark" style="font-size:13px"><span class="logo" style="width:22px;height:22px;font-size:11px;border-radius:5px">CTF</span> Farooq&nbsp;Ali</div>
+    <div class="sig" style="margin-left:auto"><a href="https://ctf.guru" style="color:var(--gold);text-decoration:none;font-weight:700">ctf.guru</a> · AI SDLC explainer series · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
