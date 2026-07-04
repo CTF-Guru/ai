@@ -27,7 +27,12 @@
   .cd{ color:var(--muted); font-size:.85rem; margin-top:3px; line-height:1.4 }
   .open{ color:var(--gold); font-size:.8rem; font-weight:700; margin-top:9px; display:inline-block }
   footer{ margin-top:42px; color:var(--dim); font-size:.8rem; border-top:1px solid var(--line); padding-top:16px;
-          display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px }
+          display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:center }
+  footer .fbrand{ display:inline-flex; align-items:center; gap:8px; color:var(--ink); font-weight:700; font-size:.9rem }
+  footer .fbrand .shield{ width:22px; height:22px; flex:0 0 22px; background:transparent no-repeat center/contain
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 52'><defs><linearGradient id='s' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%233b5168'/><stop offset='1' stop-color='%231a2530'/></linearGradient></defs><path d='M7 5 H41 Q43 5 43 7 V27 Q43 40 24 48 Q5 40 5 27 V7 Q5 5 7 5 Z' fill='url(%23s)' stroke='%235AA9EC' stroke-width='2'/><text x='24' y='32' text-anchor='middle' font-family='Century Gothic, Futura, sans-serif' font-size='16' font-weight='800' letter-spacing='0.5' fill='%23ffffff'>CTF</text></svg>") }
+  footer .fbrand .tag{ color:var(--dim); font-weight:600; font-size:.75rem }
+  footer .fmeta a{ color:var(--gold); text-decoration:none; font-weight:700 }
 
   .card{ overflow:hidden }
   .card .b{ padding-bottom:6px }
@@ -76,7 +81,10 @@
     <div class="card" style="--c:var(--teal)"><a class="cardlink" href="ai-incident-response-poster.html"><img src="ai-incident-response-poster.png" alt="AI Incident Response poster"><div class="b"><div class="ct">AI Incident Response</div><div class="cd">When the model misbehaves.</div></div></a><div class="cdl"><a class="o" href="ai-incident-response-poster.html">Open ↗</a><span><a href="ai-incident-response-poster.gif" download>GIF</a> · <a href="ai-incident-response-poster.png" download>PNG</a></span></div></div>
   </div>
 
-  <footer><span>© 2026 Farooq Ali — explainer series</span><span>ctf.guru</span></footer>
+  <footer>
+    <span class="fbrand"><span class="shield"></span> Farooq Ali <span class="tag">— Chief Troublemaker &amp; Fixer (CTF)</span></span>
+    <span class="fmeta"><a href="https://ctf.guru">ctf.guru</a> · AI explainer series · 2026</span>
+  </footer>
 </div>
 </body>
 </html>
